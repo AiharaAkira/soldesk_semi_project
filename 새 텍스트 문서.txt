@@ -1,1 +1,5 @@
-123
+1.서문
+2.html완료
+3.css완료
+4.jQuery중반까지 완료
+5.Front-End Project초반 작성 중
