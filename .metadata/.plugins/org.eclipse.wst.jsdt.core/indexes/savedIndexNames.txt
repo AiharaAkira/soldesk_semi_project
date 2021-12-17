@@ -3,4 +3,7 @@ INDEX VERSION 1.4+C:\Users\sec\Documents\GitHub\soldesk_semi_project\.metadata\.
 180754614.index
 1045068802.index
 87393302.index
+<<<<<<< Updated upstream
 3738582126.index
+=======
+>>>>>>> Stashed changes
