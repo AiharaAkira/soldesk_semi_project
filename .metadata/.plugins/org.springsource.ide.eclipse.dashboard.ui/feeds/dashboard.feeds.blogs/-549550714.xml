@@ -436,7 +436,7 @@ Most modern browsers support modules and module maps. Those that don&amp;#8217;t
 &lt;/div&gt;
 &lt;div class="imageblock"&gt;
 &lt;div class="content"&gt;
-&lt;img src="images/tabs.png" alt="tabs"&gt;
+&lt;img src="https://raw.githubusercontent.com/dsyer/spring-boot-js-demo/main/images/tabs.png" alt="tabs"&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
@@ -546,7 +546,7 @@ public class JsDemoApplication {
 &lt;/div&gt;
 &lt;div class="imageblock"&gt;
 &lt;div class="content"&gt;
-&lt;img src="images/user.png" alt="user"&gt;
+&lt;img src="https://raw.githubusercontent.com/dsyer/spring-boot-js-demo/main/images/user.png" alt="user"&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="sect2"&gt;
@@ -698,7 +698,7 @@ data:&amp;lt;div&amp;gt;Index: 2, Time: 1639474500435&amp;lt;/div&amp;gt;
 &lt;/div&gt;
 &lt;div class="imageblock"&gt;
 &lt;div class="content"&gt;
-&lt;img src="images/test.png" alt="test"&gt;
+&lt;img src="https://raw.githubusercontent.com/dsyer/spring-boot-js-demo/main/images/test.png" alt="test"&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
@@ -1179,7 +1179,7 @@ public Chart bar() {
 &lt;/div&gt;
 &lt;div class="imageblock"&gt;
 &lt;div class="content"&gt;
-&lt;img src="images/one.png" alt="one"&gt;
+&lt;img src="https://raw.githubusercontent.com/dsyer/spring-boot-js-demo/main/images/one.png" alt="one"&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
