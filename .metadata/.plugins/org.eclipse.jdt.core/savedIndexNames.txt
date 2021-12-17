@@ -1,61 +1,3 @@
-<<<<<<< Updated upstream
-INDEX VERSION 1.131+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclipse.jdt.core
-<<<<<<< HEAD
-2920591820.index
-1265773434.index
-874607290.index
-2618025195.index
-237342107.index
-=======
-<<<<<<< HEAD
-1657330681.index
-=======
-2974177813.index
-548924144.index
->>>>>>> main
-4115663804.index
-2274343879.index
-3280230054.index
-3805289198.index
-431271204.index
-4225868448.index
-550870422.index
-1933172139.index
-1513106466.index
-2561361477.index
-615840540.index
-1413786882.index
-529122338.index
-482256454.index
-2066084199.index
-2123789657.index
-54639121.index
-1730132232.index
-231930170.index
-3159657686.index
-265644560.index
-2512055186.index
-548924144.index
-179437835.index
-3962899694.index
-1011026738.index
-<<<<<<< HEAD
-3856471327.index
-3838864550.index
-777798118.index
-2974177813.index
-3738582126.index
-=======
-3159657686.index
-482256454.index
-3805289198.index
-3280230054.index
-237342107.index
-2920591820.index
-550870422.index
->>>>>>> c28a9c73ae723955905f07a9f2f3a5720ab77391
->>>>>>> main
-=======
 INDEX VERSION 1.131+C:\Users\sec\Documents\GitHub\soldesk_semi_project\.metadata\.plugins\org.eclipse.jdt.core
 3421730839.index
 1568134987.index
@@ -68,6 +10,7 @@ INDEX VERSION 1.131+C:\Users\sec\Documents\GitHub\soldesk_semi_project\.metadata
 3966431311.index
 1880478307.index
 1373833034.index
+1651408778.index
 3232244211.index
 820819179.index
 1624658773.index
@@ -78,18 +21,18 @@ INDEX VERSION 1.131+C:\Users\sec\Documents\GitHub\soldesk_semi_project\.metadata
 4011669754.index
 1252132482.index
 2253254085.index
+1933172139.index
 4197893926.index
 39325126.index
 1057973775.index
 4168169514.index
 1424581604.index
-1865797976.index
-1657330681.index
-282994223.index
 1527604292.index
+282994223.index
 75931715.index
 1907196256.index
+2671468553.index
 92926588.index
 3566423297.index
 27397546.index
->>>>>>> Stashed changes
+3738582126.index
