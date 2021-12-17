@@ -7,14 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<<<<<<< HEAD
 aa11222
-=======
-<<<<<<< Updated upstream
-aa11
-=======
-aa
->>>>>>> Stashed changes
->>>>>>> main
+
 </body>
 </html>
