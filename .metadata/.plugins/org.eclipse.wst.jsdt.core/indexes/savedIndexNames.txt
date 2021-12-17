@@ -1,22 +1,9 @@
-INDEX VERSION 1.4+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-<<<<<<< HEAD
+INDEX VERSION 1.4+C:\Users\sec\Documents\GitHub\soldesk_semi_project\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3684685077.index
+180754614.index
+1045068802.index
+87393302.index
+<<<<<<< Updated upstream
 3738582126.index
-4003025421.index
-958243747.index
-972489541.index
-520399277.index
-700520412.index
 =======
-<<<<<<< HEAD
-4003025421.index
-1657330681.index
-958243747.index
-972489541.index
-520399277.index
-700520412.index
-=======
-1591368824.index
-3738582126.index
-516019466.index
->>>>>>> c28a9c73ae723955905f07a9f2f3a5720ab77391
->>>>>>> main
+>>>>>>> Stashed changes
