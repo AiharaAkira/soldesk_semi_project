@@ -9044,3 +9044,8 @@ Caused by: org.xml.sax.SAXParseException; lineNumber: 3; columnNumber: 2; The co
 !MESSAGE Server Tomcat v9.0 Server at localhost failed to start.
 =======
 >>>>>>> c28a9c73ae723955905f07a9f2f3a5720ab77391
+
+!ENTRY org.eclipse.core.resources 2 2 2021-12-17 22:24:34.202
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2021-12-17 22:24:34.202
+!MESSAGE The project description file (.project) for 'Servers' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
