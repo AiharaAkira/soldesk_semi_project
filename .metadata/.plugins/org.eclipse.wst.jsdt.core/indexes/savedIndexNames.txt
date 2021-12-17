@@ -10,6 +10,7 @@ INDEX VERSION 1.4+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclipse.
 <<<<<<< HEAD
 4003025421.index
 1657330681.index
+<<<<<<< Updated upstream
 958243747.index
 972489541.index
 520399277.index
@@ -20,3 +21,9 @@ INDEX VERSION 1.4+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclipse.
 516019466.index
 >>>>>>> c28a9c73ae723955905f07a9f2f3a5720ab77391
 >>>>>>> main
+=======
+180754614.index
+1045068802.index
+2177593288.index
+87393302.index
+>>>>>>> Stashed changes
