@@ -6276,8 +6276,11 @@ java.lang.NullPointerException
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> c28a9c73ae723955905f07a9f2f3a5720ab77391
 
 !ENTRY org.eclipse.ui 4 0 2021-12-17 21:48:20.039
 !MESSAGE Unhandled event loop exception
@@ -8557,6 +8560,7 @@ java.lang.NullPointerException
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+<<<<<<< HEAD
 
 !ENTRY org.eclipse.ui 4 4 2021-12-17 22:01:04.588
 !MESSAGE An internal error has occurred.
@@ -9038,3 +9042,5 @@ Caused by: org.xml.sax.SAXParseException; lineNumber: 3; columnNumber: 2; The co
 
 !ENTRY org.eclipse.wst.server.core 4 0 2021-12-17 22:09:54.880
 !MESSAGE Server Tomcat v9.0 Server at localhost failed to start.
+=======
+>>>>>>> c28a9c73ae723955905f07a9f2f3a5720ab77391
