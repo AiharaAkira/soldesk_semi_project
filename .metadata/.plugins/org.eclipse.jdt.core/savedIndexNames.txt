@@ -1,4 +1,8 @@
 INDEX VERSION 1.131+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclipse.jdt.core
+<<<<<<< HEAD
+231930170.index
+1865797976.index
+=======
 2920591820.index
 1865797976.index
 1265773434.index
@@ -37,3 +41,4 @@ INDEX VERSION 1.131+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclips
 777798118.index
 2974177813.index
 3738582126.index
+>>>>>>> main
