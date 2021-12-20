@@ -1,8 +1,25 @@
 INDEX VERSION 1.131+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclipse.jdt.core
+<<<<<<< HEAD
+2920591820.index
+1865797976.index
+1265773434.index
+874607290.index
+2618025195.index
+237342107.index
+4115663804.index
+2274343879.index
+3280230054.index
+3805289198.index
+4225868448.index
+431271204.index
+550870422.index
+1513106466.index
+=======
 179437835.index
 3856471327.index
 3159657686.index
 1933172139.index
+>>>>>>> main
 2561361477.index
 3838864550.index
 251184972.index
@@ -20,6 +37,15 @@ INDEX VERSION 1.131+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclips
 4115663804.index
 529122338.index
 3648133709.index
+<<<<<<< HEAD
+3962899694.index
+3856471327.index
+3738582126.index
+3838864550.index
+777798118.index
+2974177813.index
+1011026738.index
+=======
 1865797976.index
 1011026738.index
 4225868448.index
@@ -38,3 +64,4 @@ INDEX VERSION 1.131+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclips
 482256454.index
 615840540.index
 431271204.index
+>>>>>>> main
