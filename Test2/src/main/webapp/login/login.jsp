@@ -9,10 +9,10 @@
 <body>
 <table>
 					<tr>
-						<td>로그인</td>
+						<td> <a href="location.href='Login'">로그인</a></td>
 					</tr>
 					<tr>
-						<td>회원가입</td>
+						<td> <a href="location.href='SignUp'">회원가입</a></td>
 					</tr>
 				</table>
 </body>

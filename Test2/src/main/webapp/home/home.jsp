@@ -9,7 +9,7 @@
 <body>
 	<table>
 		<tr>
-			<td>»ùÇÃ</td>
+			<td>È¨!!</td>
 		</tr>
 	</table>
 </body>
