@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 INDEX VERSION 1.131+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclipse.jdt.core
 1513106466.index
 1265773434.index
@@ -82,3 +83,43 @@ INDEX VERSION 1.131+C:\Users\user\Documents\GitHub\soldesk_semi_project\.metadat
 1105410989.index
 2182143685.index
 >>>>>>> hyoseob
+=======
+INDEX VERSION 1.131+C:\Users\MSI\Documents\GitHub\soldesk_semi_project\.metadata\.plugins\org.eclipse.jdt.core
+2232296030.index
+524827553.index
+4185196733.index
+1465987376.index
+3545826905.index
+3738582126.index
+908367771.index
+2018525849.index
+356374187.index
+3918015585.index
+318614086.index
+3809859376.index
+4155186270.index
+614885597.index
+1786373630.index
+3140557924.index
+3203710554.index
+83944772.index
+2108235279.index
+1493571172.index
+899343354.index
+166045448.index
+842960921.index
+2103503038.index
+4168453914.index
+4000748403.index
+2917079507.index
+232386214.index
+2136954333.index
+2585460407.index
+2492670663.index
+570184899.index
+1962003582.index
+789332107.index
+3124079154.index
+2099713083.index
+4215262303.index
+>>>>>>> Gomserker
