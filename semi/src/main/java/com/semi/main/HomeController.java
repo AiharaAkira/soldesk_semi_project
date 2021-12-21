@@ -14,8 +14,7 @@ public class HomeController extends HttpServlet {
 		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "home/home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
-	}
-
+	} 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	}

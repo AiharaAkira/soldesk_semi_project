@@ -11,12 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 public class ReviewController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		ReviewDAO.getAllReview(request);
 		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "review/review.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		
 	}
 
 }

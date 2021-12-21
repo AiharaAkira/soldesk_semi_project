@@ -67,7 +67,7 @@
 					</tr>
 					<tr>
 						<td> <img src="" alt="이미지 불러오는 중"> </td>
-						<td>닉네임</td> 
+						<td></td> 
 					</tr>
 					<tr>
 						<td>글내용1~2줄로표시</td>
@@ -88,21 +88,21 @@
 		
 		<tr>
 			<td colspan="4">
-				<c:forEach var="post" items="${plztext}">
+				<c:forEach var="r" items="${reviews}">
 					<table border="1">
 					<tr>
-						<td> <img src="${plztext}" alt="이미지 불러오는 중"> </td>
+						<td> <img src="img/${r.img}" alt="이미지 없음"> </td>
 					</tr>
 					<tr>
-						<td> <img src="${plztext}" alt="이미지 불러오는 중"> </td>
-						<td>${plztext}</td> 
+						<td> <img src="img/${r.img}" alt="이미지 없음"> </td>
+						<td>${r.user}</td> 
 					</tr>
 					<tr>
-						<td>${plztext}</td>
+						<td>${r.text}</td>
 					</tr>
 					<tr>
-						<td>${plztext}</td>
-						<td>${plztext}</td>
+						<td>${r.good}</td>
+						<td>${r.comment}</td>
 					</tr>
 					<tr>
 						<td>${plztext}</td>

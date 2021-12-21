@@ -8,7 +8,7 @@
 </head>
 <body>
 	<table border="1" >
-	
+		
 		<tr>
 			<td>타이틀</td>
 			<td>검색</td>
