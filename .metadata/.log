@@ -2917,3 +2917,20 @@ Caused by: java.io.FileNotFoundException: D:\Git\mingw64\share\git\git-for-windo
 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:108)
 	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:181)
 	... 77 more
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2021-12-21 15:39:21.974
+!MESSAGE Could not load the Tomcat server configuration at \Servers\Tomcat v9.0 Server at localhost-config. The configuration may be corrupt or incomplete.
+!STACK 0
+org.xml.sax.SAXParseException; lineNumber: 156; columnNumber: 2; The content of elements must consist of well-formed character data or markup.
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:261)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+	at org.eclipse.jst.server.tomcat.core.internal.xml.Factory.loadDocument(Factory.java:90)
+	at org.eclipse.jst.server.tomcat.core.internal.Tomcat90Configuration.load(Tomcat90Configuration.java:322)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServer.getTomcatConfiguration(TomcatServer.java:134)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.getTomcatConfiguration(TomcatServerBehaviour.java:89)
+	at org.eclipse.jst.server.tomcat.core.internal.TomcatServerBehaviour.publishServer(TomcatServerBehaviour.java:242)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:977)
+	at org.eclipse.wst.server.core.model.ServerBehaviourDelegate.publish(ServerBehaviourDelegate.java:776)
+	at org.eclipse.wst.server.core.internal.Server.publishImpl(Server.java:3184)
+	at org.eclipse.wst.server.core.internal.Server$PublishJob.run(Server.java:357)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
