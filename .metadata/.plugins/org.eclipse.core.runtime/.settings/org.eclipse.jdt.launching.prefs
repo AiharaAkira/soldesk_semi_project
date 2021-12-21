@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+eclipse.preferences.version=1
+org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1639622355543" defaultVMConnector\="">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1639622355543" name\="jre" path\="C\:\\eclipse\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
+=======
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=main
@@ -5,5 +9,11 @@ eclipse.preferences.version=1
 <<<<<<< HEAD
 org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1639968034753" defaultVMConnector\="">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1639796752236" name\="jdk-14" path\="D\:\\openjdk-14+36_windows-x64_bin\\jdk-14"/>\r\n        <vm id\="1639968034753" javadocURL\="https\://docs.oracle.com/en/java/javase/16/docs/api/" name\="jre" path\="C\:\\khs\\eclipse\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
 =======
+<<<<<<< HEAD
+org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1639796752236" defaultVMConnector\="">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1639796752236" name\="jdk-14" path\="D\:\\openjdk-14+36_windows-x64_bin\\jdk-14"/>\r\n    </vmType>\r\n</vmSettings>\r\n
+>>>>>>> main
+>>>>>>> 7dfb4cb08dd6c35d1a1a3548ded5504c048ba9d1
+=======
 org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1639969749731" defaultVMConnector\="">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1639969749731" name\="jre" path\="C\:\\eclipse\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
 >>>>>>> Gomserker
+>>>>>>> main
