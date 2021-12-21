@@ -7,7 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	hello world1234
-	test
+				<table border="1">
+					<tr>
+						<td onclick="location.href='LoginController'"> 로그인</td>
+					</tr>
+					<tr>
+						<td onclick="location.href='SignUp'"> 회원가입</td>
+					</tr>
+				</table>
 </body>
 </html>
