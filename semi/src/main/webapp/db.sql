@@ -34,7 +34,7 @@ insert into users values('아이디', '비번', '이름', '닉네임', '이메일', '성별', '
 
 select * from users;
 
-create table post(
+create table post_daily(
 p_no varchar2(20 char) primary key,
 p_title varchar2(20 char) not null,
 p_text varchar2(20 char) not null,
@@ -51,11 +51,34 @@ p_comment varchar2(300 char) not null,
 p_user varchar2(300 char) not null
 );
 
-CREATE sequence post_seq;
+CREATE sequence post_daily_seq;
 
-insert into post values(post_seq.nextval, 'title','text', '좋아요', '상의', '하의', '신발', '악세서리', '해시태그', '이미지', sysdate, '아이템t', '코멘트t', 'userT');
+insert into post_daily values(post_daily_seq.nextval, 'title','text', '좋아요', '상의', '하의', '신발', '악세서리', '해시태그', '이미지', sysdate, '아이템t', '코멘트t', 'userT');
 
-select * from post;
+select * from post_daily;
+
+create table post_review(
+p_no varchar2(20 char) primary key,
+p_title varchar2(20 char) not null,
+p_text varchar2(20 char) not null,
+p_good varchar2(20 char) not null,
+p_top varchar2(200 char) not null,
+p_pants varchar2(200 char) not null,
+p_shoes varchar2(200 char) not null,
+p_accessary varchar2(300 char) not null,
+p_hashtag varchar2(300 char) not null,
+p_img varchar2(300 char) not null,
+p_date date not null,
+p_item varchar2(300 char) not null,
+p_comment varchar2(300 char) not null,
+p_user varchar2(300 char) not null
+);
+
+CREATE sequence post_review_seq;
+
+insert into post_review values(post_review_seq.nextval, 'title','text', '좋아요', '상의', '하의', '신발', '악세서리', '해시태그', '이미지', sysdate, '아이템t', '코멘트t', 'userT');
+
+select * from post_review;
 
 create table comments(
 c_no varchar2(20 char) primary key,
