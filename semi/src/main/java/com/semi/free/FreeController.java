@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/FreeController")
 public class FreeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//
 		
 		if(!request.getParameterNames().hasMoreElements()) {
 			request.setAttribute("loginPage", "login/login.jsp");
