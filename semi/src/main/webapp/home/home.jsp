@@ -10,10 +10,10 @@
 	<table border="1" >
 	
 		<tr>
-			<td>타이틀</td>
+			<td onclick="location.href='HomeController'">타이틀</td>
 			<td>검색</td>
-			<td>내정보-미구현</td>
-			<td>글쓰기-미구현</td>
+			<td onclick="location.href='ProfileController'">내정보</td>
+			<td onclick="location.href='WritePost'">글쓰기</td>
 		</tr>
 		
 		<tr>
