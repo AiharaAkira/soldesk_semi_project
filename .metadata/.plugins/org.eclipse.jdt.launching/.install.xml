@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dirs>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <entry loc="C:\khs\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205" stamp="1630390465209"/>
+    <entry loc="C:\khs\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205\jre" stamp="1630390465196"/>
+=======
     <entry loc="C:\Program Files\Java\jdk-17.0.1" stamp="1639735555018"/>
     <entry loc="D:\openjdk-14+36_windows-x64_bin\jdk-14" stamp="1630463157131"/>
+=======
+    <entry loc="C:\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205\jre" stamp="1630462031771"/>
+    <entry loc="C:\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205" stamp="1630462031784"/>
+=======
+    <entry loc="C:\Program Files\Java\jdk-17.0.1" stamp="1639735555018"/>
+    <entry loc="D:\openjdk-14+36_windows-x64_bin\jdk-14" stamp="1630463157131"/>
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 7dfb4cb08dd6c35d1a1a3548ded5504c048ba9d1
+=======
+<<<<<<< HEAD
+    <entry loc="C:\khs\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205" stamp="1630390465209"/>
+    <entry loc="C:\khs\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205\jre" stamp="1630390465196"/>
+=======
+    <entry loc="C:\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205\jre" stamp="1630464430690"/>
+    <entry loc="C:\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205" stamp="1630464430860"/>
+>>>>>>> Gomserker
+>>>>>>> main
+=======
+>>>>>>> minwoo
+>>>>>>> main
 </dirs>
