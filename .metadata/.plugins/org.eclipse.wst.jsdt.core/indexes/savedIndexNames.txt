@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.4+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 3738582126.index
 4003025421.index
@@ -6,3 +7,11 @@ INDEX VERSION 1.4+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclipse.
 972489541.index
 520399277.index
 700520412.index
+=======
+INDEX VERSION 1.4+C:\Users\user\Documents\GitHub\soldesk_semi_project\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2695725540.index
+3322773785.index
+3738582126.index
+1273229441.index
+772517662.index
+>>>>>>> hyoseob
