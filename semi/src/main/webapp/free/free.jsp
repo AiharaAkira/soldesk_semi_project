@@ -11,6 +11,55 @@
 <body>
 	<form action="FreeController">
 	<table border="1">
+	
+				<tr>
+			<td onclick="location.href='HomeController'">타이틀</td>
+			<td>검색</td>
+			<td onclick="location.href='ProfileController'">내정보</td>
+			
+		</tr>
+		
+		<tr>
+			<td colspan="4">
+			<table border="1">
+				<tr>
+					<form action="Search">
+					<td colspan="2"> <input> </td>
+					<td> <button>검색하기</button> </td>
+					</form>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<select>
+							<option>
+							게시판선택
+							</option>
+						</select>
+					</td>
+					<td colspan="2">
+						<select>
+							<option>
+							색상선택
+							</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="4">
+				<table border="1">
+					<tr>
+							<td>인기순</td>
+							<td>최신글</td>
+							<td>댓글순</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		
 		<tr>
 			<td>종류</td>
 			<td>글제목</td>

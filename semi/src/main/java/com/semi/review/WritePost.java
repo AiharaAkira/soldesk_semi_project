@@ -12,12 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 public class WritePost extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		//글조회
 		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "review/reviewWrite.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//글입력
+		//글조회
+		request.setAttribute("loginPage", "login/login.jsp");
+		request.setAttribute("contentPage", "review/review.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	
 	}
 
 }
