@@ -22,11 +22,12 @@
 			<td colspan="2">글글글</td>
 			<td>날짜</td>
 		</tr>
-		<c:forEach var="post" items="${plzText}">
+		<c:forEach var="p" items="${posts}">
 			<tr>
 			<td>자유글</td>
-			<td>${plzText}</td>
-			<td>${plzText}</td>
+			<td onclick="location.href='FreeDetailC?no=${p.p_no}'">${p.p_title}</td>
+			<td>${p.p_user}</td>
+			<td>${p.p_date}</td>
 		</tr>
 		</c:forEach>
 		<tr>

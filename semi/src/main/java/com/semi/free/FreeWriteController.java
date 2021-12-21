@@ -16,6 +16,9 @@ public class FreeWriteController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		FreeDAO.writeFree(request);
+		
 		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "free/free.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
