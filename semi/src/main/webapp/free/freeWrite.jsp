@@ -10,13 +10,13 @@
 	<form action="FreeWriteController" method="post" enctype="multipart/form-data">
 	<table>
 		<tr>
-			<td> 사진올리기<input type="file" name="img"> </td>
+			<td> 사진올리기<input type="file"> </td>
 		</tr>
 		<tr>
-			<td> 제목 <input name="title"> </td>
+			<td> <input> </td>
 		</tr>
 		<tr>
-			<td>  <textarea name ="text"> 내용을 입력해주세요.</textarea> </td>
+			<td> <textarea></textarea> </td>
 		</tr>
 		<tr>
 			<td> <button>글쓰기</button> </td>

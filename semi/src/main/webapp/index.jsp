@@ -18,19 +18,19 @@
 			<jsp:include page="${contentPage}"></jsp:include>
 			</td>
 		<tr>	
-			<td onclick="location.href='AnnounceController'">공지사항</td>
+			<td>공지사항</td>
 		</tr>	
 		<tr>
 			<td onclick="location.href='ReviewController'">리뷰</td>
 		</tr>
 		<tr>	
-			<td onclick="location.href='DailyController'">데일리</td>
+			<td>데일리</td>
 		</tr>
 		<tr>	
 			<td onclick="location.href='FreeController'">자유게시판</td>
 		</tr>	
 		<tr>
-			<td onclick="location.href='QnaController'">문의게시판</td>
+			<td>문의게시판</td>
 		</tr>
 		<tr>	
 			<td>게임</td>
