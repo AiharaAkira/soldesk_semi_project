@@ -12,14 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 public class SignUp extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	request.getRequestDispatcher("login/signUp.jsp").forward(request, response);
+	
+		AccountDAO.loginCheck(request);
+		
+		request.getRequestDispatcher("login/signUp.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		AccountDAO.reg(request);
+		AccountDAO.loginCheck(request);
 		
 		request.setAttribute("loginPage", "login/login.jsp");
-		request.setAttribute("contentPage", "home/home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
