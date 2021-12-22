@@ -8,7 +8,7 @@
 </head>
 <body>
 	<table border="1" >
-	
+		
 		<tr>
 			<td onclick="location.href='HomeController'">타이틀</td>
 			<td>검색</td>
