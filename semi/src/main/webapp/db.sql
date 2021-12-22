@@ -92,4 +92,5 @@ CREATE sequence comments_seq;
 
 insert into comments values(comments_seq.nextval, '내용', sysdate, '유저t', '포스트t');
 
+
 select * from comments;
