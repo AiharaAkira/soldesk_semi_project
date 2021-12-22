@@ -5,6 +5,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/sidebar.css">
 </head>
 <body>
 				<table border="1">
@@ -15,5 +16,18 @@
 						<td onclick="location.href='SignUp'"> 회원가입</td>
 					</tr>
 				</table>
+				<button onclick="toggle_div()">사이드바 테스트</button>
+					<div class="sidebar" id="sidebar">
+						<ul>
+							<li><a href="#">공지사항</a></li>						
+							<li><a href="#">리뷰</a></li>						
+							<li><a href="#">데일리</a></li>						
+							<li><a href="#">자유게시판</a></li>						
+							<li><a href="#">문의게시판</a></li>						
+							<li><a href="#">게임</a></li>						
+						</ul>
+					</div>
+
+<script type="text/javascript" src="js/sidebar.js"></script>
 </body>
 </html>

@@ -156,7 +156,11 @@
 <<<<<<< HEAD
       <Context docBase="semi" path="/semi" reloadable="true" source="org.eclipse.jst.jee.server:semi"/></Host>
 =======
+<<<<<<< HEAD
+      <Context docBase="semi" path="/semi" reloadable="true" source="org.eclipse.jst.jee.server:semi"/></Host>
+=======
       <Context docBase="Test2" path="/Test2" reloadable="true" source="org.eclipse.jst.jee.server:Test2"/><Context docBase="semi" path="/semi" reloadable="true" source="org.eclipse.jst.jee.server:semi"/></Host>
+>>>>>>> main
 >>>>>>> main
     </Engine>
   </Service>
