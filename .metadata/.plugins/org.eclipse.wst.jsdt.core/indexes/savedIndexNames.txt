@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+INDEX VERSION 1.4+C:\Users\MSI\Documents\GitHub\soldesk_semi_project\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3899268984.index
+=======
+<<<<<<< HEAD
+INDEX VERSION 1.4+C:\Users\user\Documents\GitHub\soldesk_semi_project\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3756156141.index
+3322773785.index
+2695725540.index
+3738582126.index
+2795046952.index
+1273229441.index
+1924566734.index
+772517662.index
+3899268984.index
+=======
 INDEX VERSION 1.4+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 3899268984.index
 958243747.index
@@ -6,3 +22,5 @@ INDEX VERSION 1.4+D:\github\soldesk_semi_project\.metadata\.plugins\org.eclipse.
 3078972795.index
 520399277.index
 972489541.index
+>>>>>>> main
+>>>>>>> main

@@ -13,10 +13,11 @@ public class FreeController extends HttpServlet {
 		//
 		
 		if(!request.getParameterNames().hasMoreElements()) {
+			FreeDAO.getAllText(request);
 			request.setAttribute("loginPage", "login/login.jsp");
 			request.setAttribute("contentPage", "free/free.jsp");
 		}else {
-		//특정조회
+		//검색
 		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "free/free.jsp");
 
