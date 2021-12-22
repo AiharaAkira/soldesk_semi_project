@@ -15,6 +15,7 @@ public class WritePost extends HttpServlet {
 		
 		
 		//글조회
+		ReviewDAO.getAllReview(request);
 		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "review/reviewWrite.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -24,6 +25,9 @@ public class WritePost extends HttpServlet {
 		
 		//글입력
 		//글조회
+		
+		ReviewDAO.writeReview(request);
+		ReviewDAO.getAllReview(request);
 		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "review/review.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
