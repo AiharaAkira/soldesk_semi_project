@@ -58,7 +58,7 @@
 			<td>프사</td>
 			<td> <input type="file" name="profileImg"> </td>
 		</tr>
-		<tr>
+				<tr>
 			<td  colspan='2'>약관내용</td>
 		</tr>
 		<tr>
@@ -66,7 +66,15 @@
 		</tr>
 		<tr>
 			<td colspan='2'>
-				<input type="checkbox">동의하시면 체크해주세요
+				<input type="checkbox" name="typeOfManager" value="0">동의하시면 체크해주세요
+			</td>
+		</tr>
+		<tr>
+			<td colspan='2'>주저리주저리 주저리주저리 주저리주저리 주저리주저리 </td>
+		</tr>
+		<tr>
+			<td colspan='2'>
+				<input type="checkbox" name="checkPoint" value="1">동의하시면 체크해주세요
 			</td>
 		</tr>
 	</table>

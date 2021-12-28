@@ -13,6 +13,7 @@ public class FreeDetailC extends HttpServlet {
 			throws ServletException, IOException {
 		
 		FreeDAO.getFreeDetail(request);
+		FreeDAO.getComment(request);
 		FreeDAO.getNextFreeDetail(request);
 		FreeDAO.getPrevFreeDetail(request);
 		request.setAttribute("loginPage", "login/login.jsp");

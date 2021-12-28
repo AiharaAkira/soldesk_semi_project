@@ -22,7 +22,7 @@ public class ReviewDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from post_review";
+		String sql = "select * from post_review order by p_date desc";
 		
 		try {
 			con = DBManager.connect();
@@ -136,16 +136,15 @@ public class ReviewDAO {
 				r.setTop(rs.getString("p_top"));
 				r.setPants(rs.getString("p_pants"));
 				r.setShoes(rs.getString("p_shoes"));
+				r.setDate(rs.getDate("p_date"));
 				r.setAccessary(rs.getString("p_accessary"));
 				r.setImg(rs.getString("p_img"));
 				r.setUser(rs.getString("p_user"));
 			}
 			request.setAttribute("r", r);
 			
-			
-			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
@@ -209,6 +208,51 @@ public class ReviewDAO {
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
+	}
+
+	public static void updateReview(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = DBManager.connect();
+			String sql = "update post_review set p_title=?, p_text=?, p_top=?, p_pants=?, p_shoes=?, p_accessary=?, p_img=? where p_no=?";
+			pstmt = con.prepareStatement(sql);
+			
+			String saveDirectory = request.getServletContext().getRealPath("img");
+			MultipartRequest mr = new MultipartRequest(request, saveDirectory, 99999999, "utf-8", new DefaultFileRenamePolicy());
+			
+			pstmt.setString(1, mr.getParameter("title"));
+			pstmt.setString(2, mr.getParameter("text"));
+			pstmt.setString(3, mr.getParameter("top"));
+			pstmt.setString(4, mr.getParameter("pants"));
+			pstmt.setString(5, mr.getParameter("shoes"));
+			pstmt.setString(6, mr.getParameter("accessary"));
+			pstmt.setString(7, mr.getFilesystemName("image"));
+			pstmt.setString(8, mr.getParameter("no"));
+			
+			System.out.println(mr.getParameter("title"));
+			System.out.println(mr.getParameter("text"));
+			System.out.println(mr.getParameter("top"));
+			System.out.println(mr.getParameter("pants"));
+			System.out.println(mr.getParameter("shoes"));
+			System.out.println(mr.getParameter("accessary"));
+			System.out.println(mr.getFilesystemName("image"));
+			
+			if(pstmt.executeUpdate() == 1) {
+				System.out.println("update success");
+			} else {
+				System.out.println("update failed");
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("db error");
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
 	}
 
 }

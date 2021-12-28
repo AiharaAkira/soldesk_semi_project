@@ -20,15 +20,15 @@
 					</tr>
 			--%>
 				</table>
-				<button onclick="toggle_div()">사이드바 테스트</button>
+				<button onclick="toggle_div()">✅사이드바</button>
 					<div class="sidebar" id="sidebar">
 						<ul>
-							<li><a href="#">공지사항</a></li>						
-							<li><a href="#">리뷰</a></li>						
-							<li><a href="#">데일리</a></li>						
-							<li><a href="#">자유게시판</a></li>						
-							<li><a href="#">문의게시판</a></li>						
-							<li><a href="#">게임</a></li>						
+							<li><a href="AnnounceController">공지사항</a></li>						
+							<li><a href="ReviewController">리뷰</a></li>						
+							<li><a href="DailyController">데일리</a></li>						
+							<li><a href="FreeController">자유게시판</a></li>						
+							<li><a href="QnaController">문의게시판</a></li>						
+							<li><a href="GameController">게임</a></li>						
 						</ul>
 					</div>
 

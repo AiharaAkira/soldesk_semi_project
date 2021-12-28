@@ -1,5 +1,7 @@
 package com.semi.review;
 
+import java.sql.Date;
+
 public class Review {
 	private String no;
 	private String title;
@@ -14,11 +16,12 @@ public class Review {
 	private String item;
 	private String comment;
 	private String user;
+	private Date date;
 	
 	public Review () {}
 	
 	public Review(String no, String title, String text, String good, String top, String pants, String shoes,
-			String accessary, String hashtag, String img, String item, String comment, String user) {
+			String accessary, String hashtag, String img, String item, String comment, String user, Date date) {
 		super();
 		this.no = no;
 		this.title = title;
@@ -33,6 +36,7 @@ public class Review {
 		this.item = item;
 		this.comment = comment;
 		this.user = user;
+		this.date = date;
 	}
 
 	public String getHashtag() {
@@ -137,6 +141,14 @@ public class Review {
 
 	public void setUser(String user) {
 		this.user = user;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	
 	

@@ -14,6 +14,7 @@ public class Post {
 	String p_hashtag;
 	String p_img;
 	Date p_date;
+	String p_good;
 	String p_item;
 	String p_comment;
 	String p_user;
@@ -64,6 +65,14 @@ public class Post {
 
 	public String getP_shoes() {
 		return p_shoes;
+	}
+	
+	public String getP_good() {
+		return p_good;
+	}
+
+	public void setP_good(String p_good) {
+		this.p_good = p_good;
 	}
 
 	public void setP_shoes(String p_shoes) {
@@ -127,8 +136,8 @@ public class Post {
 	}
 
 	public Post(String p_no, String p_title, String p_text, String p_top, String p_pants, String p_shoes,
-			String p_accessary, String p_hashtag, String p_img, Date p_date, String p_item, String p_comment,
-			String p_user) {
+			String p_accessary, String p_hashtag, String p_img, Date p_date, String p_good, String p_item,
+			String p_comment, String p_user) {
 		super();
 		this.p_no = p_no;
 		P_title = p_title;
@@ -140,10 +149,13 @@ public class Post {
 		this.p_hashtag = p_hashtag;
 		this.p_img = p_img;
 		this.p_date = p_date;
+		this.p_good = p_good;
 		this.p_item = p_item;
 		this.p_comment = p_comment;
 		this.p_user = p_user;
 	}
+
+	
 	
 	
 	

@@ -7,6 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	게임!!!!
+	<form action="GameController?id=${sessionScope.accountInfo.id}&checkPoint=${sessionScope.accountInfo.checkPoint}" method="post">
+		<table>
+			<tr>
+				<td> <button>동전</button> </td>
+				<td> <button>동전</button> </td>
+				<td> <button>동전</button> </td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>

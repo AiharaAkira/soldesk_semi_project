@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,8 +33,21 @@
 			</td>
 
 		</tr>
+		<c:forEach var="c" items="">
 		<tr>
-			<td colspan="4">댓글있어야하는곳</td>
+		<td></td>
+		</tr>
+		</c:forEach>
+		<tr>
+			<td colspan="4">
+			 <form action="FreeCommentController">
+			 <div>
+			 		<input name="c_user" value="0" type="hidden">
+					<textarea name="c_text" > 댓글작성 </textarea>	
+			</div>
+			<button name="c_post" value="${p.p_no}">작성하기</button>
+			</form>
+			 </td>
 		</tr>
 		<tr>
 			<td colspan="4">  이전글 <a href="FreeDetailC?no=${prevP.p_no}"> ${prevP.p_title} </a></td>

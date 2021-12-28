@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,66 +7,86 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1" >
-		
+
+
+		<form action="SearchController">
+	<div class="menu">
+		<input type="checkbox" class="" id="collapsible"> <label
+			for="collapsible"><span>검색 - 누르면 밑에 검색창 </span></label>
+			<ul id="menuitems" class="menuitems">
+				<li><input name="searchMain"></li>
+				
+				<li><select name="postMain">
+						<option>리뷰</option>
+						<option>데일리</option>
+				</select></li>
+				<li><select name="colorMain">
+						<option>red</option>
+						<option>black</option>
+						<option>white</option>
+				</select></li>
+				<li><button>검색하기</button></li>
+
+			</ul>
+	</div>
+		</form>
+	<table border="1">
+
 		<tr>
 			<td onclick="location.href='HomeController'">타이틀</td>
-			<td>검색 - 누르면 밑에 검색창 나오는 js</td>
+
 			<td onclick="location.href='ProfileController'">내정보</td>
 			<td onclick="location.href='WritePost'">리뷰쓰기</td>
 		</tr>
-		
+
 		<tr>
-			<td colspan="4">
+			<td colspan="3">
 				<form action="SearchController">
-			<table border="1">
-				<tr>
-					<td colspan="2"> <input> </td>
-					<td> <button>검색하기</button> </td>
-					
-				</tr>
-				<tr>
-					<td colspan="2">
-						<select>
-							<option>
-							게시판선택
-							</option>
-						</select>
-					</td>
-					<td colspan="2">
-						<select>
-							<option>
-							색상선택
-							</option>
-						</select>
-					</td>
-				</tr>
-			</table>
-			</form>
+					<table border="1">
+						<tr>
+							<td colspan="2"><input name="searchMain"></td>
+							<td>
+								<button>검색하기</button>
+							</td>
+
+						</tr>
+						<tr>
+							<td colspan="2"><select name="postMain">
+									<option>리뷰</option>
+									<option>데일리</option>
+							</select></td>
+							<td colspan="2"><select name="colorMain">
+									<option>red</option>
+									<option>black</option>
+									<option>white</option>
+							</select></td>
+						</tr>
+					</table>
+				</form>
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td colspan="4">
 				<table border="1">
 					<tr>
-							<td>인기순</td>
-							<td>최신글</td>
-							<td>댓글순</td>
+						<td>인기순</td>
+						<td>최신글</td>
+						<td>댓글순</td>
 					</tr>
 				</table>
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td colspan="6">
 				<table border="1">
 					<tr>
-						<td> <img src="" alt="이미지 불러오는 중"> </td>
+						<td><img src="" alt="이미지 불러오는 중"></td>
 					</tr>
 					<tr>
-						<td> <img src="" alt="이미지 불러오는 중"> </td>
-						<td>닉네임</td> 
+						<td><img src="" alt="이미지 불러오는 중"></td>
+						<td>닉네임</td>
 					</tr>
 					<tr>
 						<td>글내용1~2줄로표시</td>
@@ -79,13 +99,13 @@
 						<td>상품이미지</td>
 						<td>이름</td>
 						<td>가격</td>
-						
+
 					</tr>
 					<tr>
 						<td onclick="location.href='DeletePost'">글삭제</td>
 						<td onclick="location.href='UpdatePost'">글수정</td>
 					</tr>
-					
+
 				</table>
 			</td>
 		</tr>

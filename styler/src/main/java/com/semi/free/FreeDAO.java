@@ -532,5 +532,82 @@ public class FreeDAO {
 					}
 
 				}
+
+				public static void writeComment(HttpServletRequest request) {
+					
+					Connection con = null;
+					PreparedStatement pstmt = null;
+
+					String sql = "insert into comments values(comments_seq.nextval, ?, sysdate, ?, ?)";
+
+					try {
+
+						con = DBManager.connect();
+						pstmt = con.prepareStatement(sql);
+
+						
+						pstmt.setString(1, request.getParameter("c_text"));
+						pstmt.setString(2, request.getParameter("c_user"));
+						pstmt.setString(3, request.getParameter("c_post"));
+						
+						
+						if (pstmt.executeUpdate() == 1) {
+							System.out.println("등록성공");
+						} else {
+							System.out.println("등록실패");
+
+						}
+						 
+
+					} catch (Exception e) {
+						e.printStackTrace();
+						System.out.println("DB문제");
+
+					} finally {
+						DBManager.close(con, pstmt, null);
+					}
+
+					
+				}
+
+				public static void getComment(HttpServletRequest request) {
+
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					String sql = "select * from comments where c_post = ? order by c_date desc";
+
+					try {
+						con = DBManager.connect();
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, request.getParameter("no"));
+						rs = pstmt.executeQuery();
+
+						ArrayList<Comment> posts = new ArrayList<Post>();
+						Post p = null;
+						while (rs.next()) {
+							p = new Post();
+							p.setP_no(rs.getString("p_no"));
+							p.setP_title(rs.getString("p_title"));
+							p.setP_user(rs.getString("p_user"));
+							p.setP_date(rs.getDate("p_date"));
+							
+							posts.add(p);
+						}
+
+						request.setAttribute("posts", posts);
+						request.setAttribute("p", page);
+					//	request.setAttribute("sn", startNum);
+						//request.setAttribute("ln", lastNum);
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						DBManager.close(con, pstmt, rs);
+					}
+					
+					
+				}
+					
+				}
 	
-}
+

@@ -23,13 +23,12 @@
 			<div class="content-header_view_right">
 				<div class="content-header_view_right_1st">
 					<ul class="post-menu">
-						<li><a onclick="updateReview(${r.no})">수정하기</a></li>
+						<li><a onclick="location.href='UpdatePost?no=${r.no}'">수정하기</a></li>
 						<li><a onclick="deleteReview(${r.no})">삭제하기</a></li>
 					</ul>
 				</div>
 				<div class="content-header_view_right_2nd">
-					<span>test view count 0</span><br /> <span>test confirm
-						time 2021.12.23 11:31:23</span>
+					<span>test view count 0</span><br /> <span>작성일 : ${r.date}</span>
 				</div>
 
 			</div>

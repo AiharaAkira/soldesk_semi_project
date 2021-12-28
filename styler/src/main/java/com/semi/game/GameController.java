@@ -24,8 +24,9 @@ public class GameController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
 		AccountDAO.loginCheck(request);
+		GameDAO.game(request);
 		
 	request.setAttribute("loginPage", "login/login.jsp");
 	request.setAttribute("contentPage", "home/home.jsp");
