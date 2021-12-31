@@ -18,7 +18,10 @@ public class Post {
 	String p_item;
 	String p_comment;
 	String p_user;
+	int p_view_count;
 	
+	
+
 	public Post() {
 		// TODO Auto-generated constructor stub
 	}
@@ -134,10 +137,19 @@ public class Post {
 	public void setP_user(String p_user) {
 		this.p_user = p_user;
 	}
+	
+	public int getP_view_count() {
+		return p_view_count;
+	}
+
+	public void setP_view_count(int p_view_count) {
+		this.p_view_count = p_view_count;
+	}
+
 
 	public Post(String p_no, String p_title, String p_text, String p_top, String p_pants, String p_shoes,
 			String p_accessary, String p_hashtag, String p_img, Date p_date, String p_good, String p_item,
-			String p_comment, String p_user) {
+			String p_comment, String p_user, int p_view_count) {
 		super();
 		this.p_no = p_no;
 		P_title = p_title;
@@ -153,6 +165,7 @@ public class Post {
 		this.p_item = p_item;
 		this.p_comment = p_comment;
 		this.p_user = p_user;
+		this.p_view_count = p_view_count;
 	}
 
 	

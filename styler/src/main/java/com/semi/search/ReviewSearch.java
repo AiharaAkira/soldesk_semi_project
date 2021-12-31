@@ -37,7 +37,6 @@ public class ReviewSearch {
 				p.setP_text(rs.getString("p_text"));
 				p.setP_comment(rs.getString("p_comment"));
 				p.setP_img(rs.getString("p_img"));
-				p.setP_good(rs.getString("p_good"));
 				p.setP_user(rs.getString("p_user"));
 				p.setP_date(rs.getDate("p_date"));
 				

@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.login.AccountDAO;
+
 @WebServlet("/FreeCommentController")
 public class FreeCommentController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -14,6 +16,8 @@ public class FreeCommentController extends HttpServlet {
 		FreeDAO.writeComment(request);
 		
 		FreeDAO.getFreeDetail(request);
+		FreeDAO.getComment(request);
+		FreeDAO.countComment(request);
 		FreeDAO.getNextFreeDetail(request);
 		FreeDAO.getPrevFreeDetail(request);
 		request.setAttribute("loginPage", "login/login.jsp");

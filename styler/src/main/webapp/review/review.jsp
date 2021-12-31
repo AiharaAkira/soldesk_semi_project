@@ -9,38 +9,38 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<form action="SearchController">
+		<div class="menu">
+			<input type="checkbox" class="" id="collapsible"> <label
+				for="collapsible"><span>검색 - 누르면 밑에 검색창 </span></label>
+			<ul id="menuitems" class="menuitems">
+				<li><input name="searchMain"></li>
+
+				<li><select name="postMain">
+						<option>리뷰</option>
+						<option>데일리</option>
+				</select></li>
+				<li><select name="colorMain">
+						<option>red</option>
+						<option>black</option>
+						<option>white</option>
+				</select></li>
+				<li><button>검색하기</button></li>
+
+			</ul>
+		</div>
+	</form>
 	<table border="1">
 
 		<tr>
 			<td onclick="location.href='HomeController'">타이틀</td>
-			<td>검색 - 누르면 밑에 검색창 나오는 js</td>
+
 			<td onclick="location.href='ProfileController'">내정보</td>
 			<td onclick="location.href='WritePost'">리뷰쓰기</td>
 		</tr>
 
-		<tr>
-			<td colspan="4">
-				<form action="SearchController">
-					<table border="1">
-						<tr>
-							<td colspan="2"><input></td>
-							<td>
-								<button>검색하기</button>
-							</td>
-
-						</tr>
-						<tr>
-							<td colspan="2"><select>
-									<option>게시판선택</option>
-							</select></td>
-							<td colspan="2"><select>
-									<option>색상선택</option>
-							</select></td>
-						</tr>
-					</table>
-				</form>
-			</td>
-		</tr>
+		
 
 		<tr>
 			<td colspan="4">
@@ -68,7 +68,7 @@
 						<td>좋아요</td>
 						<td>댓글보기</td>
 					</tr>
-					
+
 
 				</table>
 			</td>
@@ -78,7 +78,8 @@
 			<td colspan="4"><c:forEach var="r" items="${reviews}">
 					<table border="1">
 						<tr>
-							<td><img src="img/${r.img}" alt="이미지 없음" onclick="location.href='ReadDetailC?no=${r.no}'"></td>
+							<td><img src="img/${r.img}" alt="이미지 없음"
+								onclick="location.href='ReadDetailC?no=${r.no}'; checkCnt();"></td>
 							<td>${r.user}</td>
 						</tr>
 						<tr>

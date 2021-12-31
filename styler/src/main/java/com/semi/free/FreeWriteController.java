@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.login.AccountDAO;
+
 @WebServlet("/FreeWriteController")
 public class FreeWriteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("loginPage", "login/login.jsp");
+		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "free/freeWrite.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
@@ -25,7 +27,7 @@ public class FreeWriteController extends HttpServlet {
 		FreeDAO.getNoticeList(request);
 		
 		
-		request.setAttribute("loginPage", "login/login.jsp");
+		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "free/free.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

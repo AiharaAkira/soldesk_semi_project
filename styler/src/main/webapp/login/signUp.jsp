@@ -5,9 +5,10 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+
 </head>
 <body>
-	<form action="SignUpC" method="post" enctype="multipart/form-data">
+	<form action="SignUpC" name="form" method="post" enctype="multipart/form-data">
 	<table border="1">
 		<tr>
 			<td colspan='2'>회원가입</td>
@@ -81,5 +82,21 @@
 	
 	<button>회원가입</button>
 	</form>
+	
+	<script type="text/javascript" src="js/validCheck.js"></script>
+	<script type="text/javascript">
+	let name = document.form.name;
+	let name = document.form.id;
+	let name = document.form.pw;
+	let name = document.form.pwCheck;
+	let name = document.form.gender;
+	let name = document.form.email;
+	let name = document.form.style;
+	let name = document.form.profileImg;
+	let name = document.form.typeOfManager;
+	let name = document.form.checkPoint;
+	
+	
+	</script>
 </body>
 </html>

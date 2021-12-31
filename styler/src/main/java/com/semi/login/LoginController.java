@@ -28,7 +28,6 @@ public class LoginController extends HttpServlet {
 		AccountDAO.login(request);
 		AccountDAO.loginCheck(request);
 		
-		request.setAttribute("loginPage", "login/loginOk.jsp");
 		request.setAttribute("contentPage", "home/home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	

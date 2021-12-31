@@ -18,7 +18,6 @@ public class GameController extends HttpServlet {
 	
 		AccountDAO.loginCheck(request);
 		
-	request.setAttribute("loginPage", "login/login.jsp");
 	request.setAttribute("contentPage", "game/game.jsp");
 	request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
@@ -28,7 +27,6 @@ public class GameController extends HttpServlet {
 		AccountDAO.loginCheck(request);
 		GameDAO.game(request);
 		
-	request.setAttribute("loginPage", "login/login.jsp");
 	request.setAttribute("contentPage", "home/home.jsp");
 	request.getRequestDispatcher("index.jsp").forward(request, response);
 	

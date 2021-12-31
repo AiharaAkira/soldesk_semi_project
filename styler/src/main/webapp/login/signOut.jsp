@@ -28,7 +28,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td> <button>탈퇴하기</button> </td>
+				<td> <button name="id" value="${sessionScope.accountInfo.id}">탈퇴하기</button> </td>
 			</tr>
 		</table>
 	</form>

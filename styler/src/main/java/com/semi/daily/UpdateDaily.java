@@ -18,7 +18,6 @@ public class UpdateDaily extends HttpServlet {
 		AccountDAO.loginCheck(request);
 		//수정
 		//전체조회
-		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "daily/daily.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

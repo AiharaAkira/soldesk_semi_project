@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/sidebar.css">
 </head>
 <body>
-				<table border="1">
+				<table border="1" >
 					<tr>
 						<td onclick="location.href='LoginController'"> 로그인</td>
 					</tr>

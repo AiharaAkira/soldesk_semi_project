@@ -72,8 +72,11 @@ public class FreeDAO {
 				p.setP_date(rs.getDate("p_date"));
 				p.setP_user(rs.getString("p_user"));
 				p.setP_img(rs.getString("p_img"));
+				p.setP_view_count(rs.getInt("p_view_count"));
+				
 			}
 				request.setAttribute("p", p);
+				
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -154,17 +157,17 @@ public class FreeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
-		String sql = "insert into post values(post_seq.nextval, ?, ?, ?, sysdate, ?, '0')";
+		String sql = "insert into post values(post_seq.nextval, ?, ?, ?, sysdate, '코멘트t', ?, '0')";
 
 		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
 			String saveDirectory = request.getSession().getServletContext().getRealPath("free/img");
 			System.out.println(saveDirectory);
 			
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, 30 * 1024 * 1024, "utf-8",
 					new DefaultFileRenamePolicy()); 
 
-			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
 
 			System.out.println(mr.getParameter("title"));
 			System.out.println(mr.getParameter("text"));
@@ -231,6 +234,7 @@ public class FreeDAO {
 						
 						posts.add(p);
 					}
+					
 
 					request.setAttribute("posts", posts);
 					request.setAttribute("p", page);
@@ -288,7 +292,7 @@ public class FreeDAO {
 		}
 	}
 				
-				public static void paging(HttpServletRequest request) {
+		public static void paging(HttpServletRequest request) {
 					// 페이지번호처리
 					Connection con = null;
 					PreparedStatement pstmt = null;
@@ -575,6 +579,10 @@ public class FreeDAO {
 					Connection con = null;
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
+					
+					//String no = null;
+					//no = request.getParameter("no");
+					
 					String sql = "select * from comments where c_post = ? order by c_date desc";
 
 					try {
@@ -583,22 +591,35 @@ public class FreeDAO {
 						pstmt.setString(1, request.getParameter("no"));
 						rs = pstmt.executeQuery();
 
-						ArrayList<Comment> posts = new ArrayList<Post>();
-						Post p = null;
+						ArrayList<Comment> comments = new ArrayList<>();
+						Comment c = null;
 						while (rs.next()) {
-							p = new Post();
-							p.setP_no(rs.getString("p_no"));
-							p.setP_title(rs.getString("p_title"));
-							p.setP_user(rs.getString("p_user"));
-							p.setP_date(rs.getDate("p_date"));
 							
-							posts.add(p);
+							
+							c = new Comment();
+							c.setC_no(rs.getString("c_no"));
+							c.setC_text(rs.getString("c_text"));
+							c.setC_users(rs.getString("c_users"));
+							c.setC_post(rs.getString("c_post"));
+							c.setC_date(rs.getDate("c_date"));
+							
+							
+							
+							comments.add(c);
 						}
-
-						request.setAttribute("posts", posts);
-						request.setAttribute("p", page);
-					//	request.setAttribute("sn", startNum);
-						//request.setAttribute("ln", lastNum);
+						
+						/*
+						 * for (Comment test : comments) {
+						 * 
+						 * System.out.println(test.getC_text()); System.out.println(test.getC_users());
+						 * System.out.println(test.getC_no()); System.out.println(test.getC_post());
+						 * 
+						 * 
+						 * }
+						 */
+						
+						request.setAttribute("comments", comments);
+						
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {
@@ -607,6 +628,70 @@ public class FreeDAO {
 					
 					
 				}
+
+				public static void countComment(HttpServletRequest request) {
+					
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					
+					String sql = "select count(*) from comments where c_post = ?";
+					
+					try {
+						con = DBManager.connect();
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, request.getParameter("no"));
+						rs = pstmt.executeQuery();
+						int totalComment = 0;
+						
+						if (rs.next()) {
+
+							totalComment = rs.getInt(1);
+							
+						}
+						
+						request.setAttribute("totalComment", totalComment);
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						DBManager.close(con, pstmt, rs);
+					}
+					
+				}
+
+				public static void countView(HttpServletRequest request) {
+
+					Connection con = null;
+					PreparedStatement pstmt = null;
+
+					
+					String sql = "update post set p_view_count = p_view_count + 1  where p_no=?";
+
+					try {
+						con = DBManager.connect();
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, request.getParameter("no"));
+						
+						if (pstmt.executeUpdate() == 1) {
+							System.out.println("조회수 +1");
+							
+						} else {
+							System.out.println("업데이트실패");
+
+						}
+
+					} catch (Exception e) {
+						e.printStackTrace();
+						System.out.println("DB문제");
+
+					} finally {
+						DBManager.close(con, pstmt, null);
+					}
+					
+				}
+				
+				
 					
 				}
 	

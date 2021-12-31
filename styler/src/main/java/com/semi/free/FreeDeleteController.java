@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.login.AccountDAO;
+
 /**
  * Servlet implementation class FreeDeleteController
  */
@@ -21,7 +23,7 @@ public class FreeDeleteController extends HttpServlet {
 				// Á¶È¸
 				FreeDAO.paging(request);
 				FreeDAO.getNoticeList(request);
-				request.setAttribute("loginPage", "login/login.jsp");
+				AccountDAO.loginCheck(request);
 				request.setAttribute("contentPage", "free/free.jsp");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 		

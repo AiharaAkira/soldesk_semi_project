@@ -46,3 +46,12 @@ table th {
   color: #000;
 }
 
+.like i {
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.like .active {
+  color: tomato;
+  transition: 0.5s;
+}

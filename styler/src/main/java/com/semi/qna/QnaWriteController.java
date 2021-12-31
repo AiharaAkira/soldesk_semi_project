@@ -13,7 +13,6 @@ import com.semi.login.AccountDAO;
 public class QnaWriteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
-		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "qna/qnaWrite.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
@@ -22,7 +21,6 @@ public class QnaWriteController extends HttpServlet {
 		AccountDAO.loginCheck(request);
 		//글쓰기인데 관리자
 		//전체출력
-		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "qna/qna.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

@@ -15,18 +15,15 @@ public class UpdateAccountC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		AccountDAO.loginCheck(request);
-		request.setAttribute("loginPage", "login/loginOk.jsp");
 		request.setAttribute("contentPage", "login/updateInfo.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        //AccountDAO.update(request);
-		
+		request.setCharacterEncoding("utf-8");
+        AccountDAO.update(request);
 		AccountDAO.loginCheck(request);
-		request.setAttribute("loginPage", "login/loginOk.jsp");
 		request.setAttribute("contentPage", "login/info.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	

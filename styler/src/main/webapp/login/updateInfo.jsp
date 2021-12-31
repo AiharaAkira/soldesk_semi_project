@@ -14,38 +14,37 @@
 	</tr>
 	<tr>
 	<td>프사</td>
+	<td><input type="file" name="img"></td>
 	</tr>
 	<tr>
 	<td colspan="2">- 로그인 정보</td>
 	</tr>
 	<tr>
 	<td>닉네임</td>
-	<td>${sessionScope.accountInfo.nickname }</td>
+	<td> <input name="nickname" placeholder="닉네임"> </td>
 	</tr>
 	<tr>
 	<td>아이디</td>
-	<td>${sessionScope.accountInfo.id }</td>
+	<td>${sessionScope.accountInfo.id}</td>
 	</tr>
 	<tr>
 	<td>비밀번호</td>
-	<td><input name="pw2">
-	<input name="pw" value="${sessionScope.accountInfo.name }" type="hidden">
-	</td>
+	<td><input name="pw" placeholder="비밀번호"></td>
 	</tr>
 	<tr>
 	<td colspan="2">- 개인정보</td>
 	</tr>
 	<tr>
 	<td>이름</td>
-	<td><input name="name" value="${sessionScope.accountInfo.name }"></td>
+	<td>${sessionScope.accountInfo.name}</td>
 	</tr>
 	<tr>
 	<td>성별</td>
-	<td>${sessionScope.accountInfo.gender }</td>
+	<td>${sessionScope.accountInfo.gender}</td>
 	</tr>
 	<tr>
 	<td>이메일</td>
-	<td><input name="name" value="${sessionScope.accountInfo.email }"></td>
+	<td><input name="email" placeholder="이메일"></td>
 	</tr>
 	<tr>
 	<td>옷취향</td>
@@ -57,7 +56,7 @@
 				</select> </td>
 	</tr>
 	</table>
-	<button>저장하기</button>
+	<button name="id" value="${sessionScope.accountInfo.id}">저장하기</button>
 	</form>
 </body>
 </html>

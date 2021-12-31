@@ -14,7 +14,6 @@ public class AnnounceController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
-		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "announce/announce.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

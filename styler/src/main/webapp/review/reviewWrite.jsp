@@ -29,6 +29,28 @@
 		</tr>
 		
 		<tr>
+			<td> 구매가격 </td><td> <input name="price"> </td>
+		</tr>
+		
+		<tr>
+			<td> 타입 </td>
+			<td> 
+			<input type="radio" name="type" value="빈티지">빈티지
+			<input type="radio" name="type" value="캐쥬얼">캐쥬얼 
+			</td>
+		</tr>
+		
+		
+		
+		<tr>
+			<td> 색상 </td>
+			<td> 
+			<input type="radio" name="color" value="black">black
+			<input type="radio" name="color" value="white">white
+			 </td>
+		</tr>
+		
+		<tr>
 			<td> <input name="title"> </td>
 		</tr>
 		<tr>

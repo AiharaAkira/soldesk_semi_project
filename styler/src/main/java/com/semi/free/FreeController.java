@@ -18,10 +18,10 @@ public class FreeController extends HttpServlet {
 			
 			
 			//FreeDAO.getAllText(request);
-			
+			AccountDAO.loginCheck(request);
 			FreeDAO.paging(request);
 			FreeDAO.getNoticeList(request);
-			request.setAttribute("loginPage", "login/login.jsp");
+			AccountDAO.loginCheck(request);
 			request.setAttribute("contentPage", "free/free.jsp");
 		}
 		else{
@@ -32,7 +32,6 @@ public class FreeController extends HttpServlet {
 			FreeDAO.doSearch(request);
 			FreeDAO.searchPaging(request);
 			
-		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "free/free.jsp");
 
 	}

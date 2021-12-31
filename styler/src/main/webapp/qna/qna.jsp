@@ -18,29 +18,7 @@
 
 			</tr>
 
-			<tr>
-				<td colspan="4">
-					<form action="SearchController">
-						<table border="1">
-							<tr>
-								<td colspan="2"><input></td>
-								<td>
-									<button>검색하기</button>
-								</td>
-
-							</tr>
-							<tr>
-								<td colspan="2"><select>
-										<option>게시판선택</option>
-								</select></td>
-								<td colspan="2"><select>
-										<option>색상선택</option>
-								</select></td>
-							</tr>
-						</table>
-					</form>
-				</td>
-			</tr>
+			
 
 			<tr>
 				<td colspan="4">
@@ -83,6 +61,9 @@
 						<option value="text">내용</option>
 						<option value="writer">작성자</option>
 				</select></td>
+				<td>
+					<input>
+				</td>
 				<td>
 					<button>검색</button>
 				</td>

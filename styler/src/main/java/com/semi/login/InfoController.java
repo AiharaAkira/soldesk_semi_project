@@ -13,7 +13,6 @@ public class InfoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		AccountDAO.loginCheck(request);
-		request.setAttribute("loginPage", "login/loginOk.jsp");
 		 request.setAttribute("contentPage", "login/info.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

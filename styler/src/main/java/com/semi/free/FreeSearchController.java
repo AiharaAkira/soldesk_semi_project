@@ -19,7 +19,6 @@ public class FreeSearchController extends HttpServlet {
 		FreeDAO.doSearch(request);
 		FreeDAO.searchPaging(request);
 		
-		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "free/free.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 		

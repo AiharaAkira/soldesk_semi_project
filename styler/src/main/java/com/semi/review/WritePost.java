@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.login.AccountDAO;
+
 
 @WebServlet("/WritePost")
 public class WritePost extends HttpServlet {
@@ -16,7 +18,7 @@ public class WritePost extends HttpServlet {
 		
 		//±€¡∂»∏
 		ReviewDAO.getAllReview(request);
-		request.setAttribute("loginPage", "login/login.jsp");
+		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "review/reviewWrite.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
@@ -28,7 +30,7 @@ public class WritePost extends HttpServlet {
 		
 		ReviewDAO.writeReview(request);
 		ReviewDAO.getAllReview(request);
-		request.setAttribute("loginPage", "login/login.jsp");
+		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "review/review.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	

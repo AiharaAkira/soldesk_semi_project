@@ -9,7 +9,7 @@
 <body>
 <table border="1">
 	<tr>
-	<td >프사</td>
+	<td ><img src="img/${sessionScope.accountInfo.profileImg}" /> </td>
 	</tr>
 	<tr>
 	<td colspan="2">- 로그인 정보</td>

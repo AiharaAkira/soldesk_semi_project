@@ -20,9 +20,8 @@ public class DeletePost extends HttpServlet {
 		
 		ReviewDAO.deleteReview(request);
 		ReviewDAO.getAllReview(request);
-		request.setAttribute("loginPage", "login/login.jsp");
 		
-		//review.jsp로 돌아가게 변경
+		//review.jsp濡� �룎�븘媛�寃� 蹂�寃�
 		request.setAttribute("contentPage", "review/review.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

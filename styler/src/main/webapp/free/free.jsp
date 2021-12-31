@@ -10,38 +10,38 @@
 </head>
 <body>
 	
+	
+		<form action="SearchController">
+	<div class="menu">
+		<input type="checkbox" class="" id="collapsible"> <label
+			for="collapsible"><span>검색 - 누르면 밑에 검색창 </span></label>
+			<ul id="menuitems" class="menuitems">
+				<li><input name="searchMain"></li>
+				
+				<li><select name="postMain">
+						<option>리뷰</option>
+						<option>데일리</option>
+				</select></li>
+				<li><select name="colorMain">
+						<option>red</option>
+						<option>black</option>
+						<option>white</option>
+				</select></li>
+				<li><button>검색하기</button></li>
+
+			</ul>
+	</div>
+		</form>
 		<table border="1">
 
 			<tr>
 				<td onclick="location.href='HomeController'">타이틀</td>
-				<td>검색-js누르면 나오기</td>
+				
 				<td onclick="location.href='ProfileController'">내정보</td>
 
 			</tr>
 
-			<tr>
-				<td colspan="4">
-							<form action="SearchController">
-					<table border="1">
-						<tr>
-								<td colspan="2"><input></td>
-								<td>
-									<button>검색하기</button>
-								</td>
-							
-						</tr>
-						<tr>
-							<td colspan="2"><select>
-									<option>게시판선택</option>
-							</select></td>
-							<td colspan="2"><select>
-									<option>색상선택</option>
-							</select></td>
-						</tr>
-					</table>
-					</form>
-				</td>
-			</tr>
+			
 
 			<tr>
 				<td colspan="4">
@@ -73,9 +73,11 @@
 					<td>${p.p_date}</td>
 				</tr>
 			</c:forEach>
+			<c:if test="${not empty sessionScope.accountInfo }">
 			<tr>
 				<td onclick="location.href='FreeWriteController'">글쓰기</td>
 			</tr>
+			</c:if>
 			
 			<tr>
 				<td colspan="4"> 

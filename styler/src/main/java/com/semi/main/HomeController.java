@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.login.AccountDAO;
+import com.semi.review.ReviewDAO;
 
 @WebServlet("/HomeController")
 public class HomeController extends HttpServlet {
@@ -15,8 +16,7 @@ public class HomeController extends HttpServlet {
 			throws ServletException, IOException {
 		
 		AccountDAO.loginCheck(request);
-		request.setAttribute("loginPage", "login/login.jsp");
-		
+		ReviewDAO.getAllReview(request);
 		request.setAttribute("contentPage", "home/home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	} 

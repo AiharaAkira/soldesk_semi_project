@@ -12,14 +12,14 @@ public class SignOutC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//È¸¿øÅ»Åð ÆäÀÌÁö·Î ÀÌµ¿ÇÏ´Â getÀÔ´Ï´Ù.
 		AccountDAO.loginCheck(request);
-		request.setAttribute("loginPage", "login/loginOk.jsp");
 		request.setAttribute("contentPage", "login/signOut.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//È¸¿øÅ»Åð¸ðµ¨
+		AccountDAO.signOut(request);
+		AccountDAO.logOut(request);
 		AccountDAO.loginCheck(request);
-		request.setAttribute("loginPage", "login/loginOk.jsp");
 		request.setAttribute("contentPage", "home/home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

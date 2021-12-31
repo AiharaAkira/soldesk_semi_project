@@ -15,7 +15,6 @@ public class DailyController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
 		
-		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "daily/daily.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

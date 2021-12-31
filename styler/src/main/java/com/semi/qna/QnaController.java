@@ -13,7 +13,6 @@ import com.semi.login.AccountDAO;
 public class QnaController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
-		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "qna/qna.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

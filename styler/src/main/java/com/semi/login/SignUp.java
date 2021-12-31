@@ -23,7 +23,6 @@ public class SignUp extends HttpServlet {
 		AccountDAO.reg(request);
 		AccountDAO.loginCheck(request);
 		
-		request.setAttribute("loginPage", "login/login.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
