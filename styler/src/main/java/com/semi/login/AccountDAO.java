@@ -105,7 +105,7 @@ public class AccountDAO {
 
 			String id = mr.getParameter("id");
 			String pw = mr.getParameter("pw");
-			String name = mr.getParameter("name");
+			String name = mr.getParameter("name1");
 			String nickname = mr.getParameter("nickname");
 			String email = mr.getParameter("email");
 			String gender = mr.getParameter("gender");
@@ -147,12 +147,14 @@ public class AccountDAO {
 		ResultSet rs = null;
 		
 		//String sql = "update users set (u_pw, u_nickname, u_email, u_style, u_profileImg) = (?,?,?,?,?) where u_id=?";
+		String sql1 = "update users set u_pw=?, u_nickname=?,"
+				+ "u_email=?,u_style=? where u_id=?";
 		String sql = "update users set u_pw=?, u_nickname=?,"
 			+ "u_email=?,u_style=?, u_profileImg=? where u_id=?";
 		try {
 			
 			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
+			
 
 			String path = request.getSession().getServletContext().getRealPath("img");
 			MultipartRequest mr = new MultipartRequest(request, path, 30 * 1024 * 1024, "utf-8",
@@ -164,13 +166,23 @@ public class AccountDAO {
 			String id = mr.getParameter("id");
 			String style = mr.getParameter("style");
 			String img = mr.getFilesystemName("img");
-			
-			pstmt.setString(1, pw);
-			pstmt.setString(2, nickname);
-			pstmt.setString(3, email);
-			pstmt.setString(4, style);
-			pstmt.setString(5, img);
-			pstmt.setString(6, id);
+			if(img == null) {
+				pstmt = con.prepareStatement(sql1);
+				pstmt.setString(1, pw);
+				pstmt.setString(2, nickname);
+				pstmt.setString(3, email);
+				pstmt.setString(4, style);
+				pstmt.setString(5, id);
+			}else {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, pw);
+				pstmt.setString(2, nickname);
+				pstmt.setString(3, email);
+				pstmt.setString(4, style);
+				pstmt.setString(5, img);
+				pstmt.setString(6, id);
+			}
+		
 			
 			if(pstmt.executeUpdate() == 1) {
 				String sql2 = "select * from users where u_id = ?";

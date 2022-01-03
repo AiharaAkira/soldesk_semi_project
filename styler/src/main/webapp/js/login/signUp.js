@@ -1,4 +1,14 @@
-
+let name1 = document.form.name1;
+let id = document.form.id;
+let pw = document.form.pw;
+let pwCheck = document.form.pwCheck;
+let gender = document.form.gender;
+let email = document.form.email;
+let style = document.form.style;
+let profileImg = document.form.profileImg;
+let typeOfManager = document.form.typeOfManager;
+let checkPoint = document.form.checkPoint;
+let nickname = document.form.nickname;
 
 
 
@@ -163,4 +173,82 @@ function equalCheck(input1, input2) {
 		return true;
 	}
 	return false;
+}
+
+
+function call() {
+	//이름: 빈칸x 한글 공백x 30자미만
+	if (isEmpty(name1) || moreThan(name1, 30) || checkSpace(name1.value) || checkEng(name1.value) || (pattern_spc.test(name1.value))) {
+		alert("이름을 확인해주세요.");
+		name1.value = "";
+		name1.focus();
+		return false;
+	}
+
+	//중복아이디확인
+	//아이디: 빈칸x 영어+숫자 공백x 20자미만
+	if (isEmpty(id) || lessThan(id, 7) || moreThan(id, 20) || CheckID(id.value) || checkSpace(id.value)) {
+		alert("아이디를 확인해 주세요");
+		id.value = "";
+		id.focus();
+		return false;
+	}
+
+
+	//비밀번호: 빈칸x 영어+숫자+특수문자 + 공백x 8자이상
+	if (isEmpty(pw) || lessThan(pw, 8) || checkSpace(pw.value) || checkKor(pw.value) || CheckPassword(pw.value)) {
+		alert("비밀번호를 확인해 주세요");
+		pw.value = "";
+		pw.focus();
+		return false;
+	}
+	//비밀번호확인
+	if (equalCheck(pw, pwCheck)) {
+		alert("상위의 비밀번호와 동일한 값을 입력해 주세요.");
+		pwCheck.value = "";
+		pwCheck.focus();
+		return false;
+	}
+	//닉네임: 빈칸x 한글+영어+숫자 공백x 10자~20자
+	if (isEmpty(nickname) || lessThan(nickname, 2) || moreThan(nickname, 20) || checkSpace(nickname.value) || (pattern_spc.test(nickname.value))) {
+		alert("닉네임을 확인해 주세요");
+		nickname.value = "";
+		nickname.focus();
+		return false;
+	}
+	//성별: 빈칸x
+	if (isEmpty(gender)) {
+		alert("성별을 체크해 주세요");
+		return false;
+	}
+	//이메일: @포함, 빈칸x,영어숫자 공백x 50자미만
+	if (isEmpty(email) || checkSpace(email.value) || checkKor(email.value) || moreThan(email, 50) || notContains(email, "@")) {
+		alert("이메일을 확인해주세요");
+		email.value = "";
+		email.focus();
+		return false;
+	}
+	//옷취향: 빈칸x
+	if (isEmpty(email)) {
+		alert("옷취향을 체크해 주세요");
+		return false;
+	}
+	//프사: jpg, png, 빈칸x 
+	if ((isNotType(profileImg, "jpg") && isNotType(profileImg, "png") && isNotType(profileImg, "PNG") && isNotType(profileImg, "JPG")) || isEmpty(profileImg)) {
+		alert("프로필사진을 등록해주세요.");
+		return false;
+	}
+	//체크1:빈칸x
+	if (notCheck(typeOfManager)) {
+		alert("제1약관에 동의해 주세요.");
+		return false;
+	}
+	//체크2:빈칸x
+	if (notCheck(checkPoint)) {
+		alert("제2약관에 동의해 주세요.");
+		return false;
+	}
+
+	alert("회원가입 되셨습니다! 환영합니다:)");
+	return true;
 }
