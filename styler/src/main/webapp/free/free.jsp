@@ -11,7 +11,7 @@
 <body>
 	
 	
-		<form action="SearchController">
+		<!-- <form action="SearchController">
 	<div class="menu">
 		<input type="checkbox" class="" id="collapsible"> <label
 			for="collapsible"><span>검색 - 누르면 밑에 검색창 </span></label>
@@ -31,10 +31,11 @@
 
 			</ul>
 	</div>
-		</form>
-		<table border="1">
+		</form> -->
+		<div class="m-3">
+		<table class="table" border="1">
 
-			<tr>
+			<!-- <tr>
 				<td onclick="location.href='HomeController'">타이틀</td>
 				
 				<td onclick="location.href='ProfileController'">내정보</td>
@@ -53,18 +54,14 @@
 						</tr>
 					</table>
 				</td>
-			</tr>
+			</tr> -->
 			<tr>
-				<td>종류</td>
-				<td>글제목</td>
-				<td>작성자</td>
-				<td>날짜</td>
+				<th>종류</th>
+				<th>글제목</th>
+				<th>작성자</th>
+				<th>날짜</th>
 			</tr>
-			<tr>
-				<td>자유글</td>
-				<td colspan="2">글글글</td>
-				<td>날짜</td>
-			</tr>
+			
 			<c:forEach var="p" items="${posts}">
 				<tr>
 					<td>자유글</td>
@@ -99,7 +96,7 @@
 				
 			</tr>
 		</table>
-		<div>
+		<%-- <div>
 			<c:set var="page" value="${param.p }" />
 			<c:choose>
 				<c:when test="${startNum>1}">
@@ -110,15 +107,15 @@
 					<span onclick="alert('이전페이지없음')">이전(이전페이지없음)</span>
 				</c:otherwise>
 			</c:choose>
-		</div>
+		</div> --%>
 		<div>
+				<ul class="pagination justify-content-center ">
 			<c:forEach var="p" items="${startEnd }">
-				<ul>
-					<li> <a href="/20211224/FreeController?pageNum=${p}&selected=${selected}&searchText=${searchText}">${p}</a> </li>
-				</ul>
+					<li class="page-item"> <a class="page-link"  href="/20211224/FreeController?pageNum=${p}&selected=${selected}&searchText=${searchText}">${p}</a> </li>
 			</c:forEach>
+				</ul>
 		</div>
-		<div></div>
+		</div>
 
 	
 </body>

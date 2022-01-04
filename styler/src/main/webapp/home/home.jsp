@@ -5,104 +5,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 </head>
 <body>
-
-
-			<form action="SearchController">
-		<div class="menu">
-			<input type="checkbox" class="" id="collapsible"> <label
-				for="collapsible"><span>검색 - 누르면 밑에 검색창 </span></label>
-			<ul id="menuitems" class="menuitems">
-				<li><input name="searchMain"></li>
-
-				<li><select name="postMain">
-						<option>리뷰</option>
-						<option>데일리</option>
-				</select></li>
-				<li><select name="colorMain">
-						<option>red</option>
-						<option>black</option>
-						<option>white</option>
-				</select></li>
-				<li><button>검색하기</button></li>
-
-			</ul>
-		</div>
-	</form>
-	<table border="1">
-
-		<tr>
-			<td onclick="location.href='HomeController'">타이틀</td>
-
-			<td onclick="location.href='ProfileController'">내정보</td>
-			<td onclick="location.href='WritePost'">리뷰쓰기</td>
-		</tr>
-
-		
-
-		<tr>
-			<td colspan="4">
-				<table border="1">
-					<tr>
-						<td>인기순</td>
-						<td>최신글</td>
-						<td>댓글순</td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-
-
-		
-		<tr>
-		<td><h1>리뷰</h1></td>
-		</tr>
-		
-		<tr>
-			<td colspan="4">
-			<c:forEach var="r" items="${reviews}">
-					<table border="1">
-						<tr>
-							<td><img src="img/${r.img}" alt="이미지 없음"
-								onclick="location.href='ReadDetailC?no=${r.no}'"></td>
-							<td>${r.user}</td>
-						</tr>
-						<tr>
-							<td>${r.text}</td>
-						</tr>
-						<tr>
-							<td>${r.good}</td>
-							<td>${r.comment}</td>
-						</tr>
-					</table>
-				</c:forEach></td>
-		</tr>
-		<tr>
-		<td><h1>데일리</h1></td>
-		</tr>
 	
-		<tr>
-			<td colspan="4">
-			<c:forEach var="d" items="${dailys}">
-					<table border="1">
-						<tr>
-							<td><img src="img/${d.img}" alt="이미지 없음"
-								onclick="location.href='ReadDetailC?no=${d.no}'"></td>
-							<td>${d.user}</td>
-						</tr>
-						<tr>
-							<td>${d.text}</td>
-						</tr>
-						<tr>
-							<td>${d.good}</td>
-							<td>${d.comment}</td>
-						</tr>
-					</table>
-				</c:forEach></td>
-		</tr>
-	</table>
+	 <!-- 홈.jsp -->
+	 <div  class="container-fluid  row mt-5"  >
+            <div  class="d-flex align-items-center justify-content-center" >
+                <a  href="#" class="btn btn-outline-dark border-white rounded-pill">
+            인기
+          </a>
+          <a  href="#" class="btn btn-outline-dark border-white rounded-pill">
+            최신
+          </a>
+          <a  href="#" class="btn btn-outline-dark border-white rounded-pill">
+            댓글순
+          </a>
+        </div>
+        </div>
+	 
+	 <!-- 리뷰페이지 컨텐츠 -->
+         <div class="album py-5 bg-WHITE">
+      <div class="container">
+  
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+         
+          <c:forEach var="r" items="${reviews}">
+          <div class="col">
+            <div class="card shadow-sm">
+              
+              
+            <a href="ReadDetailC?no=${r.no}"> <img alt="게시글 이미지" src="img/${r.img}" class="card-img-top " width="auto" height="225"> </a>
+  
+              <div class="card-body">
+                <p class="card-text">${r.text}</p>
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">좋아요</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">댓글</button>
+                  </div>
+                  <small class="text-muted"> 글 게시시간</small>
+                  <div class="flex-shrink-0">
+                  <!-- 유저등록사진표시 -->
+                    <img src="https://github.com/mdo.png"  alt="mdo" width="32" height="32" class="rounded-circle">
+                 <small> ${r.user}</small>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+				</c:forEach>
+				</div>
+				</div>
+				</div>
+  
+          
 </body>
 </html>

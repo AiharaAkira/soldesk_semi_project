@@ -14,14 +14,14 @@
 	</tr>
 	<tr>
 	<td>프사</td>
-	<td><input type="file" name="img" ></td>
+	<td><input type="file" name="img"></td>
 	</tr>
 	<tr>
 	<td colspan="2">- 로그인 정보</td>
 	</tr>
 	<tr>
 	<td>닉네임</td>
-	<td> <input name="nickname" value="${sessionScope.accountInfo.nickname}"> </td>
+	<td> <input name="nickname" placeholder="닉네임"> </td>
 	</tr>
 	<tr>
 	<td>아이디</td>
@@ -29,7 +29,7 @@
 	</tr>
 	<tr>
 	<td>비밀번호</td>
-	<td><input name="pw" value="${sessionScope.accountInfo.pw}"></td>
+	<td><input name="pw" placeholder="비밀번호"></td>
 	</tr>
 	<tr>
 	<td colspan="2">- 개인정보</td>
@@ -44,12 +44,11 @@
 	</tr>
 	<tr>
 	<td>이메일</td>
-	<td><input name="email" value="${sessionScope.accountInfo.email}"></td>
+	<td><input name="email" placeholder="이메일"></td>
 	</tr>
 	<tr>
 	<td>옷취향</td>
-	<td> <select name="style" >
-					<option value="${sessionScope.accountInfo.style}" selected>기존스타일</option>
+	<td> <select name="style">
 					<option value="casual">캐쥬얼</option>
 					<option value="Street">스트리트</option>
 					<option value="vintage">빈티지</option>

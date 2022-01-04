@@ -157,17 +157,17 @@ public class FreeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
-		String sql = "insert into post values(post_seq.nextval, ?, ?, ?, sysdate, 'ÄÚ¸àÆ®t', ?, '0')";
+		String sql = "insert into post values(post_seq.nextval, ?, ?, ?, sysdate, 'ÄÚ¸àÆ®t', ?,'0')";
 
 		try {
-			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
 			String saveDirectory = request.getSession().getServletContext().getRealPath("free/img");
 			System.out.println(saveDirectory);
 			
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, 30 * 1024 * 1024, "utf-8",
 					new DefaultFileRenamePolicy()); 
 
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
 
 			System.out.println(mr.getParameter("title"));
 			System.out.println(mr.getParameter("text"));

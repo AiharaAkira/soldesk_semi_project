@@ -17,7 +17,7 @@ public class LoginController extends HttpServlet {
 		
 			AccountDAO.logOut(request);
 			AccountDAO.loginCheck(request);
-			ReviewDAO.getAllReview(request);
+			
 			request.setAttribute("contentPage", "home/home.jsp");
 			request.getRequestDispatcher("login/signInNext.jsp").forward(request, response);
 			
@@ -30,6 +30,8 @@ public class LoginController extends HttpServlet {
 		AccountDAO.login(request);
 		AccountDAO.loginCheck(request);
 		ReviewDAO.getAllReview(request);
+
+		
 		request.setAttribute("contentPage", "home/home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	
