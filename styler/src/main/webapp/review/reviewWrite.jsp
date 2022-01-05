@@ -11,6 +11,7 @@
 
 	<form action="WritePost" method="post" enctype="multipart/form-data">
 	<table>
+	
 		<tr>
 			<td> 사진올리기<input type="file" name="image"> </td>
 		</tr>
@@ -51,7 +52,8 @@
 		</tr>
 		
 		<tr>
-			<td> <input name="title"> </td>
+		
+			<td> <input name="title"> <input name="user"  value="${sessionScope.accountInfo.nickname}"> </td>
 		</tr>
 		<tr>
 			<td> <textarea name="text"></textarea> </td>

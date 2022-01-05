@@ -7,13 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.login.AccountDAO;
+
 
 @WebServlet("/ReviewCommentC")
 public class ReviewCommentC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ReviewCommentDAO.writeComment(request);
 		
+		AccountDAO.loginCheck(request);
+		
+		ReviewCommentDAO.writeComment(request);
 		ReviewDAO.getReviewDetail(request);
 		ReviewCommentDAO.getComment(request);
 		request.setAttribute("loginPage", "login/login.jsp");

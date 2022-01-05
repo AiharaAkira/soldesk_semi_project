@@ -148,7 +148,7 @@ public class AccountDAO {
 		
 		//String sql = "update users set (u_pw, u_nickname, u_email, u_style, u_profileImg) = (?,?,?,?,?) where u_id=?";
 		String sql = "update users set u_pw=?, u_nickname=?,"
-			+ "u_email=?,u_style=?, u_profileImg=? where u_id=?";
+			+ "u_email=?,u_style=? where u_id=?";
 		try {
 			
 			con = DBManager.connect();
@@ -163,14 +163,12 @@ public class AccountDAO {
 			String email = mr.getParameter("email");
 			String id = mr.getParameter("id");
 			String style = mr.getParameter("style");
-			String img = mr.getFilesystemName("img");
 			
 			pstmt.setString(1, pw);
 			pstmt.setString(2, nickname);
 			pstmt.setString(3, email);
 			pstmt.setString(4, style);
-			pstmt.setString(5, img);
-			pstmt.setString(6, id);
+			pstmt.setString(5, id);
 			
 			if(pstmt.executeUpdate() == 1) {
 				String sql2 = "select * from users where u_id = ?";
@@ -212,7 +210,7 @@ public class AccountDAO {
 			e.printStackTrace();
 			System.out.println("DB서버오류-프로필");
 		}finally {
-			DBManager.close(con, pstmt, null);
+			DBManager.close(con, pstmt, rs);
 		}
 
 	}
@@ -243,6 +241,76 @@ public class AccountDAO {
 			DBManager.close(con, pstmt, null);
 		}
 
+	}
+
+	public static void changeImg(HttpServletRequest request) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		//String sql = "update users set (u_pw, u_nickname, u_email, u_style, u_profileImg) = (?,?,?,?,?) where u_id=?";
+		String sql = "update users set u_profileImg=? where u_id=?";
+		try {
+			
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+
+			String path = request.getSession().getServletContext().getRealPath("img");
+			MultipartRequest mr = new MultipartRequest(request, path, 30 * 1024 * 1024, "utf-8",
+					new DefaultFileRenamePolicy());
+
+			
+			String id = mr.getParameter("id");
+			String style = mr.getFilesystemName("img");
+			
+		
+			pstmt.setString(1, style);
+			pstmt.setString(2, id);
+			
+			if(pstmt.executeUpdate() == 1) {
+				String sql2 = "select * from users where u_id = ?";
+				pstmt = con.prepareStatement(sql2);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					String dbPW = rs.getString("u_pw");
+
+					
+
+						Account a = new Account();
+						a.setId(rs.getString("u_id"));
+						a.setPw(rs.getString("u_pw"));
+						a.setName(rs.getString("u_name"));
+						a.setNickname(rs.getString("u_nickname"));
+						a.setEmail(rs.getString("u_email"));
+						a.setGender(rs.getString("u_gender"));
+						a.setStyle(rs.getString("u_style"));
+						a.setProfileImg(rs.getString("u_profileimg"));
+						a.setTypeOfManger(rs.getString("u_typeOfManager"));
+						a.setCheckPoint(rs.getString("u_checkpoint"));
+
+						HttpSession hs = request.getSession();
+						hs.setAttribute("accountInfo", a);
+						hs.setMaxInactiveInterval(1800);
+						
+				System.out.println("수정성공");
+					
+				}
+				
+			}else {
+				
+				System.out.println("수정실패");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("DB서버오류-프로필");
+		}finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
 	}
 
 }

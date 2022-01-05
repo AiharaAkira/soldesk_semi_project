@@ -16,7 +16,7 @@ public class WritePost extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		//±ÛÁ¶È¸
+		//ï¿½ï¿½ï¿½ï¿½È¸
 		ReviewDAO.getAllReview(request);
 		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "review/reviewWrite.jsp");
@@ -25,8 +25,8 @@ public class WritePost extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//±ÛÀÔ·Â
-		//±ÛÁ¶È¸
+		//ï¿½ï¿½ï¿½Ô·ï¿½
+		//ï¿½ï¿½ï¿½ï¿½È¸
 		
 		ReviewDAO.writeReview(request);
 		ReviewDAO.getAllReview(request);

@@ -13,29 +13,22 @@ import com.semi.login.AccountDAO;
 public class FreeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		if(request.getParameter("selected") == null||request.getParameter("selected").length() ==0) {
+			int page = 0;
+			if (request.getParameter("pageNum")==null) {
+				page = 1;
+				
+			}
+			else {
+				page = Integer.parseInt(request.getParameter("pageNum"));
+			}
 			
-			
-			//FreeDAO.getAllText(request);
 			AccountDAO.loginCheck(request);
-			FreeDAO.paging(request);
-			FreeDAO.getNoticeList(request);
+			FreeDAO.getFreedao().paging(request);
+			FreeDAO.getFreedao().getNoticeList(page, request);
+			
 			AccountDAO.loginCheck(request);
 			request.setAttribute("contentPage", "free/free.jsp");
-		}
-		else{
-		//°Ë»ö
-			
-			AccountDAO.loginCheck(request);
-			
-			FreeDAO.doSearch(request);
-			FreeDAO.searchPaging(request);
-			
-		request.setAttribute("contentPage", "free/free.jsp");
-
-	}
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

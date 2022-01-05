@@ -14,12 +14,12 @@ public class FreeDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		FreeDAO.countView(request);
-		FreeDAO.getFreeDetail(request);
-		FreeDAO.getComment(request);
-		FreeDAO.countComment(request);
-		FreeDAO.getNextFreeDetail(request);
-		FreeDAO.getPrevFreeDetail(request);
+		FreeDAO.getFreedao().countView(request);
+		FreeDAO.getFreedao().getFreeDetail(request);
+		FreeDAO.getFreedao().getComment(request);
+		FreeDAO.getFreedao().countComment(request);
+		FreeDAO.getFreedao().getNextFreeDetail(request);
+		FreeDAO.getFreedao().getPrevFreeDetail(request);
 		
 		AccountDAO.loginCheck(request);
 		

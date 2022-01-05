@@ -14,7 +14,7 @@
 		<button type="button" class="btn btn-outline-light me-2" onclick="location.href='LoginController'">MyInfo</button>
                 <button type="button" class="btn btn-warning" onclick="location.href='SignUpC'">Logout</button>
 			</div>	 --%>
-		<span class="text-white"> ${sessionScope.accountInfo} 로그인!! <br> 환영합니다 </span> <br>
+		<span class="text-white"> ${sessionScope.accountInfo.nickname} 로그인!! <br> 환영합니다 </span> <br>
 		<div class="dropdown">
                     <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                      <!--  유저프사 가져오기 -->

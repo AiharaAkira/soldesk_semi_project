@@ -71,10 +71,10 @@
 		<c:forEach var="c" items="${comments}">
 		<table>
 			<tr>
-				<td>${c.users} || <fmt:formatDate value="${c.date}" pattern="yyyy.MM.dd/ a hh:mm"/> || 수정 || 삭제</td>
+				<td>${c.c_users} || <fmt:formatDate value="${c.c_date}" pattern="yyyy.MM.dd a hh:mm"/> || 수정 || 삭제</td>
 			</tr>
 			<tr>
-				<td>${c.text}</td>
+				<td>${c.c_text}</td>
 			</tr>
 		</table>
 		</c:forEach>
@@ -87,6 +87,7 @@
 			</tr>
 			<tr>
 				<td>
+					${sessionScope.accountInfo.nickname}
 					<input name="user" value="0" type="hidden">
 					<input name="no" value="${r.no}" type="hidden">
 					<textarea placeholder="input text here" name="text"></textarea>

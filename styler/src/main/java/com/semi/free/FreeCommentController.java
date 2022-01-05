@@ -13,14 +13,14 @@ import com.semi.login.AccountDAO;
 public class FreeCommentController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		FreeDAO.writeComment(request);
+		FreeDAO.getFreedao().writeComment(request);
 		
-		FreeDAO.getFreeDetail(request);
-		FreeDAO.getComment(request);
-		FreeDAO.countComment(request);
-		FreeDAO.getNextFreeDetail(request);
-		FreeDAO.getPrevFreeDetail(request);
-		request.setAttribute("loginPage", "login/login.jsp");
+		FreeDAO.getFreedao().getFreeDetail(request);
+		FreeDAO.getFreedao().getComment(request);
+		FreeDAO.getFreedao().countComment(request);
+		FreeDAO.getFreedao().getNextFreeDetail(request);
+		FreeDAO.getFreedao().getPrevFreeDetail(request);
+		
 		request.setAttribute("contentPage", "free/freeDetail.jsp");
 		
 		request.getRequestDispatcher("index.jsp").forward(request, response);

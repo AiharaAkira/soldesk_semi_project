@@ -14,7 +14,7 @@ public class FreeModifyController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		FreeDAO.getFreeDetail(request);
+		FreeDAO.getFreedao().getFreeDetail(request);
 		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "free/freeModify.jsp");
 
@@ -26,11 +26,11 @@ public class FreeModifyController extends HttpServlet {
 			throws ServletException, IOException {
 
 		// 업데이트
-		FreeDAO.upadateFreeDetail(request);
+		FreeDAO.getFreedao().upadateFreeDetail(request);
 
 		// 조회
-		FreeDAO.paging(request);
-		FreeDAO.getNoticeList(request);
+		FreeDAO.getFreedao().paging(request);
+		FreeDAO.getFreedao().getNoticeList(1,request);
 		request.setAttribute("loginPage", "login/login.jsp");
 		request.setAttribute("contentPage", "free/free.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

@@ -54,32 +54,14 @@
 			</td>
 		</tr>
 
-		<tr>
-			<td colspan="4">
-				<table border="1">
-					<tr>
-						<td><img src="" alt="이미지 불러오는 중"></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>글내용1~2줄로표시</td>
-					</tr>
-					<tr>
-						<td>좋아요</td>
-						<td>댓글보기</td>
-					</tr>
-
-
-				</table>
-			</td>
-		</tr>
+		
 
 		<tr>
 			<td colspan="4"><c:forEach var="r" items="${reviews}">
 					<table border="1">
 						<tr>
 							<td><img src="img/${r.img}" alt="이미지 없음"
-								onclick="location.href='ReadDetailC?no=${r.no}'; checkCnt();"></td>
+								onclick="location.href='ReadDetailC?no=${r.no}';"></td>
 							<td>${r.user}</td>
 						</tr>
 						<tr>

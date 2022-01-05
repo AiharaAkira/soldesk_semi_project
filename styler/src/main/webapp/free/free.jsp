@@ -78,7 +78,7 @@
 			
 			<tr>
 				<td colspan="4"> 
-				<form action="FreeController" accept-charset="UTF-8">
+				<form action="FreeSearchController" accept-charset="UTF-8">
 				<table border="1">
 				<tr>
 				<td colspan="3"><select name="selected">
@@ -96,23 +96,37 @@
 				
 			</tr>
 		</table>
-		<%-- <div>
-			<c:set var="page" value="${param.p }" />
-			<c:choose>
-				<c:when test="${startNum>1}">
-					<a href="?p=${startNum-1} "> ����</a>
-				</c:when>
-
-				<c:otherwise>
-					<span onclick="alert('이전페이지없음')">이전(이전페이지없음)</span>
-				</c:otherwise>
-			</c:choose>
-		</div> --%>
+		
 		<div>
 				<ul class="pagination justify-content-center ">
+				
+			<!-- 검색어 없을 때 조건 -->
+				<c:choose> <c:when test="${empty searchText}">
+				<c:choose>
+				<c:when test="${pageNum eq 1}"><li class="page-item disabled"> <a class="page-link"  href="/styler220104_sbg/FreeController?pageNum=${pageNum -1}&selected=${selected}&searchText=${searchText}">Previous</a> </li></c:when>
+				<c:otherwise>
+					<li class="page-item"> <a class="page-link"  href="/styler220104_sbg/FreeController?pageNum=${pageNum -1}&selected=${selected}&searchText=${searchText}">Previous</a> </li>
+				</c:otherwise>
+				</c:choose>
 			<c:forEach var="p" items="${startEnd }">
-					<li class="page-item"> <a class="page-link"  href="/20211224/FreeController?pageNum=${p}&selected=${selected}&searchText=${searchText}">${p}</a> </li>
+					<li class="page-item"> <a class="page-link"  href="/styler220104_sbg/FreeController?pageNum=${p}&selected=${selected}&searchText=${searchText}">${p}</a> </li>
 			</c:forEach>
+			<c:choose>
+				<c:when test="${pageNum eq totalPage }"><li class="page-item disabled"> <a class="page-link"  href="/styler220104_sbg/FreeController?pageNum=${pageNum}&selected=${selected}&searchText=${searchText}">Next</a> </li></c:when>
+				<c:otherwise>
+					<li class="page-item"> <a class="page-link"  href="/styler220104_sbg/FreeController?pageNum=${pageNum +1}&selected=${selected}&searchText=${searchText}">Next</a> </li>
+				</c:otherwise>
+				</c:choose>
+			
+			</c:when> 
+			
+			
+			<c:otherwise>
+			<c:forEach var="p" items="${startEnd }">
+					<li class="page-item"> <a class="page-link"  href="/styler220104_sbg/FreeSearchController?pageNum=${p}&selected=${selected}&searchText=${searchText}">${p}</a> </li>
+			</c:forEach>
+			</c:otherwise>
+			</c:choose>
 				</ul>
 		</div>
 		</div>

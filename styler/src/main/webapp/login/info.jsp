@@ -12,6 +12,9 @@
 	<td ><img src="img/${sessionScope.accountInfo.profileImg}" /> </td>
 	</tr>
 	<tr>
+	<td > <button onclick="location.href='ProfileC'">프로필 사진변경</button> </td>
+	</tr>
+	<tr>
 	<td colspan="2">- 로그인 정보</td>
 	</tr>
 	<tr>
@@ -46,7 +49,7 @@
 	<td>${sessionScope.accountInfo.style }</td>
 	</tr>
 	</table>
-	<button onclick="location.href='UpdateAccountC'">수정하기</button>
+	<button onclick="location.href='UpdateAccountC'">정보수정하기</button>
 	<button onclick="location.href='SignOutC'"> 회원탈퇴</button>
 				
 	

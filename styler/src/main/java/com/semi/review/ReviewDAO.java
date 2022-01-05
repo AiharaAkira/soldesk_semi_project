@@ -70,7 +70,7 @@ public class ReviewDAO {
 			
 		try {
 			con = DBManager.connect();
-			String sql = "insert into post_review values (post_review_seq.nextval, ?, ?, 'good', ?, ?, ?, ?, 'hashtag', ?, sysdate, 'item', 'comment', 'user')";
+			String sql = "insert into post_review values (post_review_seq.nextval, ?, ?, 'good', ?, ?, ?, ?, 'hashtag', ?, sysdate, 'item', 'comment', ?)";
 			pstmt = con.prepareStatement(sql);
 			String saveDirectory = request.getServletContext().getRealPath("img");
 			
@@ -83,6 +83,7 @@ public class ReviewDAO {
 			String accessary = mr.getParameter("accessary");
 			String title = mr.getParameter("title");
 			String text = mr.getParameter("text");
+			String name = mr.getParameter("user");
 			
 			
 			System.out.println(fileName);
@@ -92,6 +93,7 @@ public class ReviewDAO {
 			System.out.println(accessary);
 			System.out.println(title);
 			System.out.println(text);
+			System.out.println(name);
 			
 			pstmt.setString(1, title);
 			pstmt.setString(2, text);
@@ -100,6 +102,7 @@ public class ReviewDAO {
 			pstmt.setString(5, shoes);
 			pstmt.setString(6, accessary);
 			pstmt.setString(7, fileName);
+			pstmt.setString(8, name);
 			
 			if(pstmt.executeUpdate() == 1) {
 				request.setAttribute("res", "Update");

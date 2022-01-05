@@ -116,6 +116,45 @@ insert into post values(post_seq.nextval, 'Å·Äá11','text', 'ÀÌ¹ÌÁö', sysdate, 'Ä
 
 select * from post;
 
+--°øÁö°Ô
+create table postA(
+p_no varchar2(20 char) primary key,
+p_title varchar2(20 char) not null,
+p_text varchar2(20 char) not null,
+p_img varchar2(300 char) not null,
+p_date date not null,
+p_comment varchar2(300 char) not null,
+p_user varchar2(300 char) not null,
+p_view_count number(10) default 0 not null
+);
+
+CREATE sequence postA_seq;
+
+
+insert into postA values(postA_seq.nextval, 'Å·Äá11','text', 'ÀÌ¹ÌÁö', sysdate, 'ÄÚ¸àÆ®t', 'userT',0);
+
+select * from postA;
+--¹®ÀÇ°Ô
+
+create table postQ(
+p_no varchar2(20 char) primary key,
+p_title varchar2(20 char) not null,
+p_text varchar2(20 char) not null,
+p_img varchar2(300 char) not null,
+p_date date not null,
+p_comment varchar2(300 char) not null,
+p_user varchar2(300 char) not null,
+p_view_count number(10) default 0 not null
+);
+
+CREATE sequence postQ_seq;
+
+
+
+insert into postQ values(postQ_seq.nextval, 'Å·Äá11','text', 'ÀÌ¹ÌÁö', sysdate, 'ÄÚ¸àÆ®t', 'userT',0);
+
+select * from postQ;
+
 --È¿¼·¾¾ Á¤¸®
 drop table POST;
 

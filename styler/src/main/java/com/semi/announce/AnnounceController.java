@@ -13,6 +13,7 @@ import com.semi.login.AccountDAO;
 public class AnnounceController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "announce/announce.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

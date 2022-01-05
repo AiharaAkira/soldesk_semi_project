@@ -20,11 +20,11 @@ public class FreeWriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//삽입
 		
-		FreeDAO.writeFree(request);
+		FreeDAO.getFreedao().writeFree(request);
 		//페이징
-		FreeDAO.paging(request);
+		FreeDAO.getFreedao().paging(request);
 		//전부나타내기
-		FreeDAO.getNoticeList(request);
+		FreeDAO.getFreedao().getNoticeList(1,request);
 		
 		
 		AccountDAO.loginCheck(request);

@@ -18,11 +18,11 @@ public class FreeDeleteController extends HttpServlet {
 			throws ServletException, IOException {
 		
 		// 삭제
-				FreeDAO.deleteFreeDetail(request);
+				FreeDAO.getFreedao().deleteFreeDetail(request);
 
 				// 조회
-				FreeDAO.paging(request);
-				FreeDAO.getNoticeList(request);
+				FreeDAO.getFreedao().paging(request);
+				FreeDAO.getFreedao().getNoticeList(1,request);
 				AccountDAO.loginCheck(request);
 				request.setAttribute("contentPage", "free/free.jsp");
 				request.getRequestDispatcher("index.jsp").forward(request, response);

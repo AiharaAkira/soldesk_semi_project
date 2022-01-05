@@ -177,6 +177,5 @@
 	<!-- 부트스트랩과 충돌로 주석처리  -->
 	<!-- <script type="text/javascript" src="js/slider.js"></script> -->
 	<script type="text/javascript" src="js/freeboard.js"></script>
-
 </body>
 </html>
