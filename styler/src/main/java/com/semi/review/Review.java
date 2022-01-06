@@ -17,11 +17,12 @@ public class Review {
 	private String comment;
 	private String user;
 	private Date date;
+	private int view_count;
 	
 	public Review () {}
 	
 	public Review(String no, String title, String text, String good, String top, String pants, String shoes,
-			String accessary, String hashtag, String img, String item, String comment, String user, Date date) {
+			String accessary, String hashtag, String img, String item, String comment, String user, Date date, int view_count) {
 		super();
 		this.no = no;
 		this.title = title;
@@ -37,6 +38,17 @@ public class Review {
 		this.comment = comment;
 		this.user = user;
 		this.date = date;
+		this.view_count = view_count;
+	}
+
+	
+	
+	public int getView_count() {
+		return view_count;
+	}
+
+	public void setView_count(int view_count) {
+		this.view_count = view_count;
 	}
 
 	public String getHashtag() {

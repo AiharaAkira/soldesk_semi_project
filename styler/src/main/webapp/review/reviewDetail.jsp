@@ -32,7 +32,7 @@
 					</ul>
 				</div>
 				<div class="content-header_view_right_2nd">
-					<span>test view count 0</span><br /> <span>작성일 : ${r.date}</span>
+					<span>조회수 : ${r.view_count}</span><br /> <span>작성일 : ${r.date}</span>
 				</div>
 
 			</div>
@@ -87,8 +87,8 @@
 			</tr>
 			<tr>
 				<td>
-					${sessionScope.accountInfo.nickname}
-					<input name="user" value="0" type="hidden">
+					
+					<input name="user" value="${sessionScope.accountInfo.nickname}" type="hidden">
 					<input name="no" value="${r.no}" type="hidden">
 					<textarea placeholder="input text here" name="text"></textarea>
 				</td>

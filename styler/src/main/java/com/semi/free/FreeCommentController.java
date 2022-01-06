@@ -21,6 +21,7 @@ public class FreeCommentController extends HttpServlet {
 		FreeDAO.getFreedao().getNextFreeDetail(request);
 		FreeDAO.getFreedao().getPrevFreeDetail(request);
 		
+		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "free/freeDetail.jsp");
 		
 		request.getRequestDispatcher("index.jsp").forward(request, response);

@@ -143,6 +143,7 @@ public class ReviewDAO {
 				r.setAccessary(rs.getString("p_accessary"));
 				r.setImg(rs.getString("p_img"));
 				r.setUser(rs.getString("p_user"));
+				r.setView_count(rs.getInt("p_view_count"));
 			}
 			request.setAttribute("r", r);
 			
@@ -256,6 +257,31 @@ public class ReviewDAO {
 			DBManager.close(con, pstmt, null);
 		}
 		
+	}
+
+	public static void getViewCount(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "update post_review set p_view_count = p_view_count + 1 where p_no = ?";
+		
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("no"));
+			
+			if(pstmt.executeUpdate() == 1) {
+				System.out.println("count view accepted");
+			} else {
+				System.out.println("count view failed");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("db error");
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
 	}
 
 }

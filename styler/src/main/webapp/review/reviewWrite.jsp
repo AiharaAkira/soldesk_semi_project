@@ -53,7 +53,7 @@
 		
 		<tr>
 		
-			<td> <input name="title"> <input name="user"  value="${sessionScope.accountInfo.nickname}"> </td>
+			<td> <input name="title"> <input name="user"  value="${sessionScope.accountInfo.nickname}" type="hidden"> </td>
 		</tr>
 		<tr>
 			<td> <textarea name="text"></textarea> </td>

@@ -18,6 +18,7 @@ public class ReadDetailC extends HttpServlet {
 		ReviewDAO.getReviewDetail(request);
 		ReviewCommentDAO.getComment(request);
 		AccountDAO.loginCheck(request);
+		ReviewDAO.getViewCount(request);
 		request.setAttribute("contentPage", "review/reviewDetail.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

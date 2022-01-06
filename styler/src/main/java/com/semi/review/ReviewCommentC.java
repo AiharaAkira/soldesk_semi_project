@@ -15,12 +15,13 @@ public class ReviewCommentC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		AccountDAO.loginCheck(request);
 		
+		
+		AccountDAO.loginCheck(request);
 		ReviewCommentDAO.writeComment(request);
 		ReviewDAO.getReviewDetail(request);
 		ReviewCommentDAO.getComment(request);
-		request.setAttribute("loginPage", "login/login.jsp");
+		
 		request.setAttribute("contentPage", "review/reviewDetail.jsp");
 		
 		request.getRequestDispatcher("index.jsp").forward(request, response);

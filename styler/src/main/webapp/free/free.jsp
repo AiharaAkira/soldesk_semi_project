@@ -33,68 +33,51 @@
 	</div>
 		</form> -->
 		<div class="m-3">
-		<table class="table" border="1">
-
-			<!-- <tr>
-				<td onclick="location.href='HomeController'">타이틀</td>
-				
-				<td onclick="location.href='ProfileController'">내정보</td>
-
-			</tr>
-
-			
-
-			<tr>
-				<td colspan="4">
-					<table border="1">
-						<tr>
-							<td>인기순</td>
-							<td>최신글</td>
-							<td>댓글순</td>
-						</tr>
-					</table>
-				</td>
-			</tr> -->
-			<tr>
-				<th>종류</th>
-				<th>글제목</th>
+		<table class="table  table-striped table-hover" border="1"> 
+	<thead class="table-dark">
+	<tr>
+				<th >종류</th>
+				<th class="col-9">글제목</th>
 				<th>작성자</th>
-				<th>날짜</th>
+				<th >날짜</th>
 			</tr>
+	</thead>
 			
+			<tbody>
 			<c:forEach var="p" items="${posts}">
 				<tr>
-					<td>자유글</td>
-					<td onclick="location.href='FreeDetailC?no=${p.p_no}'">${p.p_title}</td>
-					<td>${p.p_user}</td>
-					<td>${p.p_date}</td>
+					<td style="border: 2px solid black">자유글</td>
+					<td class="col-9" style="border: 2px solid black" onclick="location.href='FreeDetailC?no=${p.p_no}'">${p.p_title}</td>
+					<td style="border: 2px solid black" >${p.p_user}</td>
+					<td  style="border: 2px solid black">${p.p_date}</td>
 				</tr>
 			</c:forEach>
 			<c:if test="${not empty sessionScope.accountInfo }">
 			<tr>
-				<td onclick="location.href='FreeWriteController'">글쓰기</td>
+				<!-- <td colspan="4" style="text-align: right" onclick="location.href='FreeWriteController'">글쓰기</td> -->
+				<td colspan="4" style="text-align: right">
+				<div class="d-flex col-2 border float-end"> <button>글쓰기</button> </div>
+				</td>
+				
 			</tr>
 			</c:if>
 			
 			<tr>
 				<td colspan="4"> 
 				<form action="FreeSearchController" accept-charset="UTF-8">
-				<table border="1">
-				<tr>
-				<td colspan="3"><select name="selected">
+				<div class="d-flex col-12 border border-3 justify-content-center">
+				<select name="selected">
 						<option value="p_title">제목</option>
 						<option value="p_text">내용</option>
 						<option value="p_user">작성자</option>
-				</select></td>
-				<td>
-					<input name="searchText"> <button>검색</button>
-				</td>
-				</tr>
-				</table> 
+				</select>
+					<input class="col-lg-10" name="searchText"> <button>검색</button>
+				</div>
 				</form>
 				</td>
 				
 			</tr>
+			</tbody>
 		</table>
 		
 		<div>

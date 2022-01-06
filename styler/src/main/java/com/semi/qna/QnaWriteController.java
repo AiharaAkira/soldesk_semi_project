@@ -18,9 +18,19 @@ public class QnaWriteController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//삽입
+		
+//		FreeDAO.getFreedao().writeFree(request);
+		QnaDAO.getQnadao().writeFree(request);
+//		//페이징
+//		FreeDAO.getFreedao().paging(request);
+		QnaDAO.getQnadao().paging(request);
+//		//전부나타내기
+//		FreeDAO.getFreedao().getNoticeList(1,request);
+		QnaDAO.getQnadao().getNoticeList(1, request);
+		
+		
 		AccountDAO.loginCheck(request);
-		//글쓰기인데 관리자
-		//전체출력
 		request.setAttribute("contentPage", "qna/qna.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

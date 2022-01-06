@@ -37,7 +37,10 @@
 			<td onclick="location.href='HomeController'">타이틀</td>
 
 			<td onclick="location.href='ProfileController'">내정보</td>
-			<td onclick="location.href='WritePost'">리뷰쓰기</td>
+			<!-- <td onclick="location.href='WritePost'">리뷰쓰기</td> -->
+			<c:if test="${not empty sessionScope.accountInfo }">
+				<td onclick="location.href='WritePost'">리뷰쓰기</td>
+			</c:if>
 		</tr>
 
 		
@@ -61,15 +64,15 @@
 					<table border="1">
 						<tr>
 							<td><img src="img/${r.img}" alt="이미지 없음"
-								onclick="location.href='ReadDetailC?no=${r.no}';"></td>
+								onclick="location.href='ReadDetailC?no=${r.no}'"></td>
 							<td>${r.user}</td>
 						</tr>
 						<tr>
 							<td>${r.text}</td>
 						</tr>
 						<tr>
-							<td>${r.good}</td>
-							<td>${r.comment}</td>
+							<%-- <td>${r.good}</td> --%>
+							<%-- <td>${r.comment}</td> --%>
 						</tr>
 					</table>
 				</c:forEach></td>
