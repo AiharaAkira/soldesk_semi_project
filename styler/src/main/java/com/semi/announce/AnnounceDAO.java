@@ -641,4 +641,66 @@ public class AnnounceDAO {
 
 	}
 
+	public void modifyComment(HttpServletRequest request) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+
+		String sql = "update comments set c_text = ? where c_no = ?";
+		
+
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("c_text"));
+			pstmt.setString(2, request.getParameter("c_no"));
+			
+			rs = pstmt.executeQuery();
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+
+		
+		
+	}
+	
+public void deleteComment(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		// 날짜 date설정은
+		// r_date=sysdate추가
+		String sql = "delete comments where c_no=?";
+
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("cno"));
+
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("댓글삭제성공");
+			} else {
+				System.out.println("댓글삭제실패");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("DB문제");
+
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
+	}
+
+	
+
+
 }

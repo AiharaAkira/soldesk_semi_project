@@ -105,7 +105,7 @@ public class AccountDAO {
 
 			String id = mr.getParameter("id");
 			String pw = mr.getParameter("pw");
-			String name = mr.getParameter("name");
+			String name = mr.getParameter("name1");
 			String nickname = mr.getParameter("nickname");
 			String email = mr.getParameter("email");
 			String gender = mr.getParameter("gender");

@@ -104,6 +104,7 @@ public class ReviewDAO {
 			pstmt.setString(7, fileName);
 			pstmt.setString(8, name);
 			
+			
 			if(pstmt.executeUpdate() == 1) {
 				request.setAttribute("res", "Update");
 			} else {

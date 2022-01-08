@@ -13,7 +13,7 @@
 			<td> 사진올리기<input type="file" name="img"> </td>
 		</tr>
 		<tr>
-			<td> 제목<input name="title"> <br> 닉네임: ${sessionScope.accountInfo.nickname} <input name="user" type="hidden" value="${sessionScope.accountInfo.nickname} " > </td> 
+			<td> 제목<input name="title"> <br> 닉네임: ${sessionScope.accountInfo.nickname} <input name="user" type="hidden" value="${sessionScope.accountInfo.nickname}" > </td> 
 		</tr>
 		<tr>
 		<td>  </td>

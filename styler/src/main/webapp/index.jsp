@@ -72,23 +72,23 @@
 
 
 				</div>
-				<div class="ps-3 mb-3  border">
+				<div class="ps-3 mb-3  ">
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
 						aria-controls="offcanvasNavbar">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 				</div>
-				<div class="col-11 col-lg-5 mb-3  border ">
+				<div class="col-11 col-lg-5 mb-3   ">
 					<span class="d-none"> 검색바 길이조절</span>
 				</div>
-				<form class="col-12 col-lg-4 mb-3 mb-3 me-lg-3  border flex-fill"
+				<form class="col-12 col-lg-4 mb-3 mb-3 me-lg-3   flex-fill"
 					action="SearchController">
 					<input type="search" class="form-control form-control-dark"
 						placeholder="Search..." aria-label="Search">
 				</form>
 
-				<div class="mb-3 border">
+				<div class="mb-3 ">
 					<jsp:include page="${loginPage}"></jsp:include>
 				</div>
 

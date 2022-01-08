@@ -42,7 +42,7 @@ public class GameDAO {
 			
 			
 			pstmt.setInt(1, Integer.parseInt(request.getParameter("checkPoint")) + coin());
-			pstmt.setString(2, request.getParameter("no"));
+			pstmt.setString(2, request.getParameter("id"));
 			
 			
 			if (pstmt.executeUpdate() == 1) {

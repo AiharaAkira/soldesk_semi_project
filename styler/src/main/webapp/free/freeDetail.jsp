@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page isELIgnored="false"%>
 
 <!DOCTYPE html>
 <html>
@@ -12,23 +13,24 @@
 </head>
 <body>
 
-	<h1>자유게시판</h1>
+	<h1>자유게시판</h1>  
 
 	<hr>
-	<table border="1">
+	<table class="table table-borderless" style="width: 95%; margin: auto " border="2">
 		<tr>
-			<td colspan="4">${p.p_title}</td>
+			<td class="h5 ps-3 border-bottom" colspan="4">${p.p_title}</td>
 		</tr>
 
 		<tr>
-			<td>${p.p_user}<br>${p.p_date}</td>
-			<td>조회수 ${p.p_view_count} <br>댓글수 ${totalComment}
+			<td  class="ps-3" colspan="2" style="text-align: auto"> <small> ${p.p_user} </small> | <small class="text-muted"> <fmt:formatDate value="${p.p_date}" pattern="yyyy.MM.dd / a hh:mm"/> </small> </td>
+			<td colspan="2" style="text-align: center"> <small>조회수 ${p.p_view_count}</small> <small>|</small> <small>댓글수 ${totalComment}</small>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4"> <img src=" free/img/${p.p_img}"> <br>${p.p_text} </td>
+			<td class="ps-3 border" colspan="4"> <img src=" free/img/${p.p_img}"> <br>${p.p_text} </td>
 			
 		</tr>
+		
 <c:set var="writerName" value="${p.p_user}" />
 <c:set var="loginName" value="${sessionScope.accountInfo.nickname}" />
 
@@ -36,28 +38,75 @@
 <c:if test="${fn:trim(p.p_user) eq loginName || loginName eq 'admin'}">
 		<tr>
 			<td colspan="3"></td>
-			<td>
-				<button onclick="location.href='FreeModifyController?no=${p.p_no}'">수정</button>	<button onclick="delCheck(${p.p_no})">삭제</button>
+			<td style="text-align: center">
+				<button class="btn btn-secondary" onclick="location.href='FreeModifyController?no=${p.p_no}'">수정</button>	<button class="btn btn-danger" onclick="delCheck(${p.p_no})">삭제</button>
 			</td>
 		</tr>
-		</c:if>
 		
-		<tr> <td>${writerName}  ${loginName}</td>  </tr>
-	  <c:forEach var="c" items="${comments}">
+		</c:if>
 		<tr>
-		<td>   ${c.c_users} // ${c.c_text} // <fmt:formatDate value="${c.c_date}" pattern="yyyy.MM.dd/ a hh:mm"/> 수정 삭제  </td>
+		<td colspan="4"><hr class=""></td>
+		</tr>
+		
+			<c:set var="sex" value="1" />
+	  <c:forEach var="c" items="${comments}" >
+		<tr>
+		<td>
+		<%-- <table class="table">
+		<tr> <td> ${c.c_users} </td>
+			<td> ${c.c_text} </td>
+		
+		    <td> <fmt:formatDate value="${c.c_date}" pattern="yyyy.MM.dd/ a hh:mm"/></td>
+		    <td> 수정 삭제  </td> 
+		    </tr>
+		</table> --%>
+		<div class="border-bottom">
+		<div> <small> ${c.c_users} </small></div>
+		<div>${c.c_text}</div>
+		<div><small class="text-muted"><fmt:formatDate value="${c.c_date}" pattern="yyyy.MM.dd/ a hh:mm"/></small></div>
+		
+		<c:set var="Cuser" value="${c.c_users }"></c:set>
+		<c:choose>
+		<c:when test="${fn:trim(Cuser) eq sessionScope.accountInfo.nickname}">  
+		<div class="btn-group  btn-group-sm mt-2"> 
+		<button class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#check${c.c_no}" aria-expanded="false" aria-controls="수정">수정</button>
+		 <button class="btn btn-outline-danger" onclick="commentDelCheck(${c.c_no},${p.p_no})" >삭제</button>
+		   </div>
+  <div class="collapse" id="check${c.c_no}">
+  
+  <form action="CommentModifyController">
+  <div>
+  <textarea class="form-control mt-2" id="CommentArea" rows="3" name="c_text" placeholder="댓글을 입력해주세요"></textarea>
+  <input name="no" value="${p.p_no}" type="hidden" >
+  <button class="btn btn-primary mt-2 btn-sm" name="c_no" value="${c.c_no}" > 수정하기  </button>
+  </div>
+  </form>
+</div>
+
+</c:when>
+		
+		
+		<c:otherwise> <div> <span></span> </div> </c:otherwise>
+		</c:choose>
+		</div>
+		</td>
 		</tr>
 		</c:forEach>
 		<tr>
 			<td colspan="4">
-			 <form action="FreeCommentController">
+			<c:if test="${not empty sessionScope.accountInfo }">
 			 <div>
-			 		<input name="c_user" value="0" type="hidden">
+			<label for="CommentArea" class="form-label">댓글</label>
+			 <form action="FreeCommentController">
+			 		<input name="c_user" value="${sessionScope.accountInfo.nickname} " type="hidden">
 			 		<input name="no" value="${p.p_no}" type="hidden">
-					<textarea name="c_text" > 댓글작성 </textarea>	
+					<textarea class="form-control" id="CommentArea" rows="3" name="c_text" placeholder="댓글을 입력해주세요"></textarea>	
+			<button class="btn btn-outline-secondary mt-3" name="c_post" value="${p.p_no}" >작성하기</button>
+			 </form> 
+			 
 			</div>
-			<button name="c_post" value="${p.p_no}">작성하기</button>
-			</form>
+			</c:if>
+			
 			 </td>
 		</tr>
 		<tr>

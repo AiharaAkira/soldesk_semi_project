@@ -18,7 +18,7 @@
 		<div class="dropdown">
                     <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                      <!--  유저프사 가져오기 -->
-                      <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
+                      <img src="img/${sessionScope.accountInfo.profileImg}" alt="mdo" width="40" height="40" class="rounded-circle">
                     </a>
                     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                       <li><a class="dropdown-item" href="InfoController">Profile</a></li>

@@ -195,3 +195,5 @@ ALTER TABLE comments DROP constraint fk_cno;
 
 -- 글삭제시 댓글삭제도 같이 되게 제약
 ALTER TABLE comments ADD CONSTRAINT fk_cno FOREIGN KEY (c_post) REFERENCES post(p_no) ON DELETE CASCADE;
+--20220108병관씨
+alter table post_review add p_view_count number(38) default 0;

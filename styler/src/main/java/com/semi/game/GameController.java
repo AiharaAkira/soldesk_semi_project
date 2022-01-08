@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.semi.free.FreeDAO;
 import com.semi.login.AccountDAO;
+import com.semi.review.ReviewDAO;
 
 
 @WebServlet("/GameController")
@@ -26,6 +27,7 @@ public class GameController extends HttpServlet {
 		
 		AccountDAO.loginCheck(request);
 		GameDAO.game(request);
+		ReviewDAO.getAllReview(request);
 		
 	request.setAttribute("contentPage", "home/home.jsp");
 	request.getRequestDispatcher("index.jsp").forward(request, response);

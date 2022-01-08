@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.review.ReviewDAO;
+
 
 @WebServlet("/SignUpC")
 public class SignUpC extends HttpServlet {
@@ -22,6 +24,7 @@ public class SignUpC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		AccountDAO.reg(request);
+		ReviewDAO.getAllReview(request);
 		AccountDAO.loginCheck(request);
 		
 		request.setAttribute("loginPage", "login/login.jsp");

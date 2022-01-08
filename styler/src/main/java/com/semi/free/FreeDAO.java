@@ -373,10 +373,23 @@ public class FreeDAO {
 		int totalContent = 0;
 		int totalPage = 0;
 
-		// 시작페이지
-		int startPage = 1;
 
-		// 한 화면에 보여줄 리스트 갯수, 페이징 범위의 갯수
+				//패이지 넘기기위한 파라미터값 설정
+				int pageNum = 0;
+				if (request.getParameter("pageNum")==null) {
+					 pageNum = 1;
+				}
+				else {
+					pageNum = Integer.parseInt(request.getParameter("pageNum"));
+				}
+				System.out.println(pageNum);
+				
+				//페이징 블록 변수
+				int currentBlock = 0;
+				int pageBlockLength = 2;
+				int startPage = 0;
+				int endPage = 0;		
+		
 		String searchType = request.getParameter("selected");
 		String searchText = request.getParameter("searchText");
 		String sql = "select count(*) from post where " + searchType + " like '%'||?||'%' order by p_date desc";
@@ -393,22 +406,34 @@ public class FreeDAO {
 
 			}
 
+						
 			// 끝페이지 계산
-			startPage = 1;
-			totalPage = totalContent / pagePerList;
-			if (totalContent % pagePerList > 0) {
-				totalPage++;
-			}
+						totalPage = totalContent / pagePerList;
+						if (totalContent % pagePerList > 0) {
+							totalPage++;
+						}
+						
+						// 페이지 처음과 끝을 지정하는 부분
+						 currentBlock = pageNum % pageBlockLength == 0 ? pageNum / pageBlockLength : (pageNum / pageBlockLength) + 1;
+						 startPage = (currentBlock - 1) * pageBlockLength + 1;
+						 endPage = startPage + pageBlockLength - 1;
+						// 마지막 페이지 묶음에서 총 페이지수를 넘어가면 끝 페이지를 마지막 페이지 숫자로 지정
+						if (endPage > totalPage) {
+						    endPage = totalPage;
+						}
+						System.out.println(currentBlock);
+						System.out.println("--------");
+						System.out.println(startPage);
+						System.out.println(endPage);
 
-			// 페이징 리스트 출력
+						// 페이징 리스트 출력
 
-			page_ = new ArrayList<Integer>();
+						page_ = new ArrayList<Integer>();
 
-			for (int i = startPage; i <= totalPage; i++) {
-				int j = i;
-				page_.add(j);
-
-			}
+						
+						for (int i = startPage; i < endPage+1 ; i++) {
+							page_.add(i);
+						}
 
 			System.out.println("----------------");
 			System.out.println(page_);
@@ -417,6 +442,8 @@ public class FreeDAO {
 			request.setAttribute("startEnd", page_);
 			request.setAttribute("selected", searchType);
 			request.setAttribute("searchText", searchText);
+			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("totalPage", totalPage);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -645,6 +672,65 @@ public class FreeDAO {
 			DBManager.close(con, pstmt, null);
 		}
 
+	}
+
+	public void modifyComment(HttpServletRequest request) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+
+		String sql = "update comments set c_text = ? where c_no = ?";
+		
+
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("c_text"));
+			pstmt.setString(2, request.getParameter("c_no"));
+			
+			rs = pstmt.executeQuery();
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+
+		
+		
+	}
+
+	public void deleteComment(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		// 날짜 date설정은
+		// r_date=sysdate추가
+		String sql = "delete comments where c_no=?";
+
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("cno"));
+
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("댓글삭제성공");
+			} else {
+				System.out.println("댓글삭제실패");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("DB문제");
+
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
 	}
 
 }
