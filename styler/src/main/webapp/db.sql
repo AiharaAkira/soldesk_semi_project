@@ -32,6 +32,15 @@ u_checkPoint varchar2(200 char) not null
 
 insert into users values('아이디', '비번', '이름', '닉네임', '이메일', '성별', '옷취향', '사진.jpg', '0', '1');
 
+--20220110 유저 출석 날짜 컬럼 추가
+ALTER TABLE users add u_checkDate VARCHAR2(100) default "0";
+--유저 전체 브론즈로
+update users set u_typeOfManager = '브론즈';
+--유저 전체 점수 100
+update users set u_checkPoint = '100';
+--출첵날짜 초기화
+update users set u_checkDate = '0';
+
 select * from users;
 
 --데일리포스트

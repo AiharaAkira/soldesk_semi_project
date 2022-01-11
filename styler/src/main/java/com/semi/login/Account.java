@@ -11,7 +11,16 @@ public class Account {
 	private String profileImg;
 	private String typeOfManger;
 	private String checkPoint;
+	private String checkDate;
 	
+	public String getCheckDate() {
+		return checkDate;
+	}
+
+	public void setCheckDate(String checkDate) {
+		this.checkDate = checkDate;
+	}
+
 	public Account() {
 		// TODO Auto-generated constructor stub
 	}

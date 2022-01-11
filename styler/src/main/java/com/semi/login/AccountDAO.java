@@ -3,6 +3,8 @@ package com.semi.login;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,7 +16,7 @@ import com.semi.main.DBManager;
 public class AccountDAO {
 
 	public static void loginCheck(HttpServletRequest request) {
-
+		
 		HttpSession hs = request.getSession();
 		Account a = (Account) hs.getAttribute("accountInfo");
 
@@ -33,6 +35,7 @@ public class AccountDAO {
 	public static void login(HttpServletRequest request) {
 		String userId = request.getParameter("id");
 		String userPw = request.getParameter("pw");
+		
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -60,6 +63,7 @@ public class AccountDAO {
 					a.setProfileImg(rs.getString("u_profileimg"));
 					a.setTypeOfManger(rs.getString("u_typeOfManager"));
 					a.setCheckPoint(rs.getString("u_checkpoint"));
+					a.setCheckDate(rs.getString("u_checkDate"));
 
 					HttpSession hs = request.getSession();
 					hs.setAttribute("accountInfo", a);
@@ -93,7 +97,13 @@ public class AccountDAO {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into USERS values (?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into USERS values (?,?,?,?,?,?,?,?,?,?,?)";
+		LocalDate now = LocalDate.now();
+		// 포맷 정의
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		// 포맷 적용
+		String formatedNow = now.format(formatter);
+
 
 		try {
 			con = DBManager.connect();
@@ -125,6 +135,7 @@ public class AccountDAO {
 			pstmt.setString(8, profileImg);
 			pstmt.setString(9, "0");
 			pstmt.setString(10, "0");
+			pstmt.setString(11, formatedNow);
 
 			if (pstmt.executeUpdate() == 1) {
 
@@ -145,12 +156,12 @@ public class AccountDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		//String sql = "update users set (u_pw, u_nickname, u_email, u_style, u_profileImg) = (?,?,?,?,?) where u_id=?";
-		String sql = "update users set u_pw=?, u_nickname=?,"
-			+ "u_email=?,u_style=? where u_id=?";
+
+		// String sql = "update users set (u_pw, u_nickname, u_email, u_style,
+		// u_profileImg) = (?,?,?,?,?) where u_id=?";
+		String sql = "update users set u_pw=?, u_nickname=?," + "u_email=?,u_style=? where u_id=?";
 		try {
-			
+
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 
@@ -163,14 +174,14 @@ public class AccountDAO {
 			String email = mr.getParameter("email");
 			String id = mr.getParameter("id");
 			String style = mr.getParameter("style");
-			
+
 			pstmt.setString(1, pw);
 			pstmt.setString(2, nickname);
 			pstmt.setString(3, email);
 			pstmt.setString(4, style);
 			pstmt.setString(5, id);
-			
-			if(pstmt.executeUpdate() == 1) {
+
+			if (pstmt.executeUpdate() == 1) {
 				String sql2 = "select * from users where u_id = ?";
 				pstmt = con.prepareStatement(sql2);
 				pstmt.setString(1, id);
@@ -192,24 +203,25 @@ public class AccountDAO {
 						a.setProfileImg(rs.getString("u_profileimg"));
 						a.setTypeOfManger(rs.getString("u_typeOfManager"));
 						a.setCheckPoint(rs.getString("u_checkpoint"));
+						a.setCheckDate(rs.getString("u_checkDate"));
 
 						HttpSession hs = request.getSession();
 						hs.setAttribute("accountInfo", a);
 						hs.setMaxInactiveInterval(1800);
-						
-				System.out.println("수정성공");
+
+						System.out.println("수정성공");
 					}
 				}
-				
-			}else {
-				
+
+			} else {
+
 				System.out.println("수정실패");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("DB서버오류-프로필");
-		}finally {
+		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
 
@@ -248,11 +260,12 @@ public class AccountDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		//String sql = "update users set (u_pw, u_nickname, u_email, u_style, u_profileImg) = (?,?,?,?,?) where u_id=?";
+
+		// String sql = "update users set (u_pw, u_nickname, u_email, u_style,
+		// u_profileImg) = (?,?,?,?,?) where u_id=?";
 		String sql = "update users set u_profileImg=? where u_id=?";
 		try {
-			
+
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 
@@ -260,15 +273,13 @@ public class AccountDAO {
 			MultipartRequest mr = new MultipartRequest(request, path, 30 * 1024 * 1024, "utf-8",
 					new DefaultFileRenamePolicy());
 
-			
 			String id = mr.getParameter("id");
 			String style = mr.getFilesystemName("img");
-			
-		
+
 			pstmt.setString(1, style);
 			pstmt.setString(2, id);
-			
-			if(pstmt.executeUpdate() == 1) {
+
+			if (pstmt.executeUpdate() == 1) {
 				String sql2 = "select * from users where u_id = ?";
 				pstmt = con.prepareStatement(sql2);
 				pstmt.setString(1, id);
@@ -277,40 +288,117 @@ public class AccountDAO {
 				if (rs.next()) {
 					String dbPW = rs.getString("u_pw");
 
-					
+					Account a = new Account();
+					a.setId(rs.getString("u_id"));
+					a.setPw(rs.getString("u_pw"));
+					a.setName(rs.getString("u_name"));
+					a.setNickname(rs.getString("u_nickname"));
+					a.setEmail(rs.getString("u_email"));
+					a.setGender(rs.getString("u_gender"));
+					a.setStyle(rs.getString("u_style"));
+					a.setProfileImg(rs.getString("u_profileimg"));
+					a.setTypeOfManger(rs.getString("u_typeOfManager"));
+					a.setCheckPoint(rs.getString("u_checkpoint"));
+					a.setCheckDate(rs.getString("u_checkDate"));
+					HttpSession hs = request.getSession();
+					hs.setAttribute("accountInfo", a);
+					hs.setMaxInactiveInterval(1800);
 
-						Account a = new Account();
-						a.setId(rs.getString("u_id"));
-						a.setPw(rs.getString("u_pw"));
-						a.setName(rs.getString("u_name"));
-						a.setNickname(rs.getString("u_nickname"));
-						a.setEmail(rs.getString("u_email"));
-						a.setGender(rs.getString("u_gender"));
-						a.setStyle(rs.getString("u_style"));
-						a.setProfileImg(rs.getString("u_profileimg"));
-						a.setTypeOfManger(rs.getString("u_typeOfManager"));
-						a.setCheckPoint(rs.getString("u_checkpoint"));
+					System.out.println("수정성공");
 
-						HttpSession hs = request.getSession();
-						hs.setAttribute("accountInfo", a);
-						hs.setMaxInactiveInterval(1800);
-						
-				System.out.println("수정성공");
-					
 				}
-				
-			}else {
-				
+
+			} else {
+
 				System.out.println("수정실패");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("DB서버오류-프로필");
-		}finally {
+		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
-		
+
+	}
+
+	public static void levelUp(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		// String sql = "update users set (u_pw, u_nickname, u_email, u_style,
+		// u_profileImg) = (?,?,?,?,?) where u_id=?";
+		String sql = "update users set u_checkPoint=?, u_typeOfManager=? where u_id=?";
+		try {
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+
+			int checkPoint = Integer.parseInt(request.getParameter("checkPoint"));
+			String typeOfManager = request.getParameter("typeOfManger");
+			String id = request.getParameter("id");
+			if (typeOfManager.equals("브론즈")&&checkPoint>=100) {
+				pstmt.setInt(1, checkPoint - 100);
+				pstmt.setString(2, "실버");
+				pstmt.setString(3, id);
+				request.setAttribute("nowLevel", "실버");
+			} else if (typeOfManager.equals("실버")&&checkPoint>=200) {
+				pstmt.setInt(1, checkPoint - 200);
+				pstmt.setString(2, "골드");
+				pstmt.setString(3, id);
+				request.setAttribute("nowLevel", "골드");
+			} else if(typeOfManager.equals("플레티넘")&&checkPoint>=1000){
+				pstmt.setInt(1, checkPoint - 1000);
+				pstmt.setString(2, "플레티넘");
+				pstmt.setString(3, id);
+				request.setAttribute("nowLevel", "플레티넘");
+			}else {
+				pstmt.setInt(1, checkPoint);
+				pstmt.setString(2, typeOfManager);
+				pstmt.setString(3, id);
+				request.setAttribute("nowLevel", typeOfManager);
+			}
+
+			if (pstmt.executeUpdate() == 1) {
+				String sql2 = "select * from users where u_id = ?";
+				pstmt = con.prepareStatement(sql2);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+
+					Account a = new Account();
+					a.setId(rs.getString("u_id"));
+					a.setPw(rs.getString("u_pw"));
+					a.setName(rs.getString("u_name"));
+					a.setNickname(rs.getString("u_nickname"));
+					a.setEmail(rs.getString("u_email"));
+					a.setGender(rs.getString("u_gender"));
+					a.setStyle(rs.getString("u_style"));
+					a.setProfileImg(rs.getString("u_profileimg"));
+					a.setTypeOfManger(rs.getString("u_typeOfManager"));
+					a.setCheckPoint(rs.getString("u_checkpoint"));
+					a.setCheckDate(rs.getString("u_checkDate"));
+
+					HttpSession hs = request.getSession();
+					hs.setAttribute("accountInfo", a);
+					hs.setMaxInactiveInterval(1800);
+
+					System.out.println("수정성공");
+				}
+
+			} else {
+
+				System.out.println("수정실패");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("DB서버오류-프로필");
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
 	}
 
 }

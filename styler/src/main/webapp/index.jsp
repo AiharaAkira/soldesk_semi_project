@@ -115,7 +115,9 @@
 							<li class="nav-item"><a class="nav-link"
 								href="QnaController">문의게시판</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="GameController">게임</a></li>
+								href="GameStartController">게임</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="GameController">상세검색</a></li>
 
 
 						</ul>

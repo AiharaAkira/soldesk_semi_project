@@ -7,27 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.free.FreeDAO;
 import com.semi.login.AccountDAO;
 import com.semi.review.ReviewDAO;
 
-
-@WebServlet("/GameController")
-public class GameController extends HttpServlet {
-	
+@WebServlet("/GameStartController")
+public class GameStartController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		AccountDAO.loginCheck(request);
 		
+	request.setAttribute("contentPage", "game/game.jsp");
+	request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		GameDAO.game(request);
-		AccountDAO.loginCheck(request);
-		ReviewDAO.getAllReview(request);
-		
-	request.setAttribute("contentPage", "home/home.jsp");
-	request.getRequestDispatcher("index.jsp").forward(request, response);
-		
 	}
 
 }
