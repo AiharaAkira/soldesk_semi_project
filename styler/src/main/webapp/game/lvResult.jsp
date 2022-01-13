@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<span>당신의 등급은 [${sessionScope.accountInfo.typeOfManger}]입니다.</span>
-	<a href='HomeController'>홈으로</a><a href='InfoController'>내정보</a>
+	<div>당신의 등급은 [${sessionScope.accountInfo.typeOfManger}]입니다.</div>
+	<div>
+		<a href='HomeController'>홈으로</a><a href='InfoController'>내정보</a>
+	</div>
+	
 </body>
 </html>

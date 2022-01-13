@@ -7,10 +7,46 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+<style>
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+.btn-outline-red {
+	background-color: #f9e000;
+	color: #4b4737;
+	font-weight: 700;
+}
+
+.btn-outline-red:hover {
+	background-color: red;
+	color: white;
+	font-weight: 700;
+}
+
+.scrollBox {
+	position: fixed;
+	width: 50px;
+	z-index: 999999999;
+	left: 3%;
+}
+
+.button {
+	font-size: 50px;
+	font-weight: 700;
+	text-decoration: none;
+	color: black;
+}
+
+.button:hover {
+	color: red;
+}
+</style>
 </head>
 <body>
 
-	<form action="SearchController">
+	<%-- <form action="SearchController">
 		<div class="menu">
 			<input type="checkbox" class="" id="collapsible"> <label
 				for="collapsible"><span>검색 - 누르면 밑에 검색창 </span></label>
@@ -71,12 +107,68 @@
 							<td>${r.text}</td>
 						</tr>
 						<tr>
-							<%-- <td>${r.good}</td> --%>
-							<%-- <td>${r.comment}</td> --%>
+							<td>${r.good}</td>
+							<td>${r.comment}</td>
 						</tr>
 					</table>
 				</c:forEach></td>
 		</tr>
-	</table>
+	</table> --%>
+	<div class="container-fluid  row mt-5" id="head">
+		<div class="d-flex align-items-center justify-content-center">
+			<a href="#" class="btn btn-outline-dark border-white rounded-pill">
+				인기 </a> <a href="#"
+				class="btn btn-outline-dark border-white rounded-pill"> 최신 </a> <a
+				href="#" class="btn btn-outline-dark border-white rounded-pill">
+				댓글순 </a> <a href="WritePost"
+				class="btn btn-outline-red border-white rounded-pill">리뷰 작성</a>
+		</div>
+	</div>
+	<div class="album py-5 bg-WHITE">
+		<div class="container">
+
+			<div
+				class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+				<c:forEach var="r" items="${reviews}">
+					<div class="col">
+						<div class="card shadow-sm">
+
+
+							<a href="ReadDetailC?no=${r.no}"> <img alt="게시글 이미지"
+								src="img/${r.img}" class="card-img-top " width="auto"
+								height="225">
+							</a>
+
+							<div class="card-body">
+								<p class="card-text">${r.text}</p>
+								<div
+									class="d-flex justify-content-between align-items-center flex-wrap">
+									<div class="btn-group">
+										<button type="button" class="btn btn-sm btn-outline-secondary">좋아요</button>
+										<button type="button" class="btn btn-sm btn-outline-secondary">댓글</button>
+									</div>
+									<small class="text-muted"> 글 게시시간</small>
+									<div class="flex-shrink-0">
+										<!-- 유저등록사진표시 -->
+										<img src="${sessionScope.accountInfo.profileImg}" alt="mdo"
+											width="32" height="32" class="rounded-circle"> <small>
+											${r.user}</small>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+				<div class="scrollBox">
+					<div class="scroll">
+						<a href="#head" class="button">^</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

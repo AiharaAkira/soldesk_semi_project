@@ -21,6 +21,7 @@ public class ReviewCommentC extends HttpServlet {
 		ReviewCommentDAO.writeComment(request);
 		ReviewDAO.getReviewDetail(request);
 		ReviewCommentDAO.getComment(request);
+		ReviewCommentDAO.countComment(request);
 		
 		request.setAttribute("contentPage", "review/reviewDetail.jsp");
 		

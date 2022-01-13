@@ -25,7 +25,8 @@ u_gender varchar2(200 char) not null,
 u_style varchar2(200 char) not null,
 u_profileImg varchar2(1000 char) not null,
 u_typeOfManager varchar2(200 char) not null,
-u_checkPoint varchar2(200 char) not null
+u_checkPoint varchar2(200 char) not null,
+u_checkDate varchar2(200 char) not null
 );
 
 
@@ -33,7 +34,7 @@ u_checkPoint varchar2(200 char) not null
 insert into users values('아이디', '비번', '이름', '닉네임', '이메일', '성별', '옷취향', '사진.jpg', '0', '1');
 
 --20220110 유저 출석 날짜 컬럼 추가
-ALTER TABLE users add u_checkDate VARCHAR2(100) default "0";
+ALTER TABLE users add u_checkDate VARCHAR2(100 char) default "0";
 --유저 전체 브론즈로
 update users set u_typeOfManager = '브론즈';
 --유저 전체 점수 100
@@ -71,7 +72,7 @@ select * from post_daily;
 create table post_review(
 p_no varchar2(20 char) primary key,
 p_title varchar2(20 char) not null,
-p_text varchar2(20 char) not null,
+p_text varchar2(300 char) not null,
 p_good varchar2(20 char) not null,
 p_top varchar2(200 char) not null,
 p_pants varchar2(200 char) not null,
@@ -82,7 +83,9 @@ p_img varchar2(300 char) not null,
 p_date date not null,
 p_item varchar2(300 char) not null,
 p_comment varchar2(300 char) not null,
-p_user varchar2(300 char) not null
+p_user varchar2(300 char) not null,
+p_view_count number(38) default 0,
+p_price varchar2(300 char)
 );
 
 CREATE sequence post_review_seq;

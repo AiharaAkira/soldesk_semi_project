@@ -11,11 +11,18 @@ import com.semi.login.AccountDAO;
 
 @WebServlet("/DeleteDaily")
 public class DeleteDaily extends HttpServlet {
+	
+ 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
-		//»èÁ¦
-		//ÀüÃ¼Á¶È¸
-		request.setAttribute("contentPage", "daily/daily.jsp");
+		//delete
+		//view all
+		
+		DailyDAO.deleteDaily(request);
+		DailyDAO.getAllDaily(request);
+		
+		//review.jspæ¿¡ï¿½ ï¿½ë£Žï¿½ë¸˜åª›ï¿½å¯ƒï¿½ è¹‚ï¿½å¯ƒï¿½
+		request.setAttribute("contentPage", "review/review.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

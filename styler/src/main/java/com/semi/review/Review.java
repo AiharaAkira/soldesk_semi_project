@@ -18,11 +18,12 @@ public class Review {
 	private String user;
 	private Date date;
 	private int view_count;
+	private String price;
 	
 	public Review () {}
 	
 	public Review(String no, String title, String text, String good, String top, String pants, String shoes,
-			String accessary, String hashtag, String img, String item, String comment, String user, Date date, int view_count) {
+			String accessary, String hashtag, String img, String item, String comment, String user, Date date, int view_count, String price) {
 		super();
 		this.no = no;
 		this.title = title;
@@ -39,10 +40,19 @@ public class Review {
 		this.user = user;
 		this.date = date;
 		this.view_count = view_count;
+		this.price = price;
 	}
 
 	
 	
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
 	public int getView_count() {
 		return view_count;
 	}

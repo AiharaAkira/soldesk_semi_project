@@ -9,20 +9,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.semi.login.AccountDAO;
 
-
 @WebServlet("/UpdateDaily")
 public class UpdateDaily extends HttpServlet {
-    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
 		AccountDAO.loginCheck(request);
-		//¼öÁ¤
-		//ÀüÃ¼Á¶È¸
-		request.setAttribute("contentPage", "daily/daily.jsp");
+		//ï¿½ï¿½ï¿½ï¿½
+		//ï¿½ï¿½Ã¼ï¿½ï¿½È¸
+		DailyDAO.getDaily(request);
+		
+		
+		request.setAttribute("contentPage", "daily/dailyUpdate.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		AccountDAO.loginCheck(request);
+		DailyDAO.updateDaily(request);
+		DailyDAO.getAllDaily(request);
+		
+		request.setAttribute("contentPage", "daily/daily.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 }

@@ -70,7 +70,7 @@ public class ReviewDAO {
 			
 		try {
 			con = DBManager.connect();
-			String sql = "insert into post_review values (post_review_seq.nextval, ?, ?, 'good', ?, ?, ?, ?, 'hashtag', ?, sysdate, 'item', 'comment', ?)";
+			String sql = "insert into post_review values (post_review_seq.nextval, ?, ?, 'good', ?, ?, ?, ?, 'hashtag', ?, sysdate, 'item', 'comment', ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			String saveDirectory = request.getServletContext().getRealPath("img");
 			
@@ -84,6 +84,8 @@ public class ReviewDAO {
 			String title = mr.getParameter("title");
 			String text = mr.getParameter("text");
 			String name = mr.getParameter("user");
+			String view_count = mr.getParameter("view_count");
+			String price = mr.getParameter("price");
 			
 			
 			System.out.println(fileName);
@@ -94,6 +96,8 @@ public class ReviewDAO {
 			System.out.println(title);
 			System.out.println(text);
 			System.out.println(name);
+			System.out.println(view_count);
+			System.out.println(price);
 			
 			pstmt.setString(1, title);
 			pstmt.setString(2, text);
@@ -103,6 +107,8 @@ public class ReviewDAO {
 			pstmt.setString(6, accessary);
 			pstmt.setString(7, fileName);
 			pstmt.setString(8, name);
+			pstmt.setString(9, view_count);
+			pstmt.setString(10, price);
 			
 			
 			if(pstmt.executeUpdate() == 1) {
@@ -145,6 +151,7 @@ public class ReviewDAO {
 				r.setImg(rs.getString("p_img"));
 				r.setUser(rs.getString("p_user"));
 				r.setView_count(rs.getInt("p_view_count"));
+				r.setPrice(rs.getString("p_price"));
 			}
 			request.setAttribute("r", r);
 			

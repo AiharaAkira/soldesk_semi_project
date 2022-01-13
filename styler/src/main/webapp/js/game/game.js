@@ -14,12 +14,17 @@ function call(date) {
 
     console.log(dateString);
     console.log(date);
+
+	if(date == ""){
+		alert("로그인 하신 후에 출석체크가 가능합니다.");
+        return false;
+	}
     if (date == dateString) {
         alert("출석체크는 하루에 한번만 가능합니다.");
         return false;
     }
 
-    alert(date+"+"+dateString);
+    alert("("+dateString+")"+" 출석체크 되셨습니다.");
     return true;
 
 }

@@ -1,122 +1,174 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-    
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
+<style>
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+.btn-outline-red {
+	background-color: #f9e000;
+	color: #4b4737;
+	font-weight: 700;
+}
+
+.btn-outline-red:hover {
+	background-color: red;
+	color: white;
+	font-weight: 700;
+}
+
+.scrollBox {
+	position: fixed;
+	width: 50px;
+	z-index: 999999999;
+	left: 3%;
+}
+
+.button {
+	font-size: 50px;
+	font-weight: 700;
+	text-decoration: none;
+	color: black;
+}
+
+.button:hover {
+	color: red;
+}
+</style>
 </head>
 <body>
-	
-		<form action="SearchController">
-	<div class="menu">
-		<input type="checkbox" class="" id="collapsible"> <label
-			for="collapsible"><span>°Ë»ö - ´©¸£¸é ¹Ø¿¡ °Ë»öÃ¢ </span></label>
+
+	<%-- <form action="SearchController">
+		<div class="menu">
+			<input type="checkbox" class="" id="collapsible"> <label
+				for="collapsible"><span>ê²€ìƒ‰ - ëˆ„ë¥´ë©´ ë°‘ì— ê²€ìƒ‰ì°½ </span></label>
 			<ul id="menuitems" class="menuitems">
 				<li><input name="searchMain"></li>
-				
+
 				<li><select name="postMain">
-						<option>¸®ºä</option>
-						<option>µ¥ÀÏ¸®</option>
+						<option>ë¦¬ë·°</option>
+						<option>ë°ì¼ë¦¬</option>
 				</select></li>
 				<li><select name="colorMain">
 						<option>red</option>
 						<option>black</option>
 						<option>white</option>
 				</select></li>
-				<li><button>°Ë»öÇÏ±â</button></li>
+				<li><button>ê²€ìƒ‰í•˜ê¸°</button></li>
 
 			</ul>
-	</div>
-		</form>
-	
-	<table border="1" >
-		
-		
-		
+		</div>
+	</form>
+	<table border="1">
+
 		<tr>
-			<td onclick="location.href='HomeController'">Å¸ÀÌÆ²</td>
-			
-			<td onclick="location.href='ProfileController'">³»Á¤º¸</td>
-			<td onclick="location.href='WritePost'">¸®ºä¾²±â</td>
+			<td onclick="location.href='HomeController'">íƒ€ì´í‹€</td>
+
+			<td onclick="location.href='ProfileController'">ë‚´ì •ë³´</td>
+			<!-- <td onclick="location.href='WritePost'">ë¦¬ë·°ì“°ê¸°</td> -->
+			<c:if test="${not empty sessionScope.accountInfo }">
+				<td onclick="location.href='WritePost'">ë¦¬ë·°ì“°ê¸°</td>
+			</c:if>
 		</tr>
+
 		
-		
-		
+
 		<tr>
 			<td colspan="4">
 				<table border="1">
 					<tr>
-							<td>ÀÎ±â¼ø</td>
-							<td>ÃÖ½Å±Û</td>
-							<td>´ñ±Û¼ø</td>
+						<td>ì¸ê¸°ìˆœ</td>
+						<td>ìµœì‹ ê¸€</td>
+						<td>ëŒ“ê¸€ìˆœ</td>
 					</tr>
 				</table>
 			</td>
 		</tr>
+
 		
+
 		<tr>
-			<td colspan="4">
-				<table border="1">
-					<tr>
-						<td> <img src="" alt="ÀÌ¹ÌÁö ºÒ·¯¿À´Â Áß"> </td>
-					</tr>
-					<tr>
-						<td> <img src="" alt="ÀÌ¹ÌÁö ºÒ·¯¿À´Â Áß"> </td>
-						<td>´Ğ³×ÀÓ</td> 
-					</tr>
-					<tr>
-						<td>±Û³»¿ë1~2ÁÙ·ÎÇ¥½Ã</td>
-					</tr>
-					<tr>
-						<td>ÁÁ¾Æ¿ä</td>
-						<td>´ñ±Ûº¸±â</td>
-					</tr>
-					<tr>
-						<td>»óÇ°ÀÌ¹ÌÁö</td>
-						<td>ÀÌ¸§</td>
-						<td>°¡°İ</td>
-					</tr>
-					<tr>
-						<td onclick="location.href='DeleteDaily'">±Û»èÁ¦</td>
-						<td onclick="location.href='UpdateDaily'">±Û¼öÁ¤</td>
-					</tr>
-					
-				</table>
-			</td>
-		</tr>
-		
-		<tr>
-			<td colspan="4">
-				<c:forEach var="post" items="${plztext}">
+			<td colspan="4"><c:forEach var="r" items="${reviews}">
 					<table border="1">
-					<tr>
-						<td> <img src="${plztext}" alt="ÀÌ¹ÌÁö ºÒ·¯¿À´Â Áß"> </td>
-					</tr>
-					<tr>
-						<td> <img src="${plztext}" alt="ÀÌ¹ÌÁö ºÒ·¯¿À´Â Áß"> </td>
-						<td>${plztext}</td> 
-					</tr>
-					<tr>
-						<td>${plztext}</td>
-					</tr>
-					<tr>
-						<td>${plztext}</td>
-						<td>${plztext}</td>
-					</tr>
-					<tr>
-						<td>${plztext}</td>
-						<td>${plztext}</td>
-						<td>${plztext}</td>
-					</tr>
-					
-				</table>
-				</c:forEach>
-			</td>
+						<tr>
+							<td><img src="img/${r.img}" alt="ì´ë¯¸ì§€ ì—†ìŒ"
+								onclick="location.href='ReadDetailC?no=${r.no}'"></td>
+							<td>${r.user}</td>
+						</tr>
+						<tr>
+							<td>${r.text}</td>
+						</tr>
+						<tr>
+							<td>${r.good}</td>
+							<td>${r.comment}</td>
+						</tr>
+					</table>
+				</c:forEach></td>
 		</tr>
-	</table>
+	</table> --%>
+	<div class="container-fluid  row mt-5" id="head">
+		<div class="d-flex align-items-center justify-content-center">
+			<a href="#" class="btn btn-outline-dark border-white rounded-pill">
+				ì¸ê¸° </a> <a href="#"
+				class="btn btn-outline-dark border-white rounded-pill"> ìµœì‹  </a> <a
+				href="#" class="btn btn-outline-dark border-white rounded-pill">
+				ëŒ“ê¸€ìˆœ </a> <a href="WriteDaily"
+				class="btn btn-outline-red border-white rounded-pill">ë¦¬ë·° ì‘ì„±</a>
+		</div>
+	</div>
+	<div class="album py-5 bg-WHITE">
+		<div class="container">
+
+			<div
+				class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+				<c:forEach var="r" items="${reviews}">
+					<div class="col">
+						<div class="card shadow-sm">
+
+
+							<a href="ReadDetailC?no=${r.no}"> <img alt="ê²Œì‹œê¸€ ì´ë¯¸ì§€"
+								src="img/${r.img}" class="card-img-top " width="auto"
+								height="225">
+							</a>
+
+							<div class="card-body">
+								<p class="card-text">${r.text}</p>
+								<div
+									class="d-flex justify-content-between align-items-center flex-wrap">
+									<div class="btn-group">
+										<button type="button" class="btn btn-sm btn-outline-secondary">ì¢‹ì•„ìš”</button>
+										<button type="button" class="btn btn-sm btn-outline-secondary">ëŒ“ê¸€</button>
+									</div>
+									<small class="text-muted"> ê¸€ ê²Œì‹œì‹œê°„</small>
+									<div class="flex-shrink-0">
+										<!-- ìœ ì €ë“±ë¡ì‚¬ì§„í‘œì‹œ -->
+										<img src="${sessionScope.accountInfo.profileImg}" alt="mdo"
+											width="32" height="32" class="rounded-circle"> <small>
+											${r.user}</small>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+				<div class="scrollBox">
+					<div class="scroll">
+						<a href="#head" class="button">^</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

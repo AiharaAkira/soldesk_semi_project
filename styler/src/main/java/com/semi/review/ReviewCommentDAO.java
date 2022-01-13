@@ -81,6 +81,115 @@ public class ReviewCommentDAO {
 			DBManager.close(con, pstmt, rs);
 		}
 	}
+	
+	public static void countView(HttpServletRequest request) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		String sql = "update review_post set p_view_count = p_view_count + 1  where p_no=?";
+
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("no"));
+
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("��ȸ�� +1");
+
+			} else {
+				System.out.println("������Ʈ����");
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("DB����");
+
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+
+	}
+	
+	public static void countComment(HttpServletRequest request) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select count(*) from comments where c_post = ?";
+
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("no"));
+			rs = pstmt.executeQuery();
+			int totalComment = 0;
+
+			if (rs.next()) {
+
+				totalComment = rs.getInt(1);
+
+			}
+
+			request.setAttribute("totalComment", totalComment);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+
+	}
+
+	public static void updateComment(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "update comments set c_text = ? where c_no = ?";
+		
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("c_text"));
+			pstmt.setString(2, request.getParameter("c_no"));
+			rs = pstmt.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+	}
+
+	public static void deleteComment(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "delete comments where c_no=?";
+		
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("cno"));
+			
+			if(pstmt.executeUpdate() == 1) {
+				System.out.println("comment deleted");
+			} else {
+				System.out.println("comment delete failed");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("db error");
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+	}
+	
+	
 
 	
 	

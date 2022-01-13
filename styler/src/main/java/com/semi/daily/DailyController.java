@@ -11,10 +11,9 @@ import com.semi.login.AccountDAO;
 
 @WebServlet("/DailyController")
 public class DailyController extends HttpServlet {
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
-		
+		DailyDAO.getAllDaily(request);
 		request.setAttribute("contentPage", "daily/daily.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

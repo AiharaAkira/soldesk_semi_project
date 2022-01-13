@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<h1>자유게시판</h1>  
+	<h1 class="m-3 ms-5">자유게시판</h1>  
 
 	<hr>
 	<table class="table table-borderless" style="width: 95%; margin: auto " border="2">

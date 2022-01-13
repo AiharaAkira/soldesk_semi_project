@@ -117,7 +117,7 @@
 							<li class="nav-item"><a class="nav-link"
 								href="GameStartController">게임</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="GameController">상세검색</a></li>
+								href="DetailSearchController">가격으로 검색</a></li>
 
 
 						</ul>

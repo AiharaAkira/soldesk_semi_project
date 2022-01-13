@@ -101,7 +101,7 @@ a:hover {
 			<!-- 검색어 없을 때 조건 -->
 				<c:choose> <c:when test="${empty searchText}">
 				<c:choose>
-				<c:when test="${pageNum eq 1}"><li class="page-item disabled"> <a class="page-link"  href="FreeController?pageNum=${pageNum -1}&selected=${selected}&searchText=${searchText}">Previous</a> </li></c:when>
+				<c:when test="${pageNum eq 1 || empty pageNum}"><li class="page-item disabled"> <a class="page-link"  href="FreeController?pageNum=${pageNum -1}&selected=${selected}&searchText=${searchText}">Previous</a> </li></c:when>
 				<c:otherwise>
 					<li class="page-item"> <a class="page-link"  href="FreeController?pageNum=${pageNum -1}&selected=${selected}&searchText=${searchText}">Previous</a> </li>
 				</c:otherwise>
