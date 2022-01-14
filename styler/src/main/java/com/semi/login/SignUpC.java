@@ -22,12 +22,15 @@ public class SignUpC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		AccountDAO.reg(request);
-		ReviewDAO.getAllReview(request);
-		AccountDAO.loginCheck(request);
 		
-		request.setAttribute("loginPage", "login/login.jsp");
+		
+		AccountDAO.reg(request);
+		
+		ReviewDAO.getAllReview(request);
+		ReviewDAO.getUserPic(request);
+		AccountDAO.loginCheck(request);
+		request.setAttribute("contentPage", "home/home.jsp");
+		
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

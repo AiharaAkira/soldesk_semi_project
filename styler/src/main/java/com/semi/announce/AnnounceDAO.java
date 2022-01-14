@@ -501,7 +501,7 @@ public class AnnounceDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
-		String sql = "insert into comments values(comments_seq.nextval, ?, sysdate, ?, ?)";
+		String sql = "insert into comments_postA values(comments_seq.nextval, ?, sysdate, ?, ?)";
 
 		try {
 
@@ -538,7 +538,7 @@ public class AnnounceDAO {
 		// String no = null;
 		// no = request.getParameter("no");
 
-		String sql = "select * from comments where c_post = ? order by c_date desc";
+		String sql = "select * from comments_postA where c_post = ? order by c_date desc";
 
 		try {
 			con = DBManager.connect();
@@ -586,7 +586,7 @@ public class AnnounceDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select count(*) from comments where c_post = ?";
+		String sql = "select count(*) from comments_postA where c_post = ?";
 
 		try {
 			con = DBManager.connect();
@@ -648,7 +648,7 @@ public class AnnounceDAO {
 		ResultSet rs = null;
 
 
-		String sql = "update comments set c_text = ? where c_no = ?";
+		String sql = "update comments_postA set c_text = ? where c_no = ?";
 		
 
 		try {
@@ -677,7 +677,7 @@ public void deleteComment(HttpServletRequest request) {
 
 		// 날짜 date설정은
 		// r_date=sysdate추가
-		String sql = "delete comments where c_no=?";
+		String sql = "delete comments_postA where c_no=?";
 
 		try {
 			con = DBManager.connect();

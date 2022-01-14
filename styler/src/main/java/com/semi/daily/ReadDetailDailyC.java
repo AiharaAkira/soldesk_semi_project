@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.login.AccountDAO;
+import com.semi.review.LikeDAO;
 
 
 @WebServlet("/ReadDetailDailyC")
@@ -18,6 +19,9 @@ public class ReadDetailDailyC extends HttpServlet {
 		DailyDAO.getDailyDetail(request);
 		DailyCommentDAO.getComment(request);
 		DailyCommentDAO.countComment(request);
+		
+		DailyLikeDAO.checkLike(request);
+		DailyLikeDAO.countLike(request);
 		AccountDAO.loginCheck(request);
 		DailyDAO.getViewCount(request);
 		request.setAttribute("contentPage", "daily/dailyDetail.jsp");

@@ -5,12 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/lvResult.css">
 </head>
 <body>
-	<div>당신의 등급은 [${sessionScope.accountInfo.typeOfManger}]입니다.</div>
-	<div>
-		<a href='HomeController'>홈으로</a><a href='InfoController'>내정보</a>
+	<div id="bg">
+	<div id="result">당신의 등급은 [${sessionScope.accountInfo.typeOfManger}]입니다.</div>
+	<br>
+	<div class="back">
+		<a id="home" href='HomeController'>홈으로</a><a href='InfoController'>내정보</a>
 	</div>
+	</div>
+	
 	
 </body>
 </html>

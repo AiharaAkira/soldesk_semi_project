@@ -14,8 +14,7 @@ public class UpdateDaily extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		AccountDAO.loginCheck(request);
-		//����
-		//��ü��ȸ
+		
 		DailyDAO.getDaily(request);
 		
 		

@@ -18,6 +18,8 @@ public class ReadDetailC extends HttpServlet {
 		ReviewDAO.getReviewDetail(request);
 		ReviewCommentDAO.getComment(request);
 		ReviewCommentDAO.countComment(request);
+		LikeDAO.checkLike(request);
+		LikeDAO.countLike(request);
 		AccountDAO.loginCheck(request);
 		ReviewDAO.getViewCount(request);
 		request.setAttribute("contentPage", "review/reviewDetail.jsp");

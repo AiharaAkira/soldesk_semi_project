@@ -1,4 +1,4 @@
-package com.semi.qna;
+package com.semi.detailSearch;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.daily.DailyDAO;
+import com.semi.daily.DailyLikeDAO;
 import com.semi.login.AccountDAO;
 
-@WebServlet("/SearchQna")
-public class SearchQna extends HttpServlet {
-	
+@WebServlet("/DRandomSearch")
+public class DRandomSearch extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
-		//입력받은 제목or내용or작성자 받아서 전체조회하는 모델
+		DetailDAO.getOrderRandom_Daily(request);
 		
-		request.setAttribute("contentPage", "qna/qna.jsp");
+		DailyDAO.getUserPic(request);
+		DailyDAO.getAllCommentCount(request);
+		DailyLikeDAO.getAllLikeCount(request);
+		
+		
+		request.setAttribute("contentPage", "daily/daily.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 

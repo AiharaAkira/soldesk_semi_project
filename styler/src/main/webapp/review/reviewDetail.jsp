@@ -9,11 +9,11 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<!-- <link rel="stylesheet" href="css/reviewDetail.css" /> -->
+<!-- <link rel="stylesheet" href="css/reviewDetail.css" />  -->
 <style>
 a {
-text-decoration: none;
-color: black;
+	text-decoration: none;
+	color: black;
 }
 </style>
 </head>
@@ -95,33 +95,55 @@ color: black;
 						value="${r.date}" pattern="yyyy.MM.dd / a hh:mm" />
 			</small></td>
 			<td colspan="2" style="text-align: center"><small>조회수
-					${r.view_count}</small> <small>|</small> <small>댓글수 ${totalComment}</small>
-			</td>
+					${r.view_count}</small> <small>|</small> <small>댓글수 ${totalComment}
+			</small> <small>|</small> <small> 좋아요 ${totalLike }</small> <!--  하트구분 --> <c:choose>
+					<c:when test="${likecheck eq 'alreadyliked' }">
+						<button class="btn btn-outline-secondary btn-sm"
+							onclick="location.href='DeleteLikeController?no=${r.no}&mynick=${sessionScope.accountInfo.nickname}'">
+							<img alt="liked" src="img/heart-fill.svg"> LIKED
+						</button>
+					</c:when>
+					<c:otherwise>
+						<button class="btn btn-outline-secondary btn-sm"
+							onclick="return needLogin('${r.no}','${sessionScope.accountInfo.nickname}');">
+							<img alt="like" src="img/heart.svg"> LIKE
+						</button>
+						<%--                      <button onclick="location.href='AddLikeController?no=${r.no}&mynick=${sessionScope.accountInfo.nickname}'">좋아요</button> --%>
+					</c:otherwise>
+				</c:choose></td>
 		</tr>
-			
-			<tr>
-				<th>상의</th>
-				<td><a href="https://search.shopping.naver.com/search/all?query=${r.top}&cat_id=&frm=NVSHATC" target="_blank">${r.top}</a></td>
-			</tr>
-			<tr>
-				<th>하의</th>
-				<td><a href="https://search.shopping.naver.com/search/all?query=${r.pants}&cat_id=&frm=NVSHATC" target="_blank">${r.pants}</a></td>
-			</tr>
-			<tr>
-				<th>신발</th>
-				<td><a href="https://search.shopping.naver.com/search/all?query=${r.shoes}&cat_id=&frm=NVSHATC" target="_blank">${r.shoes}</a></td>
-			</tr>
-			<tr>
-				<th>악세서리</th>
-				<td><a href="https://search.shopping.naver.com/search/all?query=${r.accessary}&cat_id=&frm=NVSHATC" target="_blank">${r.accessary}</a></td>
-			</tr>
-			<tr>
-				<th>가격</th>
-				<td>￦${r.price}</td>
-			</tr>
-			
+
 		<tr>
-		
+			<th>상의</th>
+			<td><a
+				href="https://search.shopping.naver.com/search/all?query=${r.top}&cat_id=&frm=NVSHATC"
+				target="_blank">${r.top}</a></td>
+		</tr>
+		<tr>
+			<th>하의</th>
+			<td><a
+				href="https://search.shopping.naver.com/search/all?query=${r.pants}&cat_id=&frm=NVSHATC"
+				target="_blank">${r.pants}</a></td>
+		</tr>
+		<tr>
+			<th>신발</th>
+			<td><a
+				href="https://search.shopping.naver.com/search/all?query=${r.shoes}&cat_id=&frm=NVSHATC"
+				target="_blank">${r.shoes}</a></td>
+		</tr>
+		<tr>
+			<th>악세서리</th>
+			<td><a
+				href="https://search.shopping.naver.com/search/all?query=${r.accessary}&cat_id=&frm=NVSHATC"
+				target="_blank">${r.accessary}</a></td>
+		</tr>
+		<tr>
+			<th>가격</th>
+			<td>￦${r.price}</td>
+		</tr>
+
+		<tr>
+
 			<td class="ps-3 border" colspan="4"><img src="img/${r.img}">
 				<br>${r.text}</td>
 
@@ -137,16 +159,36 @@ color: black;
 				<td style="text-align: center">
 					<button class="btn btn-secondary"
 						onclick="location.href='UpdatePost?no=${r.no}'">수정</button>
-					<button class="btn btn-danger" onclick="deleteReview(${r.no})">삭제</button>
+					<button class="btn btn-secondary"
+						onclick="location.href='ReviewController'">목록으로</button>
+					<button class="btn btn-danger" onclick="deleteReview('${r.no}')">삭제</button>
 				</td>
 			</tr>
 
 		</c:if>
+		
+				<!-- 관리자 수정삭제 -->
+		<c:if
+			test="${sessionScope.accountInfo.typeOfManger eq '플레티넘' || sessionScope.accountInfo.typeOfManger eq '다이아'}">
+			<tr>
+				<td colspan="4"><hr class=""></td>
+			</tr>
+
+			<tr>
+				<td colspan="3"></td>
+				<td style="text-align: center">
+					<button class="btn btn-secondary"
+						onclick="location.href='UpdatePost?no=${r.no}'">수정-관리자</button>
+					<button class="btn btn-danger" onclick="deleteReview('${r.no}')">삭제-관리자</button>
+				</td>
+			</tr>
+		</c:if>
+		
 		<tr>
-			<td colspan="4"><hr class=""></td>
+			<!--  코멘트 위치태그 -->
+			<td colspan="4"><hr class=""> <a id="comment"></a></td>
 		</tr>
 
-		<c:set var="sex" value="1" />
 		<c:forEach var="c" items="${comments}">
 			<tr>
 				<td>
@@ -223,5 +265,6 @@ color: black;
 	<script src="https://kit.fontawesome.com/69688adaa8.js"
 		crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/Review.js"></script>
+	<script type="text/javascript" src="js/reviewlike.js"></script>
 </body>
 </html>

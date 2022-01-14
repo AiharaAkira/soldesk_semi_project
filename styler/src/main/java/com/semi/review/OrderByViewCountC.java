@@ -1,4 +1,4 @@
-package com.semi.announce;
+package com.semi.review;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,18 +7,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/SearchAnnounce")
-public class SearchAnnounce extends HttpServlet {
+import com.semi.login.AccountDAO;
+
+
+@WebServlet("/OrderByViewCountC")
+public class OrderByViewCountC extends HttpServlet {
 	
-    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//입력받은 제목or내용or작성자 받아서 전체조회하는 모델
-				request.setAttribute("contentPage", "announce/announce.jsp");
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+		AccountDAO.loginCheck(request);
+		ReviewDAO.orderByViewCount(request);
+		ReviewDAO.getUserPic(request);
+		ReviewDAO.getAllCommentCount(request);
+		request.setAttribute("contentPage", "review/review.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
 
 }

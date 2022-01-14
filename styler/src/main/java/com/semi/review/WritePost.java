@@ -30,6 +30,9 @@ public class WritePost extends HttpServlet {
 		
 		ReviewDAO.writeReview(request);
 		ReviewDAO.getAllReview(request);
+		ReviewDAO.getUserPic(request);
+		ReviewDAO.getAllCommentCount(request);
+		LikeDAO.getAllLikeCount(request);
 		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "review/review.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.review.LikeDAO;
 import com.semi.review.ReviewDAO;
 
 
@@ -30,7 +31,9 @@ public class LoginController extends HttpServlet {
 		AccountDAO.login(request);
 		AccountDAO.loginCheck(request);
 		ReviewDAO.getAllReview(request);
-
+		ReviewDAO.getUserPic(request);
+		ReviewDAO.getAllCommentCount(request);
+		LikeDAO.getAllLikeCount(request);
 		
 		request.setAttribute("contentPage", "home/home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
