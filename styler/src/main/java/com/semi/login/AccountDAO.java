@@ -21,12 +21,12 @@ public class AccountDAO {
 		Account a = (Account) hs.getAttribute("accountInfo");
 
 		if (a == null) {
-			// 세션 없을때
-			System.out.println("로그인실패");
+			// �꽭�뀡 �뾾�쓣�븣
+			System.out.println("濡쒓렇�씤�떎�뙣");
 			request.setAttribute("loginPage", "login/login.jsp");
 		} else {
-			// 세션있을때
-			System.out.println("로그인성공");
+			// �꽭�뀡�엳�쓣�븣
+			System.out.println("濡쒓렇�씤�꽦怨�");
 			request.setAttribute("loginPage", "login/loginOk.jsp");
 		}
 
@@ -67,12 +67,12 @@ public class AccountDAO {
 					hs.setAttribute("accountInfo", a);
 					hs.setMaxInactiveInterval(1800);
 
-					request.setAttribute("r", "로그인성공");
+					request.setAttribute("r", "濡쒓렇�씤�꽦怨�");
 				} else {
-					request.setAttribute("r", "로그인실패");
+					request.setAttribute("r", "濡쒓렇�씤�떎�뙣");
 				}
 			} else {
-				request.setAttribute("r", "db문제");
+				request.setAttribute("r", "db臾몄젣");
 			}
 
 		} catch (Exception e) {
@@ -133,13 +133,13 @@ public class AccountDAO {
 			pstmt.setString(11, "0");
 			if (pstmt.executeUpdate() == 1) {
 
-				System.out.println("가입성공");
+				System.out.println("媛��엯�꽦怨�");
 			} else {
-				System.out.println("가입실패");
+				System.out.println("媛��엯�떎�뙣");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("r", "DB 서버문제");
+			request.setAttribute("r", "DB �꽌踰꾨Ц�젣");
 		} finally {
 			DBManager.close(con, pstmt, null);
 		}
@@ -203,18 +203,18 @@ public class AccountDAO {
 						hs.setAttribute("accountInfo", a);
 						hs.setMaxInactiveInterval(1800);
 
-						System.out.println("수정성공");
+						System.out.println("�닔�젙�꽦怨�");
 					}
 				}
 
 			} else {
 
-				System.out.println("수정실패");
+				System.out.println("�닔�젙�떎�뙣");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("DB서버문제");
+			System.out.println("DB�꽌踰꾨Ц�젣");
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
@@ -236,13 +236,13 @@ public class AccountDAO {
 			pstmt.setString(1, id);
 
 			if (pstmt.executeUpdate() == 1) {
-				System.out.println("탈퇴성공");
+				System.out.println("�깉�눜�꽦怨�");
 			} else {
-				System.out.println("탈퇴실패");
+				System.out.println("�깉�눜�떎�뙣");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("r", "DB 서버문제");
+			request.setAttribute("r", "DB �꽌踰꾨Ц�젣");
 		} finally {
 			DBManager.close(con, pstmt, null);
 		}
@@ -298,18 +298,18 @@ public class AccountDAO {
 					hs.setAttribute("accountInfo", a);
 					hs.setMaxInactiveInterval(1800);
 
-					System.out.println("이미지변경");
+					System.out.println("�씠誘몄�蹂�寃�");
 
 				}
 
 			} else {
 
-				System.out.println("이미지변경실패");
+				System.out.println("�씠誘몄�蹂�寃쎌떎�뙣");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("DB서버문제");
+			System.out.println("DB�꽌踰꾨Ц�젣");
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
@@ -338,7 +338,7 @@ public class AccountDAO {
 				pstmt.setString(2, "실버");
 				pstmt.setString(3, id);
 			} else if (typeOfManager.equals("실버") && checkPoint >= 200) {
-				pstmt.setInt(1, checkPoint - 100);
+				pstmt.setInt(1, checkPoint - 200);
 				pstmt.setString(2, "골드");
 				pstmt.setString(3, id);
 
@@ -380,18 +380,18 @@ public class AccountDAO {
 						hs.setAttribute("accountInfo", a);
 						hs.setMaxInactiveInterval(1800);
 
-						System.out.println("등급업");
+						System.out.println("�벑湲됱뾽");
 					}
 				}
 
 			} else {
 
-				System.out.println("등급업실패");
+				System.out.println("�벑湲됱뾽�떎�뙣");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("DB서버문제");
+			System.out.println("DB�꽌踰꾨Ц�젣");
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
@@ -435,10 +435,10 @@ public class AccountDAO {
 					hs.setAttribute("accountInfo", a);
 					hs.setMaxInactiveInterval(1800);
 
-					request.setAttribute("r", "아이디찾기성공");
+					request.setAttribute("r", "�븘�씠�뵒李얘린�꽦怨�");
 				
 			} else {
-				request.setAttribute("r", "db문제");
+				request.setAttribute("r", "db臾몄젣");
 			}
 
 		} catch (Exception e) {

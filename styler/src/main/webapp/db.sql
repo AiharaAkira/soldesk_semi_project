@@ -318,7 +318,8 @@ SELECT l_post , count(*) nol FROM likebox group by l_post;
 --1월14일비밀번호 길이 최대길이(varchar2)변경
 alter table users modify(u_pw varchar2(200 char));
 --관리자등급 만들기
-update USERS set u_typeOfManager = '다이아' where u_id = (아이디);
+update USERS set u_typeOfManager = '다이아' where u_id = 'asdasd11';
+update USERS set u_typeOfManager = '플레티넘' where u_id = 'alsdn3795';
 
 --1.14 added
 create table likebox2(
