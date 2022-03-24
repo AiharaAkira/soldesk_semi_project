@@ -35,28 +35,20 @@
 <c:set var="loginName" value="${sessionScope.accountInfo.nickname}" />
 
 
-
-		<c:if
-			test="${sessionScope.accountInfo.typeOfManger eq '다이아'}">
-			<tr>
-				<td colspan="4"><hr class=""></td>
-			</tr>
-
-			<tr>
-				<td colspan="3"></td>
-				<td style="text-align: center">
-					<button class="btn btn-secondary"
-						onclick="location.href='AnnounceModifyController?no=${p.p_no}'">수정-관리자</button>
-					<button class="btn btn-danger" onclick="AdelCheck1(${p.p_no})">삭제-관리자</button>
-				</td>
-			</tr>
+<c:if test="${fn:trim(p.p_user) eq loginName || loginName eq 'admin'}">
+		<tr>
+			<td colspan="3"></td>
+			<td style="text-align: center">
+				<button class="btn btn-secondary" onclick="location.href='AnnounceModifyController?no=${p.p_no}'">수정</button>	<button class="btn btn-danger" onclick="delCheck1(${p.p_no})">삭제</button>
+			</td>
+		</tr>
+		
 		</c:if>
-		
-		
 		<tr>
 		<td colspan="4"><hr class=""></td>
 		</tr>
 		
+			<c:set var="sex" value="1" />
 	  <c:forEach var="c" items="${comments}" >
 		<tr>
 		<td>
@@ -114,8 +106,6 @@
 			 
 			</div>
 			</c:if>
-			
-			
 			
 			 </td>
 		</tr>

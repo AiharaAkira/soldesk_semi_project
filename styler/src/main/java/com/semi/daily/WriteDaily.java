@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.login.AccountDAO;
-import com.semi.review.LikeDAO;
-import com.semi.review.ReviewDAO;
 
 
 @WebServlet("/WriteDaily")
@@ -18,7 +16,7 @@ public class WriteDaily extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		
+		//����ȸ
 		DailyDAO.getAllDaily(request);
 		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "daily/dailyWrite.jsp");
@@ -27,12 +25,11 @@ public class WriteDaily extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	
+		//���Է�
+		//����ȸ
 		
 		DailyDAO.writeDaily(request);
 		DailyDAO.getAllDaily(request);
-		DailyDAO.getAllCommentCount(request);
-		LikeDAO.getAllLikeCount(request);
 		AccountDAO.loginCheck(request);
 		request.setAttribute("contentPage", "daily/daily.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

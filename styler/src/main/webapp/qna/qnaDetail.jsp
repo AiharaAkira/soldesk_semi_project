@@ -44,27 +44,11 @@
 		</tr>
 		
 		</c:if>
-		
-		<c:if
-			test="${sessionScope.accountInfo.typeOfManger eq '플레티넘' || sessionScope.accountInfo.typeOfManger eq '다이아'}">
-			<tr>
-				<td colspan="4"><hr class=""></td>
-			</tr>
-
-			<tr>
-				<td colspan="3"></td>
-				<td style="text-align: center">
-					<button class="btn btn-secondary"
-						onclick="location.href='QnaModifyController?no=${p.p_no}'">수정-관리자</button>
-					<button class="btn btn-danger" onclick="delCheck2(${p.p_no})">삭제-관리자</button>
-				</td>
-			</tr>
-		</c:if>
-		
 		<tr>
 		<td colspan="4"><hr class=""></td>
 		</tr>
 		
+			<c:set var="sex" value="1" />
 	  <c:forEach var="c" items="${comments}" >
 		<tr>
 		<td>
@@ -100,8 +84,6 @@
 </div>
 
 </c:when>
-
-
 		
 		
 		<c:otherwise> <div> <span></span> </div> </c:otherwise>
@@ -124,8 +106,6 @@
 			 
 			</div>
 			</c:if>
-			
-			
 			
 			 </td>
 		</tr>

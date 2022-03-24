@@ -1,4 +1,4 @@
-function AdelCheck1(no){
+function delCheck1(no){
 let ok = confirm('정말 삭제합니까?');
 
 if(ok){

@@ -503,7 +503,7 @@ public class QnaDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
-		String sql = "insert into comments_postQ values(comments_seq.nextval, ?, sysdate, ?, ?)";
+		String sql = "insert into comments values(comments_seq.nextval, ?, sysdate, ?, ?)";
 
 		try {
 
@@ -540,7 +540,7 @@ public class QnaDAO {
 		// String no = null;
 		// no = request.getParameter("no");
 
-		String sql = "select * from comments_postQ where c_post = ? order by c_date desc";
+		String sql = "select * from comments where c_post = ? order by c_date desc";
 
 		try {
 			con = DBManager.connect();
@@ -588,7 +588,7 @@ public class QnaDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select count(*) from comments_postQ where c_post = ?";
+		String sql = "select count(*) from comments where c_post = ?";
 
 		try {
 			con = DBManager.connect();
@@ -649,7 +649,7 @@ public class QnaDAO {
 		ResultSet rs = null;
 
 
-		String sql = "update comments_postQ set c_text = ? where c_no = ?";
+		String sql = "update comments set c_text = ? where c_no = ?";
 		
 
 		try {
@@ -675,7 +675,7 @@ public class QnaDAO {
 
 		// 날짜 date설정은
 		// r_date=sysdate추가
-		String sql = "delete comments_postQ where c_no=?";
+		String sql = "delete comments where c_no=?";
 
 		try {
 			con = DBManager.connect();

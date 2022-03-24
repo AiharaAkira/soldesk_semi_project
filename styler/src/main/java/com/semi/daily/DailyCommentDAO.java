@@ -19,7 +19,7 @@ public class DailyCommentDAO {
 		
 		try {
 			con = DBManager.connect();
-			String sql = "insert into comments_post_daily values(comments_seq.nextval, ?, sysdate, ?, ?)";
+			String sql = "insert into comments values(comments_seq.nextval, ?, sysdate, ?, ?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -52,7 +52,7 @@ public class DailyCommentDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from comments_post_daily where c_post = ? order by c_date desc";
+		String sql = "select * from comments where c_post = ? order by c_date desc";
 		
 		try {
 			con = DBManager.connect();
@@ -95,16 +95,16 @@ public class DailyCommentDAO {
 			pstmt.setString(1, request.getParameter("no"));
 
 			if (pstmt.executeUpdate() == 1) {
-				System.out.println("��ȸ�� +1");
+				System.out.println("success +1");
 
 			} else {
-				System.out.println("������Ʈ����");
+				System.out.println("error");
 
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("DB����");
+			System.out.println("DB error");
 
 		} finally {
 			DBManager.close(con, pstmt, null);
@@ -118,7 +118,7 @@ public class DailyCommentDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select count(*) from comments_post_daily where c_post = ?";
+		String sql = "select count(*) from comments where c_post = ?";
 
 		try {
 			con = DBManager.connect();
@@ -149,7 +149,7 @@ public class DailyCommentDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "update comments_post_daily set c_text = ? where c_no = ?";
+		String sql = "update comments set c_text = ? where c_no = ?";
 		
 		try {
 			con = DBManager.connect();
@@ -169,7 +169,7 @@ public class DailyCommentDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String sql = "delete comments_post_daily where c_no=?";
+		String sql = "delete comments where c_no=?";
 		
 		try {
 			con = DBManager.connect();

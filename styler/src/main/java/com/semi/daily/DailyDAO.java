@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.semi.main.DBManager;
-import com.semi.review.AllCommentCount;
-import com.semi.review.UserPic;
 
 
 public class DailyDAO {
@@ -49,13 +47,12 @@ public class DailyDAO {
 				r.setItem(rs.getString("p_item"));
 				r.setComment(rs.getString("p_comment"));
 				r.setUser(rs.getString("p_user"));
-				r.setDate(rs.getDate("p_date"));
 				daily.add(r);
 				
 				
 			}
 			
-			request.setAttribute("daily", daily);
+			request.setAttribute("reviews", daily);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -293,68 +290,6 @@ public class DailyDAO {
 		} finally {
 			DBManager.close(con, pstmt, null);
 		}
-	}
-	
-public static void getUserPic(HttpServletRequest request) {
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			con = DBManager.connect();
-			
-			String sql = "select distinct u_profileImg, u_nickname from users, post_daily where u_nickname = p_user ";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			ArrayList<UserPic> userPic = new ArrayList<>();
-			
-			UserPic userP = null;
-			while(rs.next()) {
-				userP = new UserPic();
-				userP.setU_img(rs.getString("u_profileImg"));
-				userP.setNickname(rs.getString("u_nickname"));
-				userPic.add(userP);
-			}
-			
-			request.setAttribute("userP", userPic);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-}
-}
-		
-		public static void getAllCommentCount(HttpServletRequest request) {
-			
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			
-			try {
-				con = DBManager.connect();
-				
-				String sql = "SELECT c_post , count(*) noc FROM comments_post_daily GROUP BY c_post";
-				pstmt = con.prepareStatement(sql);
-				rs = pstmt.executeQuery();
-				
-				ArrayList<AllCommentCount> accs = new ArrayList<>();
-				
-				AllCommentCount acc = null;
-				while(rs.next()) {
-					acc = new AllCommentCount();
-					acc.setPostNo(rs.getString("c_post"));
-					acc.setNumberOfComment(rs.getString("noc"));
-					accs.add(acc);
-				}
-				
-				request.setAttribute("accs", accs);
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				DBManager.close(con, pstmt, rs);
-			}
-		
 	}
 
 }

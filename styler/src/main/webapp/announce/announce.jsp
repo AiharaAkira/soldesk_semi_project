@@ -65,18 +65,15 @@ a:hover {
 					<td >${p.p_date}</td>
 				</tr>
 			</c:forEach>
-			
-			
-			<c:if
-			test="${ sessionScope.accountInfo.typeOfManger eq '다이아'}">
-			
+			<c:if test="${not empty sessionScope.accountInfo }">
 			<tr>
-				
+				<!-- <td colspan="4" style="text-align: right" onclick="location.href='FreeWriteController'">글쓰기</td> -->
 				<td colspan="4" >
-				<div class="d-flex col-2 float-end justify-content-end pe-4 "> <button class="btn btn-primary" onclick="location.href='AnnounceWriteController'">글쓰기-관리자</button> </div>
+				<div class="d-flex col-2 float-end justify-content-end pe-4 "> <button class="btn btn-primary" onclick="location.href='AnnounceWriteController'">글쓰기</button> </div>
 				</td>
+				
 			</tr>
-		</c:if>
+			</c:if>
 			
 			<tr>
 				<td colspan="4"> 

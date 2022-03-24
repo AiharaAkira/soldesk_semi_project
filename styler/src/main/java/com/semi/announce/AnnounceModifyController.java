@@ -17,7 +17,6 @@ public class AnnounceModifyController extends HttpServlet {
 //		FreeDAO.getFreedao().getFreeDetail(request);
 		AnnounceDAO.getAnouncedao().getFreeDetail(request);
 		AccountDAO.loginCheck(request);
-		request.getParameter("title");
 		request.setAttribute("contentPage", "announce/announceModify.jsp");
 
 		request.getRequestDispatcher("index.jsp").forward(request, response);

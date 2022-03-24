@@ -14,9 +14,6 @@ public class ReviewController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
 		ReviewDAO.getAllReview(request);
-		ReviewDAO.getUserPic(request);
-		ReviewDAO.getAllCommentCount(request);
-		LikeDAO.getAllLikeCount(request);
 		request.setAttribute("contentPage", "review/review.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

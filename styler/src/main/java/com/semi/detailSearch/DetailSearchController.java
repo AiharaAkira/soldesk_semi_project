@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.daily.DailyDAO;
-import com.semi.daily.DailyLikeDAO;
 import com.semi.login.AccountDAO;
 import com.semi.review.ReviewDAO;
 
@@ -23,9 +21,6 @@ public class DetailSearchController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountDAO.loginCheck(request);
 		DetailDAO.getAllReview(request);
-		
-		
-		
 		request.setAttribute("contentPage", "home/home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

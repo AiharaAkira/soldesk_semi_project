@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.daily.DailyDAO;
 import com.semi.login.AccountDAO;
-import com.semi.review.LikeDAO;
 import com.semi.review.ReviewDAO;
 
 @WebServlet("/HomeController")
@@ -19,9 +17,6 @@ public class HomeController extends HttpServlet {
 		
 		AccountDAO.loginCheck(request);
 		ReviewDAO.getAllReview(request);
-		ReviewDAO.getUserPic(request);
-		ReviewDAO.getAllCommentCount(request);
-		LikeDAO.getAllLikeCount(request);
 		request.setAttribute("contentPage", "home/home.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	} 

@@ -96,16 +96,6 @@ color: black;
 			</small></td>
 			<td colspan="2" style="text-align: center"><small>조회수
 					${r.view_count}</small> <small>|</small> <small>댓글수 ${totalComment}</small>
-					<small>|</small> <small> 좋아요 ${totalLike }</small>
-					 <c:choose>
-                    <c:when test="${likecheck eq 'alreadyliked'}">
-                     <button class="btn btn-outline-secondary btn-sm" onclick="location.href='DailyDeleteLikeController?no=${r.no}&mynick=${sessionScope.accountInfo.nickname}'"><img alt="liked" src="img/heart-fill.svg"> LIKED</button>
-                     </c:when>
-                     <c:otherwise >
-                     <button class="btn btn-outline-secondary btn-sm" onclick="return needLogin('${r.no}','${sessionScope.accountInfo.nickname}');"> <img alt="like" src="img/heart.svg"> LIKE</button>
-<%--                      <button onclick="location.href='AddLikeController?no=${r.no}&mynick=${sessionScope.accountInfo.nickname}'">좋아요</button> --%>
-                      </c:otherwise>
-                     </c:choose>
 			</td>
 		</tr>
 			
@@ -146,35 +136,17 @@ color: black;
 				<td colspan="3"></td>
 				<td style="text-align: center">
 					<button class="btn btn-secondary"
-						onclick="location.href='UpdateDaily?no=${r.no}'">수정</button>
-					<button class="btn btn-secondary"
-						onclick="location.href='DailyController'">목록으로</button>
-					<button class="btn btn-danger" onclick="deleteDaily(${r.no})">삭제</button>
+						onclick="location.href='UpdatePost?no=${r.no}'">수정</button>
+					<button class="btn btn-danger" onclick="deleteReview(${r.no})">삭제</button>
 				</td>
 			</tr>
 
-		</c:if>
-		
-		<!-- 관리자 수정삭제 -->
-<c:if
-			test="${sessionScope.accountInfo.typeOfManger eq '플레티넘' || sessionScope.accountInfo.typeOfManger eq '다이아'}">
-			<tr>
-				<td colspan="4"><hr class=""></td>
-			</tr>
-
-			<tr>
-				<td colspan="3"></td>
-				<td style="text-align: center">
-					<button class="btn btn-secondary"
-						onclick="location.href='UpdateDaily?no=${r.no}'">수정-관리자</button>
-					<button class="btn btn-danger" onclick="deleteDaily(${r.no})">삭제-관리자</button>
-				</td>
-			</tr>
 		</c:if>
 		<tr>
 			<td colspan="4"><hr class=""></td>
 		</tr>
 
+		<c:set var="sex" value="1" />
 		<c:forEach var="c" items="${comments}">
 			<tr>
 				<td>
@@ -198,11 +170,11 @@ color: black;
 										data-bs-toggle="collapse" data-bs-target="#check${c.c_no}"
 										aria-expanded="false" aria-controls="수정">수정</button>
 									<button class="btn btn-outline-danger"
-										onclick="dailyCommentDelCheck(${c.c_no},${r.no})">삭제</button>
+										onclick="reviewCommentDelCheck(${c.c_no},${r.no})">삭제</button>
 								</div>
 								<div class="collapse" id="check${c.c_no}">
 
-									<form action="DailyCommentUpdateC">
+									<form action="ReviewCommentUpdateC">
 										<div>
 											<textarea class="form-control mt-2" id="CommentArea" rows="3"
 												name="c_text" placeholder="댓글을 입력해주세요"></textarea>
@@ -231,7 +203,7 @@ color: black;
 					test="${not empty sessionScope.accountInfo }">
 					<div>
 						<label for="CommentArea" class="form-label">댓글</label>
-						<form action="DailyCommentC">
+						<form action="ReviewCommentC">
 							<input name="user" value="${sessionScope.accountInfo.nickname} "
 								type="hidden"> <input name="no" value="${r.no}"
 								type="hidden">
@@ -250,7 +222,6 @@ color: black;
 
 	<script src="https://kit.fontawesome.com/69688adaa8.js"
 		crossorigin="anonymous"></script>
-	<script type="text/javascript" src="js/daily.js"></script>
-	<script type="text/javascript" src="js/dailyLike.js"></script>
+	<script type="text/javascript" src="js/Review.js"></script>
 </body>
 </html>

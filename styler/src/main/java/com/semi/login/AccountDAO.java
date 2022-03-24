@@ -21,12 +21,12 @@ public class AccountDAO {
 		Account a = (Account) hs.getAttribute("accountInfo");
 
 		if (a == null) {
-			// ï¿½ê½­ï¿½ë€¡ ï¿½ë¾¾ï¿½ì“£ï¿½ë¸£
-			System.out.println("æ¿¡ì’“ë ‡ï¿½ì”¤ï¿½ë–ï¿½ë™£");
+			// ·Î±×ÀÎ ½ÇÆĞ
+			System.out.println("·Î±×ÀÎ ½ÇÆĞ");
 			request.setAttribute("loginPage", "login/login.jsp");
 		} else {
-			// ï¿½ê½­ï¿½ë€¡ï¿½ì—³ï¿½ì“£ï¿½ë¸£
-			System.out.println("æ¿¡ì’“ë ‡ï¿½ì”¤ï¿½ê½¦æ€¨ï¿½");
+			// ·Î±×ÀÎ ¼º°ø
+			System.out.println("·Î±×ÀÎ ¼º°ø");
 			request.setAttribute("loginPage", "login/loginOk.jsp");
 		}
 
@@ -34,7 +34,7 @@ public class AccountDAO {
 
 	public static void login(HttpServletRequest request) {
 		String userId = request.getParameter("id");
-		String userPw = SHA256.encodeSha256(request.getParameter("pw"));
+		String userPw = request.getParameter("pw");
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -67,12 +67,12 @@ public class AccountDAO {
 					hs.setAttribute("accountInfo", a);
 					hs.setMaxInactiveInterval(1800);
 
-					request.setAttribute("r", "æ¿¡ì’“ë ‡ï¿½ì”¤ï¿½ê½¦æ€¨ï¿½");
+					request.setAttribute("r", "·Î±×ÀÎ ¼º°ø!");
 				} else {
-					request.setAttribute("r", "æ¿¡ì’“ë ‡ï¿½ì”¤ï¿½ë–ï¿½ë™£");
+					request.setAttribute("r", "ºñ¹Ğ¹øÈ£ ¿À·ù!");
 				}
 			} else {
-				request.setAttribute("r", "dbè‡¾ëª„ì £");
+				request.setAttribute("r", "Á¸ÀçÇÏÁö ¾Ê´Â È¸¿ø ÀÔ´Ï´Ù");
 			}
 
 		} catch (Exception e) {
@@ -106,8 +106,7 @@ public class AccountDAO {
 					new DefaultFileRenamePolicy());
 
 			String id = mr.getParameter("id");
-			String rawPw = mr.getParameter("pw");
-			String pw = SHA256.encodeSha256(rawPw);
+			String pw = mr.getParameter("pw");
 			String name = mr.getParameter("name1");
 			String nickname = mr.getParameter("nickname");
 			String email = mr.getParameter("email");
@@ -115,7 +114,11 @@ public class AccountDAO {
 			String style = mr.getParameter("style");
 			String profileImg = mr.getFilesystemName("profileImg");
 
-			
+			LocalDate now = LocalDate.now();
+			// Æ÷¸Ë Á¤ÀÇ
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+			// Æ÷¸Ë Àû¿ë
+			String formatedNow = now.format(formatter);
 
 			System.out.println(style);
 			System.out.println(profileImg);
@@ -128,18 +131,18 @@ public class AccountDAO {
 			pstmt.setString(6, gender);
 			pstmt.setString(7, style);
 			pstmt.setString(8, profileImg);
-			pstmt.setString(9, "ë¸Œë¡ ì¦ˆ");
+			pstmt.setString(9, "0");
 			pstmt.setString(10, "0");
-			pstmt.setString(11, "0");
+			pstmt.setString(11, formatedNow);
 			if (pstmt.executeUpdate() == 1) {
 
-				System.out.println("åª›ï¿½ï¿½ì—¯ï¿½ê½¦æ€¨ï¿½");
+				System.out.println("µî·Ï ¼º°ø");
 			} else {
-				System.out.println("åª›ï¿½ï¿½ì—¯ï¿½ë–ï¿½ë™£");
+				System.out.println("µî·Ï ½ÇÆĞ");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("r", "DB ï¿½ê½Œè¸°ê¾¨Ğ¦ï¿½ì £");
+			request.setAttribute("r", "DB ¼­¹ö ¿À·ù");
 		} finally {
 			DBManager.close(con, pstmt, null);
 		}
@@ -163,8 +166,7 @@ public class AccountDAO {
 			MultipartRequest mr = new MultipartRequest(request, path, 30 * 1024 * 1024, "utf-8",
 					new DefaultFileRenamePolicy());
 
-			String rawPw = mr.getParameter("pw");
-			String pw = SHA256.encodeSha256(rawPw);
+			String pw = mr.getParameter("pw");
 			String nickname = mr.getParameter("nickname");
 			String email = mr.getParameter("email");
 			String id = mr.getParameter("id");
@@ -203,18 +205,18 @@ public class AccountDAO {
 						hs.setAttribute("accountInfo", a);
 						hs.setMaxInactiveInterval(1800);
 
-						System.out.println("ï¿½ë‹”ï¿½ì ™ï¿½ê½¦æ€¨ï¿½");
+						System.out.println("¼öÁ¤¼º°ø");
 					}
 				}
 
 			} else {
 
-				System.out.println("ï¿½ë‹”ï¿½ì ™ï¿½ë–ï¿½ë™£");
+				System.out.println("¼öÁ¤½ÇÆĞ");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("DBï¿½ê½Œè¸°ê¾¨Ğ¦ï¿½ì £");
+			System.out.println("DB¼­¹ö¿À·ù-ÇÁ·ÎÇÊ");
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
@@ -236,13 +238,13 @@ public class AccountDAO {
 			pstmt.setString(1, id);
 
 			if (pstmt.executeUpdate() == 1) {
-				System.out.println("ï¿½ê¹‰ï¿½ëˆœï¿½ê½¦æ€¨ï¿½");
+				System.out.println("Å»Åğ ¼º°ø");
 			} else {
-				System.out.println("ï¿½ê¹‰ï¿½ëˆœï¿½ë–ï¿½ë™£");
+				System.out.println("Å»Åğ ½ÇÆĞ");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("r", "DB ï¿½ê½Œè¸°ê¾¨Ğ¦ï¿½ì £");
+			request.setAttribute("r", "DB ¼­¹ö ¿À·ù");
 		} finally {
 			DBManager.close(con, pstmt, null);
 		}
@@ -298,18 +300,18 @@ public class AccountDAO {
 					hs.setAttribute("accountInfo", a);
 					hs.setMaxInactiveInterval(1800);
 
-					System.out.println("ï¿½ì” èª˜ëª„ï¿½è¹‚ï¿½å¯ƒï¿½");
+					System.out.println("¼öÁ¤¼º°ø");
 
 				}
 
 			} else {
 
-				System.out.println("ï¿½ì” èª˜ëª„ï¿½è¹‚ï¿½å¯ƒìŒë–ï¿½ë™£");
+				System.out.println("¼öÁ¤½ÇÆĞ");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("DBï¿½ê½Œè¸°ê¾¨Ğ¦ï¿½ì £");
+			System.out.println("DB¼­¹ö¿À·ù-ÇÁ·ÎÇÊ");
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
@@ -333,18 +335,18 @@ public class AccountDAO {
 			String typeOfManager = request.getParameter("typeOfManger");
 			String id = request.getParameter("id");
 
-			if (typeOfManager.equals("ë¸Œë¡ ì¦ˆ") && checkPoint >= 100) {
+			if (typeOfManager.equals("ºê·ĞÁî") && checkPoint >= 100) {
 				pstmt.setInt(1, checkPoint - 100);
-				pstmt.setString(2, "ì‹¤ë²„");
+				pstmt.setString(2, "½Ç¹ö");
 				pstmt.setString(3, id);
-			} else if (typeOfManager.equals("ì‹¤ë²„") && checkPoint >= 200) {
-				pstmt.setInt(1, checkPoint - 200);
-				pstmt.setString(2, "ê³¨ë“œ");
+			} else if (typeOfManager.equals("½Ç¹ö") && checkPoint >= 200) {
+				pstmt.setInt(1, checkPoint - 100);
+				pstmt.setString(2, "°ñµå");
 				pstmt.setString(3, id);
 
-			} else if (typeOfManager.equals("ê³¨ë“œ") && checkPoint >= 1000) {
+			} else if (typeOfManager.equals("°ñµå") && checkPoint >= 1000) {
 				pstmt.setInt(1, checkPoint - 100);
-				pstmt.setString(2, "í”Œë ˆí‹°ë„˜");
+				pstmt.setString(2, "ÇÃ·¹Æ¼³Ñ");
 				pstmt.setString(3, id);
 
 			} else {
@@ -380,72 +382,22 @@ public class AccountDAO {
 						hs.setAttribute("accountInfo", a);
 						hs.setMaxInactiveInterval(1800);
 
-						System.out.println("ï¿½ë²‘æ¹²ë±ë¾½");
+						System.out.println("¼öÁ¤¼º°ø");
 					}
 				}
 
 			} else {
 
-				System.out.println("ï¿½ë²‘æ¹²ë±ë¾½ï¿½ë–ï¿½ë™£");
+				System.out.println("¼öÁ¤½ÇÆĞ");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("DBï¿½ê½Œè¸°ê¾¨Ğ¦ï¿½ì £");
+			System.out.println("DB¼­¹ö¿À·ù-ÇÁ·ÎÇÊ");
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
 
-	}
-
-	public static void findID(HttpServletRequest request) {
-		String name = request.getParameter("name1");
-		String email = request.getParameter("email");
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			String sql = "select * from users where u_id = ? & u_email = ?";
-			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, name);
-			pstmt.setString(2, email);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-
-				
-
-					Account a = new Account();
-					a.setId(rs.getString("u_id"));
-					a.setPw(rs.getString("u_pw"));
-					a.setName(rs.getString("u_name"));
-					a.setNickname(rs.getString("u_nickname"));
-					a.setEmail(rs.getString("u_email"));
-					a.setGender(rs.getString("u_gender"));
-					a.setStyle(rs.getString("u_style"));
-					a.setProfileImg(rs.getString("u_profileimg"));
-					a.setTypeOfManger(rs.getString("u_typeOfManager"));
-					a.setCheckPoint(rs.getString("u_checkpoint"));
-					a.setCheckDate(rs.getString("u_checkDate"));
-					HttpSession hs = request.getSession();
-					
-					request.setAttribute("account", a);
-					hs.setAttribute("accountInfo", a);
-					hs.setMaxInactiveInterval(1800);
-
-					request.setAttribute("r", "ï¿½ë¸˜ï¿½ì” ï¿½ëµ’ï§¡ì–˜ë¦°ï¿½ê½¦æ€¨ï¿½");
-				
-			} else {
-				request.setAttribute("r", "dbè‡¾ëª„ì £");
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(con, pstmt, rs);
-		}
 	}
 
 }

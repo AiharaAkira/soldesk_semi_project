@@ -111,12 +111,12 @@
 
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="right1" name="typeOfManager" value="0" >
-            <label class="form-check-label" for="right1">개인정보 이용에 동의 합니다.</label>
+            <label class="form-check-label" for="right1">약관1</label>
           </div>
 
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="right12" name="checkPoint" value="1" >
-            <label class="form-check-label" for="right2" >개인정보 수집에 동의 합니다.</label>
+            <label class="form-check-label" for="right2" >약관2</label>
           </div>
 
           <hr class="my-4">

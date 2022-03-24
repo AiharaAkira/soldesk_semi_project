@@ -22,7 +22,7 @@ public class DeleteDaily extends HttpServlet {
 		DailyDAO.getAllDaily(request);
 		
 		//review.jsp濡� �룎�븘媛�寃� 蹂�寃�
-		request.setAttribute("contentPage", "daily/daily.jsp");
+		request.setAttribute("contentPage", "review/review.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

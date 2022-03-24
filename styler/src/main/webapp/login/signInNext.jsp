@@ -43,7 +43,7 @@
 				in</button>
 		</form>
 		<div class="d-flex  justify-content-between px-3">
-			<a href="#">Find ID</a> <a href="#">Find Password</a> <a
+			<a href="">Find ID</a> <a href="">Find Password</a> <a
 				href="SignUpC">Sign up</a>
 		</div>
 

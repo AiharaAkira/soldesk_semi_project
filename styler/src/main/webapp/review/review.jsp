@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -115,32 +114,16 @@ body {
 				</c:forEach></td>
 		</tr>
 	</table> --%>
-	
-	
-	
-	 <!-- 홈.jsp -->
-	 <div  class="container-fluid  row mt-5"  >
-            <div  class="d-flex align-items-center justify-content-center" >
-                <a  href="RevViewSearch" class="btn btn-outline-dark border-white rounded-pill">
-            인기
-          </a>
-          <a  href="RevDateSearch" class="btn btn-outline-dark border-white rounded-pill">
-            최신
-          </a>
-          <a  href="RevRandomSearch" class="btn btn-outline-dark border-white rounded-pill">
-            랜덤
-          </a>
-          
-           <a href="WritePost"
+	<div class="container-fluid  row mt-5" id="head">
+		<div class="d-flex align-items-center justify-content-center">
+			<a href="#" class="btn btn-outline-dark border-white rounded-pill">
+				인기 </a> <a href="#"
+				class="btn btn-outline-dark border-white rounded-pill"> 최신 </a> <a
+				href="#" class="btn btn-outline-dark border-white rounded-pill">
+				댓글순 </a> <a href="WritePost"
 				class="btn btn-outline-red border-white rounded-pill">리뷰 작성</a>
-          
-        </div>
-        </div>
-	
-	
-	
-	
-	
+		</div>
+	</div>
 	<div class="album py-5 bg-WHITE">
 		<div class="container">
 
@@ -151,10 +134,10 @@ body {
 					<div class="col">
 						<div class="card shadow-sm">
 
-							<a
-								href="ReadDetailC?no=${r.no}&mynick=${sessionScope.accountInfo.nickname}">
-								<img alt="게시글 이미지" src="img/${r.img}" class="card-img-top "
-								width="auto" height="225">
+
+							<a href="ReadDetailC?no=${r.no}"> <img alt="게시글 이미지"
+								src="img/${r.img}" class="card-img-top " width="auto"
+								height="225">
 							</a>
 
 							<div class="card-body">
@@ -162,44 +145,17 @@ body {
 								<div
 									class="d-flex justify-content-between align-items-center flex-wrap">
 									<div class="btn-group">
-
-										<!--  좋아요개수표시 -->
-										<c:set var="NumOfLike" value="0" />
-										<c:forEach var="countLike" items="${alcs}">
-											<c:if test="${ r.no eq countLike.postNo }">
-												<c:set var="NumOfLike" value="${countLike.numberOfLike}" />
-											</c:if>
-										</c:forEach>
-										<button type="button" class="btn btn-sm btn-outline-secondary"
-											onclick="location.href='ReadDetailC?no=${r.no}&mynick=${sessionScope.accountInfo.nickname}'">
-											<img class="me-2" alt="liked" src="img/heart-fill.svg">
-											${NumOfLike}
-										</button>
-
-										<!--  댓글개수표시 -->
-										<c:set var="NumOfComment" value="0" />
-										<c:forEach var="countComment" items="${accs}">
-											<c:if test="${ r.no eq countComment.postNo }">
-												<c:set var="NumOfComment"
-													value="${countComment.numberOfComment}" />
-											</c:if>
-										</c:forEach>
-										<button type="button" class="btn btn-sm btn-outline-secondary"
-											onclick="location.href='ReadDetailC?no=${r.no}&mynick=${sessionScope.accountInfo.nickname}#comment'">댓글
-											${NumOfComment}</button>
+										<button type="button" class="btn btn-sm btn-outline-secondary">좋아요</button>
+										<button type="button" class="btn btn-sm btn-outline-secondary">댓글</button>
+									</div>
+									<small class="text-muted"> 글 게시시간</small>
+									<div class="flex-shrink-0">
+										<!-- 유저등록사진표시 -->
+										<img src="${sessionScope.accountInfo.profileImg}" alt="mdo"
+											width="32" height="32" class="rounded-circle"> <small>
+											${r.user}</small>
 									</div>
 
-									<small class="text-muted"> <fmt:formatDate
-											value="${r.date}" pattern="yy.MM.dd" /></small>
-                  <!-- 유저등록사진표시 -->
-                 <c:forEach var="p" items="${userP}"> 
-                 <c:if test="${r.user eq p.nickname }">
-                  <div class="col-12 flex-shrink-1 mt-2 ">
-                 <img src="img/${p.u_img}"  alt="작성자프로필사진" width="32" height="32" class="rounded-circle ">
-                 <small> ${r.user}</small>
-                </div>
-                  </c:if>
-                   </c:forEach>
 								</div>
 							</div>
 						</div>
@@ -213,7 +169,6 @@ body {
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="js/Review.js"></script>
-	<script type="text/javascript" src="js/reviewlike.js"></script>
+
 </body>
 </html>
